@@ -4,7 +4,7 @@ export const SITE = {
   phone:        "+918801912200",
   phoneDisplay: "+91 88019 12200",
   email:        "connect@technoexcel.in",
-  addressfull:      "Plot No 5, First Floor, Above Indian Bank, Market Road, Trimulgherry, Secunderabad — 500015",
+  addressFull:      "Plot No 5, First Floor, Above Indian Bank, Market Road, Trimulgherry, Secunderabad — 500015",
 };
 
 const B = "https://api.whatsapp.com/send?phone=918801912200&text=";
