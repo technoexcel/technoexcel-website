@@ -4,8 +4,9 @@ export const SITE = {
   phone:        "+918801912200",
   phoneDisplay: "+91 88019 12200",
   email:        "connect@technoexcel.in",
-  addressFull:      "Plot No 5, First Floor, Above Indian Bank, Market Road, Trimulgherry, Secunderabad — 500015",
+  addressFull:   "Plot No 5, First Floor, Above Indian Bank, Market Road, Trimulgherry, Secunderabad — 500015",
   mapUrl:        "https://www.google.com/maps/place/TechnoExcel+%7C+Data+Analytics+-+simplified!/@17.4710531,78.5049122,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb9b1ee91bd45d:0xe7c8b6c4541726da!8m2!3d17.4710531!4d78.5074871!16s%2Fg%2F11fjmc40tw?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D",
+  embedUrl:     "https://maps.google.com/maps?q=17.4710531,78.5074871&z=17&output=embed",
 };
 
 const B = "https://api.whatsapp.com/send?phone=918801912200&text=";
