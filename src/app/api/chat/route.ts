@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
   try {
     const { messages } = await req.json();
     const response = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-3-5-haiku-20241022",
       max_tokens: 256,
       system: SYSTEM,
       messages: messages.filter((m: { role: string }) => m.role==="user" || m.role==="assistant"),
