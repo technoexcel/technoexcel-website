@@ -14,7 +14,8 @@ export const metadata: Metadata = {
 const GLOBAL_CSS = `
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#13293C;background:#fff;overflow-x:hidden}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#13293C;background:#fff;overflow-x:hidden;animation:pagefade .15s ease forwards;}
+  @keyframes pagefade{from{opacity:0}to{opacity:1}}
   ::selection{background:#EE2354;color:#fff}
   ::-webkit-scrollbar{width:3px}
   ::-webkit-scrollbar-thumb{background:#EE2354;border-radius:2px}
@@ -52,14 +53,14 @@ const WA_SVG = `<svg width="26" height="26" viewBox="0 0 24 24" fill="white"><pa
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="theme-color" content="#0d1f2d" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-        <style dangerouslySetInnerHTML={{ __html: GLOBAL_CSS }} />
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: GLOBAL_CSS }} />
       </head>
       <body>
         <Nav />
