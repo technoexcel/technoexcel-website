@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import { COURSES, WA } from "@/lib/constants";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title:"Data Analytics & Excel Courses Hyderabad | 10 Programs | TechnoExcel",
