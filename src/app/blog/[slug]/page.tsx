@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "../page";
 import { WA, COURSES } from "@/lib/constants";
 
+export const dynamic = "force-static";
+
 const INK="#13293C",RED="#EE2354",BG="#0d1f2d",CREAM="#F4F2EE";
 const SANS="var(--font-jakarta,'Plus Jakarta Sans',sans-serif)";
 const MONO="var(--font-mono,'Space Mono',monospace)";
@@ -101,7 +103,7 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
     <>
       {/* Hero */}
       <section id="te-bh" style={{background:BG,padding:"100px 52px 52px",position:"relative"}}>
-        <style>{`#te-bh{padding:100px 52px 52px} @media(max-width:768px){#te-bh{padding:80px 20px 40px!important}}`}</style>
+        <style suppressHydrationWarning>{`#te-bh{padding:100px 52px 52px} @media(max-width:768px){#te-bh{padding:80px 20px 40px!important}}`}</style>
         <div style={{position:"absolute",inset:0,backgroundImage:"linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px)",backgroundSize:"80px 80px",pointerEvents:"none"}}/>
         <div style={{maxWidth:860,margin:"0 auto",position:"relative",zIndex:1}}>
           <nav style={{display:"flex",alignItems:"center",gap:8,fontFamily:MONO,fontSize:11,color:"rgba(255,255,255,.50)",marginBottom:24,flexWrap:"wrap"}}>
@@ -121,7 +123,7 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
 
       {/* Body */}
       <section id="te-bb" style={{background:"#fff",padding:"60px 52px"}}>
-        <style>{`
+        <style suppressHydrationWarning>{`
           #te-bb .body-inner{max-width:860px;margin:0 auto}
           #te-bb .art h2{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(18px,2.5vw,24px);color:#13293C;letter-spacing:-0.3px;margin-bottom:14px;margin-top:44px;line-height:1.2}
           #te-bb .art p{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;color:rgba(19,41,60,0.72);line-height:1.92;margin-bottom:0}
