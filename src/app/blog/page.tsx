@@ -13,14 +13,14 @@ export const metadata: Metadata = {
 // ── INSIGHTS: Rich HTML data reports ─────────────────────────────────────────
 export const INSIGHTS = [
   {
-  slug: "minus-hr-workforce-transformation-2026",
-  title: "MINUS HR: When Finance Replaced Human Resources",
-  description: "A research-backed report on the shift from Human-Centric HR to AI & Finance-Driven Workforce Decisions. Oracle layoffs, algorithmic exits, and what both employees and employers must do now.",
-  date: "April 2026",
-  category: "Workforce Intelligence",
-  tags: ["HR", "AI", "Layoffs", "Workforce", "Oracle", "Future of Work"],
-  readTime: "12 min read",
-  insightUrl: "/insights/minus-hr-workforce-transformation-2026.html",
+  slug:     "minus-hr-workforce-transformation-2026.html",
+  title:    "MINUS HR: When Finance Replaced Human Resources",
+  cat:      "Workforce Intelligence",
+  date:     "Apr 2026",
+  read:     "12 min",
+  featured: false,
+  excerpt:  "A research-backed report on the shift from Human-Centric HR to AI & Finance-Driven Workforce Decisions. Oracle layoffs, algorithmic exits, and what both employees and employers must do now.",
+  tags:     ["HR", "AI", "Layoffs", "Workforce", "Oracle", "Future of Work"],
 },
   {
     slug:    "india-ev-battery-war.html",
