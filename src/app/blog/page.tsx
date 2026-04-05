@@ -13,16 +13,6 @@ export const metadata: Metadata = {
 // ── INSIGHTS: Rich HTML data reports ─────────────────────────────────────────
 export const INSIGHTS = [
   {
-    slug:    "india-ev-battery-war.html",
-    title:   "The Battery War: Can India Break China's EV Dominance?",
-    cat:     "Energy & Strategy",
-    date:    "Mar 2026",
-    read:    "12 min",
-    featured: true,
-    excerpt: "A data-driven deep dive into India's EV battery strategy — BYD's cost dominance, critical mineral supply chains, Na-ion technology bets, and the 5 policy levers that could reshape India's energy security by 2035.",
-    tags:    ["EV","Energy Security","Battery","India","Strategy"],
-  },
-  {
   slug: "minus-hr-workforce-transformation-2026",
   title: "MINUS HR: When Finance Replaced Human Resources",
   description: "A research-backed report on the shift from Human-Centric HR to AI & Finance-Driven Workforce Decisions. Oracle layoffs, algorithmic exits, and what both employees and employers must do now.",
@@ -32,6 +22,17 @@ export const INSIGHTS = [
   readTime: "12 min read",
   insightUrl: "/insights/minus-hr-workforce-transformation-2026.html",
 },
+  {
+    slug:    "india-ev-battery-war.html",
+    title:   "The Battery War: Can India Break China's EV Dominance?",
+    cat:     "Energy & Strategy",
+    date:    "Mar 2026",
+    read:    "12 min",
+    featured: true,
+    excerpt: "A data-driven deep dive into India's EV battery strategy — BYD's cost dominance, critical mineral supply chains, Na-ion technology bets, and the 5 policy levers that could reshape India's energy security by 2035.",
+    tags:    ["EV","Energy Security","Battery","India","Strategy"],
+  },
+  
 ];
 
 export const BLOG_POSTS=[
