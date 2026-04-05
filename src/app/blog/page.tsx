@@ -22,7 +22,16 @@ export const INSIGHTS = [
     excerpt: "A data-driven deep dive into India's EV battery strategy — BYD's cost dominance, critical mineral supply chains, Na-ion technology bets, and the 5 policy levers that could reshape India's energy security by 2035.",
     tags:    ["EV","Energy Security","Battery","India","Strategy"],
   },
-  // Add more reports here as you create them
+  {
+  slug: "minus-hr-workforce-transformation-2026",
+  title: "MINUS HR: When Finance Replaced Human Resources",
+  description: "A research-backed report on the shift from Human-Centric HR to AI & Finance-Driven Workforce Decisions. Oracle layoffs, algorithmic exits, and what both employees and employers must do now.",
+  date: "April 2026",
+  category: "Workforce Intelligence",
+  tags: ["HR", "AI", "Layoffs", "Workforce", "Oracle", "Future of Work"],
+  readTime: "12 min read",
+  insightUrl: "/insights/minus-hr-workforce-transformation-2026.html",
+},
 ];
 
 export const BLOG_POSTS=[
