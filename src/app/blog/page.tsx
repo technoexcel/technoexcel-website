@@ -18,7 +18,7 @@ export const INSIGHTS = [
   cat:      "Workforce Intelligence",
   date:     "Apr 2026",
   read:     "12 min",
-  featured: false,
+  featured: true,
   excerpt:  "A research-backed report on the shift from Human-Centric HR to AI & Finance-Driven Workforce Decisions. Oracle layoffs, algorithmic exits, and what both employees and employers must do now.",
   tags:     ["HR", "AI", "Layoffs", "Workforce", "Oracle", "Future of Work"],
 },
