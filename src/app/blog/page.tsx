@@ -13,6 +13,16 @@ export const metadata: Metadata = {
 // ── INSIGHTS: Rich HTML data reports ─────────────────────────────────────────
 export const INSIGHTS = [
   {
+  slug: "taco-policy-reversal-market-pattern-2025-2026.html",
+  title: "The TACO Pattern: How Policy Reversals Drove Market Volatility (2025–2026)",
+  cat: "Geopolitical Market Intelligence",
+  date: "Apr 2026",
+  read: "10 min",
+  featured: true,
+  excerpt: "A data-backed analysis of policy shocks and reversal cycles shaping global markets in 2025–2026. Explore the TACO pattern, volatility compression, and how traders capitalized on predictable policy pivots.",
+  tags: ["Markets", "Geopolitics", "Volatility", "Trading Strategy", "Behavioral Finance", "Tariffs", "S&P 500", "Macro Analysis"]
+},
+  {
   slug:     "minus-hr-workforce-transformation-2026.html",
   title:    "MINUS HR: When Finance Replaced Human Resources",
   cat:      "Workforce Intelligence",
