@@ -1,7 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
-import { WA } from "@/lib/constants";
 
 export const dynamic = "force-static";
 

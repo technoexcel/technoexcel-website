@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const TO     = process.env.CONTACT_EMAIL || "connect@technoexcel.in";
-
 function san(v: unknown): string {
   if (typeof v !== "string") return "";
   return v.trim().slice(0, 500).replace(/<[^>]*>/g, "");
@@ -11,6 +8,8 @@ function san(v: unknown): string {
 
 export async function POST(req: NextRequest) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const TO     = process.env.CONTACT_EMAIL || "connect@technoexcel.in";
     const b    = await req.json();
     if (b.website) return NextResponse.json({ success:true }); // honeypot
     const name    = san(b.name);
