@@ -4,7 +4,7 @@ import { NAV_LINKS, COURSES, SITE } from "@/lib/constants";
 export default function Footer() {
   return (
     <footer id="te-footer" style={{ background:"#071420",padding:"52px 52px 28px",borderTop:"1px solid rgba(255,255,255,0.08)" }}>
-      <style
+      <style suppressHydrationWarning
       dangerouslySetInnerHTML={{
       __html: `
         #te-footer .f-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px}

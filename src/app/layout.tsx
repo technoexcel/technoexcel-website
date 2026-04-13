@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import ChatBot from "@/components/ui/ChatBot";
-import PageLoader from "@/components/ui/PageLoader";
 
 export const metadata: Metadata = {
   title: { default:"TechnoExcel — Data Solutions & Corporate Training | Hyderabad", template:"%s | TechnoExcel" },
@@ -15,9 +14,7 @@ export const metadata: Metadata = {
 const GLOBAL_CSS = `
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#13293C;background:#fff;overflow-x:hidden;}
-  #te-page-loader{transition:opacity .45s ease;animation:loaderTimeout 0s 3.5s forwards;}
-  @keyframes loaderTimeout{to{opacity:0;pointer-events:none;}}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#13293C;background:#fff;overflow-x:hidden}
   ::selection{background:#EE2354;color:#fff}
   ::-webkit-scrollbar{width:3px}
   ::-webkit-scrollbar-thumb{background:#EE2354;border-radius:2px}
@@ -64,9 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
         <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: GLOBAL_CSS }} />
       </head>
-      <body>
-        <div id="te-page-loader" style={{ position:"fixed",inset:0,background:"#fff",zIndex:10000,pointerEvents:"none" }} />
-        <PageLoader />
+      <body suppressHydrationWarning>
         <Nav />
         <main>{children}</main>
         <Footer />
