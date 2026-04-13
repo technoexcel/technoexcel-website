@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import { WA } from "@/lib/constants";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title:"About Ravi Saini — TechnoExcel Founder | 14 Years in Data",
   description:"TechnoExcel was founded by Ravi Saini with 14+ years in data solutions and training. 10,000+ professionals trained across India, Southeast Asia, Middle East, UK and USA.",
@@ -19,7 +21,7 @@ export default function AboutPage() {
       <PageHero crumbs={[{label:"TechnoExcel",href:"/"},{label:"About"}]} h1="14 years." h1red="One obsession." sub="Making data work for the people who use it — not the other way around." />
 
       <section id="te-about" style={{background:CREAM,padding:"64px 52px"}}>
-        <style>{`
+        <style suppressHydrationWarning>{`
           #te-about .ag{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:flex-start}
           #te-about .ab{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
           @media(max-width:1024px){#te-about .ag{grid-template-columns:1fr!important;gap:40px}}

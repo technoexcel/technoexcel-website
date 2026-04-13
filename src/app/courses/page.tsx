@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import { COURSES, WA } from "@/lib/constants";
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title:"Data Analytics & Excel Courses Hyderabad | 10 Programs | TechnoExcel",
   description:"10 professional courses: Advanced Excel, Power BI, Data Analytics, Data Science, AI Prompt Engineering, VBA, Python, SQL, Power Platform and Data Storytelling. Live instructor-led with real business data.",
@@ -52,7 +54,7 @@ export default function CoursesPage() {
       <PageHero crumbs={[{label:"TechnoExcel",href:"/"},{label:"Courses"}]} h1="10 courses." h1red="One goal: you decide faster." sub="From 2-week intensives to 6-month programs. Every course is live, instructor-led and taught with real business data — not recorded videos." />
 
       <section id="te-cp" style={{background:CREAM,padding:"64px 52px"}}>
-        <style dangerouslySetInnerHTML={{__html:PAGE_CSS}} />
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:PAGE_CSS}} />
         <div className="ci">
           <div className="sb">
             {[["10","Courses available"],["4.8★","Google rated · 729 reviews"],["10K+","Professionals trained"],["Live","All sessions instructor-led"]].map(([n,l])=>(
