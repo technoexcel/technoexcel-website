@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import ChatBot from "@/components/ui/ChatBot";
+import PageLoader from "@/components/ui/PageLoader";
 
 export const metadata: Metadata = {
   title: { default:"TechnoExcel — Data Solutions & Corporate Training | Hyderabad", template:"%s | TechnoExcel" },
@@ -14,8 +15,8 @@ export const metadata: Metadata = {
 const GLOBAL_CSS = `
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#13293C;background:#fff;overflow-x:hidden;animation:pagefade .15s ease forwards;}
-  @keyframes pagefade{from{opacity:0}to{opacity:1}}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#13293C;background:#fff;overflow-x:hidden;}
+  #te-page-loader{transition:opacity .45s ease;}
   ::selection{background:#EE2354;color:#fff}
   ::-webkit-scrollbar{width:3px}
   ::-webkit-scrollbar-thumb{background:#EE2354;border-radius:2px}
@@ -63,6 +64,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: GLOBAL_CSS }} />
       </head>
       <body>
+        <div id="te-page-loader" style={{ position:"fixed",inset:0,background:"#fff",zIndex:10000,pointerEvents:"none" }} />
+        <PageLoader />
         <Nav />
         <main>{children}</main>
         <Footer />
