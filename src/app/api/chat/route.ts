@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
-const client = new Anthropic();
+const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const SYSTEM = `You are TechnoExcel's helpful assistant. TechnoExcel is a data solutions and corporate training company in Hyderabad, India, founded by Ravi Saini (14+ years experience).
 
