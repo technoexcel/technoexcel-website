@@ -13,39 +13,15 @@ const MONO = "var(--font-mono,'Space Mono',monospace)";
 export default function AudienceSection() {
   return (
     <section id="te-audience" style={{ background:CREAM, padding:"80px 52px" }}>
-      <style>{`
-        #te-audience .paths-grid {
-          display: grid;
-          grid-template-columns: repeat(3,1fr);
-          gap: 1px;
-          background: rgba(19,41,60,0.1);
-          border-radius: 14px;
-          overflow: hidden;
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
+        #te-audience .paths-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(19,41,60,0.1);border-radius:14px;overflow:hidden}
+        #te-audience .path-card{background:#F4F2EE;padding:32px 26px;position:relative}
+        @media(max-width:768px){
+          #te-audience .paths-grid{grid-template-columns:1fr!important;gap:0;background:transparent;border-radius:0;overflow:visible}
+          #te-audience .path-card{border:1px solid rgba(19,41,60,0.1);border-radius:12px;margin-bottom:12px;padding:24px 20px}
+          #te-audience .path-card:last-child{margin-bottom:0}
         }
-        #te-audience .path-card {
-          background: #F4F2EE;
-          padding: 32px 26px;
-          position: relative;
-        }
-        @media (max-width: 768px) {
-          #te-audience .paths-grid {
-            grid-template-columns: 1fr !important;
-            gap: 0;
-            background: transparent;
-            border-radius: 0;
-            overflow: visible;
-          }
-          #te-audience .path-card {
-            border: 1px solid rgba(19,41,60,0.1);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            padding: 24px 20px;
-          }
-          #te-audience .path-card:last-child {
-            margin-bottom: 0;
-          }
-        }
-      `}</style>
+      `}} />
       <div style={{ maxWidth:1280, margin:"0 auto" }}>
         <div style={{ display:"flex", alignItems:"center", gap:10, fontFamily:MONO, fontSize:9, letterSpacing:"2.5px", textTransform:"uppercase", color:"rgba(19,41,60,0.60)", marginBottom:8 }}>
           <span style={{ width:14, height:1, background:"rgba(19,41,60,.3)", flexShrink:0, display:"inline-block" }} />Who We Work With

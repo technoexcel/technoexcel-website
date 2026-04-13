@@ -20,12 +20,12 @@ export default function ContactPage() {
       <PageHero crumbs={[{label:"TechnoExcel",href:"/"},{label:"Contact"}]} h1="Let's talk about" h1red="your data." sub="Free 30-minute strategy call. No obligation. We identify your top 3 data opportunities and tell you exactly what to do next." />
 
       <section id="te-contactpage" style={{background:CREAM,padding:"64px 52px"}}>
-        <style>{`
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
           #te-contactpage .cg{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1.35fr;gap:64px;align-items:flex-start}
           #te-contactpage .cib{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
           @media(max-width:1024px){#te-contactpage .cg{grid-template-columns:1fr!important;gap:36px}}
           @media(max-width:768px){#te-contactpage .cib{flex-direction:column} #te-contactpage .cib a{justify-content:center;text-align:center}}
-        `}</style>
+        `}} />
         <div className="cg">
           {/* Left: contact details */}
           <div>

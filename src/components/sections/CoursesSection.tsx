@@ -9,37 +9,18 @@ const MONO = "var(--font-mono,'Space Mono',monospace)";
 export default function CoursesSection() {
   return (
     <section id="te-courses-section" style={{ background:"#fff", padding:"80px 52px" }}>
-      <style>{`
-        #te-courses-section .course-row {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 18px 0;
-          border-bottom: 1px solid rgba(19,41,60,0.07);
-          transition: padding-left 0.2s;
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
+        #te-courses-section .course-row{display:flex;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid rgba(19,41,60,0.07);transition:padding-left 0.2s}
+        #te-courses-section .course-row:hover{padding-left:10px}
+        #te-courses-section .course-meta{display:flex;align-items:center;gap:16px;flex-shrink:0}
+        #te-courses-section .course-duration{display:block}
+        @media(max-width:768px){
+          #te-courses-section .course-row{flex-direction:column;align-items:flex-start;gap:8px}
+          #te-courses-section .course-row:hover{padding-left:0}
+          #te-courses-section .course-meta{width:100%;justify-content:flex-end}
+          #te-courses-section .course-duration{display:none}
         }
-        #te-courses-section .course-row:hover { padding-left: 10px; }
-        #te-courses-section .course-meta {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          flex-shrink: 0;
-        }
-        #te-courses-section .course-duration { display: block; }
-        @media (max-width: 768px) {
-          #te-courses-section .course-row {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-          }
-          #te-courses-section .course-row:hover { padding-left: 0; }
-          #te-courses-section .course-meta {
-            width: 100%;
-            justify-content: flex-end;
-          }
-          #te-courses-section .course-duration { display: none; }
-        }
-      `}</style>
+      `}} />
       <div style={{ maxWidth:1280, margin:"0 auto" }}>
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:48, alignItems:"start", marginBottom:40 }}>
           <div>

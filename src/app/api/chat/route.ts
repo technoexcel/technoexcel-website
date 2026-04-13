@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
 const SYSTEM = `You are TechnoExcel's helpful assistant. TechnoExcel is a data solutions and corporate training company in Hyderabad, India, founded by Ravi Saini (14+ years experience).
 
 CONTACT: +91 88019 12200 | connect@technoexcel.in | Trimulgherry, Hyderabad
@@ -20,6 +18,7 @@ Keep replies under 120 words. Direct pricing questions to WhatsApp +91 88019 122
 
 export async function POST(req: NextRequest) {
   try {
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     const { messages } = await req.json();
     const response = await client.messages.create({
       model: "claude-3-5-haiku-20241022",

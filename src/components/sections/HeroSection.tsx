@@ -24,40 +24,22 @@ export default function HeroSection() {
 
   return (
     <section id="te-hero" style={{ background:BG, minHeight:"92vh", display:"flex", flexDirection:"column", justifyContent:"center", padding:"72px 96px 52px", position:"relative", overflow:"hidden" }}>
-      <style>{`
-        /* ── Tablet (≤1024px) ── */
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
         @media(max-width:1024px){
           #te-hero{ padding:80px 48px 52px !important; }
         }
-        /* ── Mobile (≤768px) ── */
         @media(max-width:768px){
-          #te-hero{
-            padding:80px 24px 48px !important;
-            min-height:unset !important;
-          }
-          #te-hero .hero-cols{
-            grid-template-columns:1fr !important;
-            gap:32px;
-          }
-          #te-hero .hero-left{
-            padding-right:0 !important;
-            border-right:none !important;
-            padding-bottom:28px;
-            border-bottom:1px solid rgba(255,255,255,0.07);
-          }
+          #te-hero{ padding:80px 24px 48px !important; min-height:unset !important; }
+          #te-hero .hero-cols{ grid-template-columns:1fr !important; gap:32px; }
+          #te-hero .hero-left{ padding-right:0 !important; border-right:none !important; padding-bottom:28px; border-bottom:1px solid rgba(255,255,255,0.07); }
           #te-hero .hero-proof{ display:none !important; }
-          #te-hero .hero-btns{
-            flex-direction:column;
-            gap:10px;
-          }
+          #te-hero .hero-btns{ flex-direction:column; gap:10px; }
           #te-hero .hero-btns a{ justify-content:center; }
           #te-hero .hero-label{ font-size:11px !important; }
           #te-hero .hero-tag{ font-size:11px !important; }
         }
-        @media(max-width:420px){
-          #te-hero{ padding:72px 18px 40px !important; }
-        }
-      `}</style>
+        @media(max-width:420px){ #te-hero{ padding:72px 18px 40px !important; } }
+      `}} />
 
       <div style={{ position:"absolute", inset:0, pointerEvents:"none", backgroundImage:"linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px)", backgroundSize:"80px 80px" }} />
       <div style={{ position:"absolute", width:600, height:600, borderRadius:"50%", background:`radial-gradient(circle,rgba(238,35,84,.10),transparent 60%)`, top:-100, right:-80, pointerEvents:"none" }} />

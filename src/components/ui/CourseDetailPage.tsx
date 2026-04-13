@@ -27,7 +27,7 @@ export function CourseDetailPage({ slug, title, badge, duration, tagline, descri
       <PageHero crumbs={[{label:"TechnoExcel",href:"/"},{label:"Courses",href:"/courses"},{label:title}]} h1={title} h1red={tagline} sub={description} />
 
       <section id="te-course" style={{background:CREAM,padding:"64px 52px"}}>
-        <style>{`
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
           #te-course .cg{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:flex-start}
           #te-course .mod{background:#fff;border:1px solid rgba(19,41,60,.08);border-radius:14px;padding:24px;margin-bottom:16px}
           #te-course .sidebar{position:sticky;top:92px}
@@ -35,7 +35,7 @@ export function CourseDetailPage({ slug, title, badge, duration, tagline, descri
           #te-course .rel{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
           @media(max-width:1024px){#te-course .cg{grid-template-columns:1fr!important} #te-course .sidebar{position:static}}
           @media(max-width:768px){#te-course{padding:48px 20px!important}}
-        `}</style>
+        `}} />
         <div className="cg">
           {/* Left: main content */}
           <div>

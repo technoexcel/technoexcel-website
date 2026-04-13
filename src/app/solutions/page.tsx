@@ -26,14 +26,14 @@ export default function SolutionsPage() {
       <PageHero crumbs={[{label:"TechnoExcel",href:"/"},{label:"Solutions"}]} h1="Four ways we turn your" h1red="data into decisions." sub="From a single dashboard to a full data transformation — every engagement starts with your actual data, not a template." />
 
       <section id="te-sol" style={{background:"#fff",padding:"64px 52px"}}>
-        <style>{`
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
           #te-sol .sg{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0}
           #te-sol .sc{padding:40px;border-bottom:1px solid rgba(19,41,60,.08)}
           #te-sol .sc:nth-child(odd){border-right:1px solid rgba(19,41,60,.08)}
           #te-sol .so{display:flex;gap:24px;flex-wrap:wrap}
           @media(max-width:1024px){#te-sol .sc{padding:28px 20px}}
           @media(max-width:768px){#te-sol .sg{grid-template-columns:1fr!important} #te-sol .sc:nth-child(odd){border-right:none} #te-sol .sc{padding:24px 0}}
-        `}</style>
+        `}} />
         <div className="sg">
           {SOLUTIONS.map(s=>(
             <div key={s.num} className="sc">
@@ -57,10 +57,10 @@ export default function SolutionsPage() {
       </section>
 
       <section id="te-sol-cta" style={{background:"#0d1f2d",padding:"80px 52px",textAlign:"center"}}>
-        <style>{`
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
           #te-sol-cta .cb{display:flex;justify-content:center;gap:12px;margin-top:28px;flex-wrap:wrap}
           @media(max-width:768px){#te-sol-cta{padding:52px 20px!important} #te-sol-cta .cb{flex-direction:column;align-items:stretch;padding:0 16px} #te-sol-cta .cb a{justify-content:center;text-align:center}}
-        `}</style>
+        `}} />
         <h2 style={{fontFamily:SANS,fontWeight:800,fontSize:"clamp(28px,4vw,48px)",color:"#fff",letterSpacing:"-0.04em",lineHeight:0.96,marginBottom:16}}>
           Ready to see what&apos;s possible<br/><span style={{color:RED}}>with your data?</span>
         </h2>

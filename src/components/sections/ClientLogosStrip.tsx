@@ -41,35 +41,13 @@ export default function ClientLogosStrip() {
         position:"absolute", inset:0, zIndex:2, pointerEvents:"none",
         background:"linear-gradient(to right, #f4f2ee 0%, transparent 8%, transparent 92%, #f4f2ee 100%)",
       }} />
-      <style>{`
-        @keyframes te-scroll {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-        .te-logos-track {
-          display: flex;
-          align-items: center;
-          gap: 56px;
-          width: max-content;
-          animation: te-scroll 36s linear infinite;
-        }
-        .te-logos-track:hover { animation-play-state: paused; }
-        .te-logo-item {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-          filter: grayscale(100%) brightness(0.7);
-          opacity: 0.55;
-          transition: filter 0.35s ease, opacity 0.35s ease, transform 0.25s ease;
-          cursor: default;
-        }
-        .te-logo-item:hover {
-          filter: grayscale(0%) brightness(1);
-          opacity: 1;
-          transform: scale(1.06);
-        }
-      `}</style>
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
+        @keyframes te-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        .te-logos-track{display:flex;align-items:center;gap:56px;width:max-content;animation:te-scroll 36s linear infinite}
+        .te-logos-track:hover{animation-play-state:paused}
+        .te-logo-item{display:flex;align-items:center;justify-content:center;flex-shrink:0;filter:grayscale(100%) brightness(0.7);opacity:0.55;transition:filter 0.35s ease,opacity 0.35s ease,transform 0.25s ease;cursor:default}
+        .te-logo-item:hover{filter:grayscale(0%) brightness(1);opacity:1;transform:scale(1.06)}
+      `}} />
       <div className="te-logos-track">
         {TRACK.map((client, i) => (
           <div key={i} className="te-logo-item" title={client.name}

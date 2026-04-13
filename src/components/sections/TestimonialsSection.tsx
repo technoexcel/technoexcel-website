@@ -12,7 +12,7 @@ const tw=(o:number)=>`rgba(255,255,255,${o})`;
 export default function TestimonialsSection() {
   return (
     <section id="te-testimonials" style={{ background:BG,padding:"80px 52px",position:"relative" }}>
-      <style>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
         #te-testimonials .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
         #te-testimonials .t-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:24px}
         @media(max-width:1024px){#te-testimonials .t-grid{grid-template-columns:1fr 1fr!important}}
@@ -20,7 +20,7 @@ export default function TestimonialsSection() {
           #te-testimonials .t-grid{grid-template-columns:1fr!important}
           #te-testimonials .t-card{padding:20px}
         }
-      `}</style>
+      `}} />
       <div style={{ position:"absolute",inset:0,background:"radial-gradient(circle at 50% 50%,rgba(238,35,84,.07),transparent 65%)",pointerEvents:"none" }} />
       <div style={{ maxWidth:1280,margin:"0 auto",position:"relative",zIndex:1 }}>
         <div style={{ display:"flex",alignItems:"center",gap:10,fontFamily:MONO,fontSize:11,letterSpacing:"2.5px",textTransform:"uppercase",color:tw(.55),marginBottom:8 }}>

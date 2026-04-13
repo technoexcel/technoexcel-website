@@ -20,12 +20,12 @@ export default function AboutPage() {
       <PageHero crumbs={[{label:"TechnoExcel",href:"/"},{label:"About"}]} h1="14 years." h1red="One obsession." sub="Making data work for the people who use it — not the other way around." />
 
       <section id="te-about" style={{background:CREAM,padding:"64px 52px"}}>
-        <style suppressHydrationWarning>{`
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
           #te-about .ag{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:flex-start}
           #te-about .ab{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
           @media(max-width:1024px){#te-about .ag{grid-template-columns:1fr!important;gap:40px}}
           @media(max-width:768px){#te-about .ab{flex-direction:column} #te-about .ab a{justify-content:center;text-align:center}}
-        `}</style>
+        `}} />
         <div className="ag">
           {/* Profile card */}
           <div style={{background:BG,borderRadius:20,padding:40,display:"flex",flexDirection:"column",alignItems:"center",textAlign:"center"}}>

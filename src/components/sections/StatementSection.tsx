@@ -14,14 +14,14 @@ const tw=(o:number)=>`rgba(255,255,255,${o})`;
 export default function StatementSection() {
   return (
     <section id="te-stmt" style={{ background:"#0d1f2d",padding:"80px 52px",position:"relative",overflow:"hidden" }}>
-      <style>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
         #te-stmt .stats-row{display:flex;flex-wrap:nowrap;gap:0;border-top:1px solid rgba(255,255,255,0.12);padding-top:28px}
         #te-stmt .stat-item{flex-shrink:0}
         @media(max-width:768px){
           #te-stmt .stats-row{display:grid;grid-template-columns:1fr 1fr!important;gap:20px 16px;border-top:1px solid rgba(255,255,255,0.12);padding-top:24px}
           #te-stmt .stat-item{flex-shrink:1;padding-left:0!important;padding-right:0!important;border-left:none!important;padding-top:16px;border-top:1px solid rgba(255,255,255,0.10)}
         }
-      `}</style>
+      `}} />
       <div style={{ position:"absolute",inset:0,background:"radial-gradient(circle at 30% 50%,rgba(238,35,84,.08),transparent 65%)",pointerEvents:"none" }} />
       <div style={{ maxWidth:1280,margin:"0 auto",position:"relative",zIndex:1 }}>
         <div style={{ fontFamily:SANS,fontWeight:800,fontSize:"clamp(36px,5.5vw,80px)",lineHeight:.95,letterSpacing:"-0.04em",marginBottom:20 }}>

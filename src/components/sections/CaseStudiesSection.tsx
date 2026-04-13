@@ -12,41 +12,15 @@ const SANS = "var(--font-jakarta,'Plus Jakarta Sans',sans-serif)";
 export default function CaseStudiesSection() {
   return (
     <section id="te-cases" style={{ background:"#fff", padding:"80px 52px" }}>
-      <style>{`
-        #te-cases .case-row {
-          display: grid;
-          grid-template-columns: 60px 1fr auto;
-          gap: 16px;
-          align-items: center;
-          padding: 22px 0;
-          border-top: 1px solid rgba(19,41,60,0.07);
-          text-decoration: none;
-          cursor: pointer;
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
+        #te-cases .case-row{display:grid;grid-template-columns:60px 1fr auto;gap:16px;align-items:center;padding:22px 0;border-top:1px solid rgba(19,41,60,0.07);text-decoration:none;cursor:pointer}
+        #te-cases .case-metrics{display:flex;gap:20px;flex-shrink:0}
+        @media(max-width:768px){
+          #te-cases .case-row{grid-template-columns:40px 1fr!important;gap:12px}
+          #te-cases .case-metrics{grid-column:1/-1;display:grid!important;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:4px;padding-top:12px;border-top:1px solid rgba(19,41,60,0.05)}
+          #te-cases .case-metric{text-align:left!important}
         }
-        #te-cases .case-metrics {
-          display: flex;
-          gap: 20px;
-          flex-shrink: 0;
-        }
-        @media (max-width: 768px) {
-          #te-cases .case-row {
-            grid-template-columns: 40px 1fr !important;
-            gap: 12px;
-          }
-          #te-cases .case-metrics {
-            grid-column: 1 / -1;
-            display: grid !important;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 12px;
-            margin-top: 4px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(19,41,60,0.05);
-          }
-          #te-cases .case-metric {
-            text-align: left !important;
-          }
-        }
-      `}</style>
+      `}} />
       <div style={{ maxWidth:1280, margin:"0 auto" }}>
         <div style={{ display:"flex", alignItems:"center", gap:10, fontFamily:MONO, fontSize:9, letterSpacing:"2.5px", textTransform:"uppercase", color:"rgba(19,41,60,0.62)", marginBottom:8 }}>
           <span style={{ width:14, height:1, background:"rgba(19,41,60,.3)", flexShrink:0, display:"inline-block" }} />Client Work

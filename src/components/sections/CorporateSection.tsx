@@ -15,35 +15,17 @@ const MONO = "var(--font-mono,'Space Mono',monospace)";
 export default function CorporateSection() {
   return (
     <section id="te-corp" style={{ background:CREAM, padding:"80px 52px" }}>
-      <style>{`
-        #te-corp .corp-photo { display: block; }
-        #te-corp .track-grid {
-          display: grid;
-          grid-template-columns: 80px 1fr;
-          gap: 12px;
-          padding: 16px 0;
-          border-bottom: 1px solid rgba(19,41,60,0.07);
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
+        #te-corp .corp-photo{display:block}
+        #te-corp .track-grid{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid rgba(19,41,60,0.07)}
+        #te-corp .corp-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+        @media(max-width:768px){
+          #te-corp .corp-photo{display:none!important}
+          #te-corp .track-grid{grid-template-columns:70px 1fr!important}
+          #te-corp .corp-btns{flex-direction:column}
+          #te-corp .corp-btns a{text-align:center;justify-content:center}
         }
-        #te-corp .corp-btns {
-          display: flex;
-          gap: 10px;
-          flex-wrap: wrap;
-          margin-bottom: 20px;
-        }
-        @media (max-width: 768px) {
-          #te-corp .corp-photo { display: none !important; }
-          #te-corp .track-grid {
-            grid-template-columns: 70px 1fr !important;
-          }
-          #te-corp .corp-btns {
-            flex-direction: column;
-          }
-          #te-corp .corp-btns a {
-            text-align: center;
-            justify-content: center;
-          }
-        }
-      `}</style>
+      `}} />
       <div style={{ maxWidth:1280, margin:"0 auto" }}>
         <div style={{ display:"flex", alignItems:"center", gap:10, fontFamily:MONO, fontSize:9, letterSpacing:"2.5px", textTransform:"uppercase", color:"rgba(19,41,60,0.60)", marginBottom:8 }}>
           <span style={{ width:14, height:1, background:"rgba(19,41,60,.3)", flexShrink:0, display:"inline-block" }} />Corporate Training

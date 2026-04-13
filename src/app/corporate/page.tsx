@@ -30,12 +30,12 @@ export default function CorporatePage() {
       <PageHero crumbs={[{label:"TechnoExcel",href:"/"},{label:"Corporate"}]} h1="Train your team once." h1red="Change how they work forever." sub="Custom programs delivered on-site, virtually or hybrid. Always built around your actual data and KPIs — never generic slides." />
 
       <section id="te-corppage" style={{background:CREAM,padding:"64px 52px"}}>
-        <style>{`
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
           #te-corppage .cg{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px}
           #te-corppage .trow{padding:20px 0;border-bottom:1px solid rgba(19,41,60,.08)}
-          #te-corppage .incl{display:flex;align-items:flex-start;gap:10px;fontSize:15px;color:rgba(19,41,60,.72);marginBottom:13px}
+          #te-corppage .incl{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:rgba(19,41,60,.72);margin-bottom:13px}
           @media(max-width:1024px){#te-corppage .cg{grid-template-columns:1fr!important;gap:40px}}
-        `}</style>
+        `}} />
         <div className="cg">
           <div>
             <h2 style={{fontFamily:SANS,fontWeight:800,fontSize:"clamp(22px,3vw,36px)",letterSpacing:"-0.04em",color:INK,lineHeight:1.0,marginBottom:24}}>Every program includes</h2>

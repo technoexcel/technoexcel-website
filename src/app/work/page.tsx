@@ -37,13 +37,13 @@ export default function WorkPage() {
       <PageHero crumbs={[{label:"TechnoExcel",href:"/"},{label:"Work"}]} h1="Real problems." h1red="Measurable outcomes." sub="Three anonymised case studies from live engagements. Every number is real and in production today." />
 
       <section id="te-work" style={{background:"#fff",padding:"64px 52px"}}>
-        <style>{`
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
           #te-work .wi{max-width:1280px;margin:0 auto}
           #te-work .cr{display:grid;grid-template-columns:1fr 300px;gap:52px;align-items:flex-start;padding:52px 0;border-bottom:1px solid rgba(19,41,60,.08)}
           #te-work .mp{background:#0d1f2d;border-radius:14px;padding:28px}
           @media(max-width:1024px){#te-work .cr{grid-template-columns:1fr 240px!important;gap:32px}}
           @media(max-width:768px){#te-work .cr{grid-template-columns:1fr!important;gap:24px;padding:36px 0} #te-work .mp{margin-top:4px}}
-        `}</style>
+        `}} />
         <div className="wi">
           {CASES.map(c=>(
             <div key={c.num} className="cr">
@@ -77,10 +77,10 @@ export default function WorkPage() {
       </section>
 
       <section id="te-work-cta" style={{background:BG,padding:"80px 52px",textAlign:"center"}}>
-        <style>{`
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
           #te-work-cta .cb{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
           @media(max-width:768px){#te-work-cta{padding:52px 20px!important} #te-work-cta .cb{flex-direction:column;align-items:stretch;padding:0 16px} #te-work-cta .cb a{justify-content:center;text-align:center}}
-        `}</style>
+        `}} />
         <h2 style={{fontFamily:SANS,fontWeight:800,fontSize:"clamp(28px,4vw,48px)",color:"#fff",letterSpacing:"-0.04em",lineHeight:0.96,marginBottom:16}}>Want results like these<br/>for your organisation?</h2>
         <p style={{fontSize:17,color:"rgba(255,255,255,.72)",lineHeight:1.8,maxWidth:460,margin:"0 auto"}}>Free 30-minute strategy call. We identify your 3 highest-ROI data opportunities.</p>
         <div className="cb">

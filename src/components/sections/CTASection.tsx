@@ -9,25 +9,13 @@ const t = (o: number) => `rgba(255,255,255,${o})`;
 export default function CTASection() {
   return (
     <section id="te-cta" style={{ background:BG, padding:"96px 52px", textAlign:"center", position:"relative", overflow:"hidden" }}>
-      <style>{`
-        #te-cta .cta-btns {
-          display: flex;
-          justify-content: center;
-          gap: 12px;
-          flex-wrap: wrap;
-          margin-bottom: 24px;
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
+        #te-cta .cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+        @media(max-width:768px){
+          #te-cta .cta-btns{flex-direction:column;align-items:stretch;padding:0 16px}
+          #te-cta .cta-btns a{justify-content:center}
         }
-        @media (max-width: 768px) {
-          #te-cta .cta-btns {
-            flex-direction: column;
-            align-items: stretch;
-            padding: 0 16px;
-          }
-          #te-cta .cta-btns a {
-            justify-content: center;
-          }
-        }
-      `}</style>
+      `}} />
       <div style={{ position:"absolute", inset:0, background:"radial-gradient(circle at 50% 50%,rgba(238,35,84,.08),transparent 65%)", pointerEvents:"none" }} />
       <div style={{ maxWidth:700, margin:"0 auto", position:"relative", zIndex:1 }}>
         <div style={{ display:"flex", alignItems:"center", justifyContent:"center", gap:16, fontFamily:MONO, fontSize:9, letterSpacing:"3px", textTransform:"uppercase", color:t(.65), marginBottom:20 }}>
