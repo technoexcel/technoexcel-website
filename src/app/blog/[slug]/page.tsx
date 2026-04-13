@@ -103,7 +103,7 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
     <>
       {/* Hero */}
       <section id="te-bh" style={{background:BG,padding:"100px 52px 52px",position:"relative"}}>
-        <style suppressHydrationWarning>{`#te-bh{padding:100px 52px 52px} @media(max-width:768px){#te-bh{padding:80px 20px 40px!important}}`}</style>
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`#te-bh{padding:100px 52px 52px} @media(max-width:768px){#te-bh{padding:80px 20px 40px!important}}`}} />
         <div style={{position:"absolute",inset:0,backgroundImage:"linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px)",backgroundSize:"80px 80px",pointerEvents:"none"}}/>
         <div style={{maxWidth:860,margin:"0 auto",position:"relative",zIndex:1}}>
           <nav style={{display:"flex",alignItems:"center",gap:8,fontFamily:MONO,fontSize:11,color:"rgba(255,255,255,.50)",marginBottom:24,flexWrap:"wrap"}}>
@@ -123,11 +123,11 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
 
       {/* Body */}
       <section id="te-bb" style={{background:"#fff",padding:"60px 52px"}}>
-        <style suppressHydrationWarning>{`
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
           #te-bb .body-inner{max-width:860px;margin:0 auto}
           #te-bb .art h2{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(18px,2.5vw,24px);color:#13293C;letter-spacing:-0.3px;margin-bottom:14px;margin-top:44px;line-height:1.2}
           #te-bb .art p{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;color:rgba(19,41,60,0.72);line-height:1.92;margin-bottom:0}
-          #te-bb .cta-box{background:${CREAM};border-radius:18px;padding:32px;margin:44px 0}
+          #te-bb .cta-box{background:#F4F2EE;border-radius:18px;padding:32px;margin:44px 0}
           #te-bb .cta-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
           #te-bb .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
           @media(max-width:768px){
@@ -136,7 +136,7 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
             #te-bb .cta-btns{flex-direction:column}
             #te-bb .cta-btns a{justify-content:center;text-align:center}
           }
-        `}</style>
+        `}} />
         <div className="body-inner">
           {/* Lead */}
           <p style={{fontFamily:SANS,fontSize:19,color:"rgba(19,41,60,.75)",lineHeight:1.9,marginBottom:40,fontWeight:300,borderLeft:`4px solid ${RED}`,paddingLeft:22}}>

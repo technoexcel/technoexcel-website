@@ -15,13 +15,9 @@ export default function Loading() {
         background: "#EE2354",
         animation: "slide 1.2s ease-in-out infinite",
       }}/>
-      <style suppressHydrationWarning>{`
-        @keyframes slide {
-          0% { transform: translateX(-100%); width: 60%; }
-          50% { transform: translateX(60%); width: 40%; }
-          100% { transform: translateX(200%); width: 60%; }
-        }
-      `}</style>
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
+        @keyframes slide{0%{transform:translateX(-100%);width:60%}50%{transform:translateX(60%);width:40%}100%{transform:translateX(200%);width:60%}}
+      `}} />
     </div>
   );
 }

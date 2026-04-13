@@ -79,14 +79,14 @@ export default function BlogPage(){
 
       {/* ── INSIGHTS / DATA REPORTS SECTION ── */}
       <section style={{background:"#081629",padding:"64px 52px"}}>
-        <style suppressHydrationWarning>{`
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
           #te-insights .wrap{max-width:1280px;margin:0 auto}
           #te-insights .ig{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;margin-top:28px}
           #te-insights .ic{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;display:flex;flex-direction:column;text-decoration:none;transition:all .2s}
           #te-insights .ic:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16);transform:translateY(-3px)}
           #te-insights .ic.feat-card{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
           @media(max-width:768px){#te-insights{padding:48px 20px!important} #te-insights .ic.feat-card{grid-template-columns:1fr!important;gap:20px}}
-        `}</style>
+        `}} />
         <div id="te-insights">
           <div className="wrap">
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-end",gap:20,flexWrap:"wrap",marginBottom:8}}>
@@ -135,7 +135,7 @@ export default function BlogPage(){
 
       {/* ── BLOG ARTICLES SECTION ── */}
       <section id="te-blog" style={{background:CREAM,padding:"64px 52px"}}>
-        <style suppressHydrationWarning>{`
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
           #te-blog .bi{max-width:1280px;margin:0 auto}
           #te-blog .feat{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:28px;background:#fff;border-radius:18px;border:1px solid rgba(19,41,60,.08);margin-bottom:32px;text-decoration:none;transition:box-shadow .2s}
           #te-blog .feat:hover{box-shadow:0 10px 36px rgba(19,41,60,.10)}
@@ -145,7 +145,7 @@ export default function BlogPage(){
           #te-blog .card:hover{box-shadow:0 8px 28px rgba(19,41,60,.09);transform:translateY(-3px)}
           @media(max-width:1024px){#te-blog .feat{grid-template-columns:1fr!important} #te-blog .fthumb{min-height:140px} #te-blog .cg{grid-template-columns:1fr 1fr!important}}
           @media(max-width:768px){#te-blog{padding:48px 20px!important} #te-blog .feat{padding:18px;gap:16px} #te-blog .fthumb{min-height:110px;padding:18px} #te-blog .cg{grid-template-columns:1fr!important;gap:12px} #te-blog .card{padding:18px}}
-        `}</style>
+        `}} />
         <div className="bi">
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-end",gap:20,flexWrap:"wrap",marginBottom:28}}>
             <div>
