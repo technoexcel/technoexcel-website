@@ -2,8 +2,6 @@ import React from "react";
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 
-export const dynamic = "force-static";
-
 export const metadata: Metadata = {
   title:"About Ravi Saini — TechnoExcel Founder | 14 Years in Data",
   description:"TechnoExcel was founded by Ravi Saini with 14+ years in data solutions and training. 10,000+ professionals trained across India, Southeast Asia, Middle East, UK and USA.",

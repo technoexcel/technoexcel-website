@@ -16,7 +16,8 @@ const GLOBAL_CSS = `
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#13293C;background:#fff;overflow-x:hidden;}
-  #te-page-loader{transition:opacity .45s ease;}
+  #te-page-loader{transition:opacity .45s ease;animation:loaderTimeout 0s 3.5s forwards;}
+  @keyframes loaderTimeout{to{opacity:0;pointer-events:none;}}
   ::selection{background:#EE2354;color:#fff}
   ::-webkit-scrollbar{width:3px}
   ::-webkit-scrollbar-thumb{background:#EE2354;border-radius:2px}

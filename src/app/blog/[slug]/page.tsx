@@ -4,8 +4,6 @@ import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "../page";
 import { WA, COURSES } from "@/lib/constants";
 
-export const dynamic = "force-static";
-
 const INK="#13293C",RED="#EE2354",BG="#0d1f2d",CREAM="#F4F2EE";
 const SANS="var(--font-jakarta,'Plus Jakarta Sans',sans-serif)";
 const MONO="var(--font-mono,'Space Mono',monospace)";

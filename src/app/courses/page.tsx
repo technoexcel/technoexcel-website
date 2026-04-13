@@ -3,8 +3,6 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import { COURSES, WA } from "@/lib/constants";
 
-export const dynamic = 'force-static';
-
 export const metadata: Metadata = {
   title:"Data Analytics & Excel Courses Hyderabad | 10 Programs | TechnoExcel",
   description:"10 professional courses: Advanced Excel, Power BI, Data Analytics, Data Science, AI Prompt Engineering, VBA, Python, SQL, Power Platform and Data Storytelling. Live instructor-led with real business data.",

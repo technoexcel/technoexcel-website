@@ -2,8 +2,6 @@ import React from "react";
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 
-export const dynamic = "force-static";
-
 export const metadata: Metadata = {
   title:"Excel, Power BI & Data Analytics Blog | TechnoExcel",
   description:"Practical 2026 guides on Excel automation, Power BI dashboards, analytics careers and data skills — from real consulting and training work at TechnoExcel.",
