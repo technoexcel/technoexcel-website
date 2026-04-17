@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power Query Scenario Lab</title>
+  <style>
+    :root { --bg:#06131e; --bg2:#0c2235; --panel:rgba(10,28,42,.86); --card:rgba(255,255,255,.05); --line:rgba(255,255,255,.12); --text:#f5f7fb; --muted:#a8bfd0; --accent:#f2385a; --accent2:#20d0c7; --accent3:#ffd166; --shadow:0 24px 60px rgba(0,0,0,.28); }
+    *{box-sizing:border-box} body{margin:0;font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;color:var(--text);background:radial-gradient(circle at 12% 8%, rgba(242,56,90,.16), transparent 22%),radial-gradient(circle at 88% 16%, rgba(32,208,199,.14), transparent 20%),linear-gradient(135deg,#05111a,#0a1c2a 45%,#07141f);min-height:100vh}
+    .page{max-width:1440px;margin:0 auto;padding:18px 16px 22px}.hero,.sidebar,.main{background:var(--panel);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);backdrop-filter:blur(14px)}.hero{padding:18px 20px;overflow:hidden;position:relative}.hero:before{content:"";position:absolute;width:300px;height:300px;right:-110px;top:-130px;border-radius:50%;background:radial-gradient(circle, rgba(242,56,90,.18), transparent 68%)}
+    .brand-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.brand-lockup{display:flex;align-items:center;gap:14px;min-width:0}.brand-logo{height:42px;width:auto;display:block;filter:drop-shadow(0 8px 18px rgba(0,0,0,.24))}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:999px;border:1px solid rgba(32,208,199,.28);color:var(--accent2);background:rgba(32,208,199,.08);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:4px} h1{margin:4px 0 8px;font-size:clamp(1.7rem,3vw,2.8rem);line-height:1.02;letter-spacing:-.04em;max-width:860px}.lede{margin:0;color:var(--muted);line-height:1.6;font-size:.9rem;max-width:980px}
+    .info-card,.glass,.card,.stage{background:var(--card);border:1px solid var(--line);border-radius:18px}
+    .infographic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.info-card{padding:14px}.info-card b{display:inline-flex;width:30px;height:30px;border-radius:10px;align-items:center;justify-content:center;background:rgba(242,56,90,.14);color:var(--accent);margin-bottom:8px;font-size:.86rem}.info-card h3{margin:0 0 6px;font-size:.9rem}.info-card p{margin:0;color:var(--muted);line-height:1.45;font-size:.82rem}
+    .layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:16px;margin-top:16px;align-items:start}.sidebar{padding:16px 12px;background:linear-gradient(180deg, rgba(4,20,31,.96), rgba(7,24,36,.96));border:1px solid rgba(32,208,199,.14);position:sticky;top:14px}.sidebar h2{margin:4px 8px 10px;color:#d2e6f1;font-size:.84rem;letter-spacing:.1em;text-transform:uppercase}
+    .tab{width:100%;text-align:left;background:transparent;color:var(--text);padding:9px 10px;border-radius:14px;border:1px solid transparent;cursor:pointer;margin-bottom:6px;transition:.2s ease;position:relative}
+    .tab:hover,.tab:focus-visible{background:rgba(255,255,255,.05);outline:none;transform:translateX(2px)}
+    .tab.active{background:linear-gradient(135deg, rgba(242,56,90,.18), rgba(32,208,199,.08));border-color:rgba(32,208,199,.24);box-shadow:inset 0 0 0 1px rgba(242,56,90,.08)}
+    .tab-top{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;margin:0}
+    .tab-label{display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden}
+    .tab-icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;background:rgba(32,208,199,.12);color:var(--accent2);font-size:.72rem;font-weight:800;flex:0 0 auto}
+    .tab strong{display:block;margin:0;font-size:.78rem;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .tab-cta{display:inline-flex;align-items:center;gap:4px;color:#d9fffc;font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;flex:0 0 auto}
+    .tab-cta::after{content:"›";font-size:1rem;line-height:1;color:var(--accent)}
+    .tab.active .tab-icon{background:rgba(242,56,90,.18);color:#ffd7df}
+    .tab.active .tab-cta{color:#fff}
+    .main{padding:18px}.panel{display:none}.panel.active{display:block}.head{display:grid;grid-template-columns:1.08fr .92fr;gap:14px;margin-bottom:14px}.glass{padding:16px}.glass h2{margin:0 0 8px;font-size:1.15rem;line-height:1.08;letter-spacing:-.02em}.glass p{margin:0;color:var(--muted);line-height:1.55;font-size:.86rem}
+    .mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.mini{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:10px}.mini b{display:block;color:var(--accent2);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}.mini span{font-size:.82rem;line-height:1.4}
+    .inner-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.inner-tab{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);border-radius:999px;padding:8px 12px;font-weight:700;font-size:.82rem;cursor:pointer}.inner-tab.active{background:linear-gradient(135deg,var(--accent),#ff6f89);border-color:transparent}
+    .inner-panel{display:none}.inner-panel.active{display:block}.content-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{padding:14px}.card h3{margin:0 0 10px;color:var(--accent3);font-size:.9rem}.card ul,.card ol{margin:0;padding-left:18px;color:var(--muted);line-height:1.55;font-size:.82rem}
+    .pipeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.stage{padding:12px}.stage em{display:inline-flex;width:28px;height:28px;align-items:center;justify-content:center;border-radius:9px;background:rgba(32,208,199,.12);color:var(--accent2);font-style:normal;font-weight:800;margin-bottom:8px;font-size:.88rem}.stage strong{display:block;margin-bottom:5px;font-size:.84rem}.stage span{color:var(--muted);font-size:.78rem;line-height:1.4}
+    .pills{display:flex;flex-wrap:wrap;gap:8px}.pill{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:7px 10px;font-size:.8rem;font-weight:600;border:1px solid rgba(32,208,199,.28);background:rgba(32,208,199,.08);color:#dcfffb;text-decoration:none}.pill:hover,.pill:focus-visible{background:rgba(32,208,199,.16);outline:none}.tip{margin-top:10px;padding:12px 14px;border-radius:16px;color:#ffebb0;line-height:1.5;background:rgba(255,209,102,.12);border:1px solid rgba(255,209,102,.28);font-size:.82rem}.footer{margin-top:14px;color:var(--muted);font-size:.82rem;line-height:1.55} code{background:rgba(255,255,255,.08);padding:2px 6px;border-radius:6px;color:#fff;font-family:Consolas,"Courier New",monospace}
+    @media (max-width:1120px){.hero-grid,.layout,.head,.content-grid,.pipeline,.infographic{grid-template-columns:1fr}.sidebar{position:static}} @media (max-width:760px){.page{padding:12px 10px 26px}.hero,.sidebar,.main{border-radius:22px}.hero,.main,.sidebar{padding:16px}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="brand-row">
+        <div class="brand-lockup">
+          <img class="brand-logo" src="../../logo-dark.png" alt="TechnoExcel logo">
+        </div>
+        <div class="eyebrow">Interactive Scenario Workbook</div>
+      </div>
+      <div class="hero-grid">
+        <div><h1>Power Query Scenario Lab</h1></div>
+      </div>
+      <div class="infographic"><div class="info-card"><b>01</b><h3>Inspect</h3><p>Profile the source data and spot broken keys, mixed types, and bad labels.</p></div><div class="info-card"><b>02</b><h3>Clean</h3><p>Use trim, clean, proper case, replace values, and correct data types early.</p></div><div class="info-card"><b>03</b><h3>Combine</h3><p>Append recurring files, merge master data, and unpivot wide layouts.</p></div><div class="info-card"><b>04</b><h3>Validate</h3><p>Create anti-join exceptions, row-count checks, and business-rule tests.</p></div></div>
+    </section>
+    <section class="layout">
+      <aside class="sidebar">
+        <h2>Scenario Tabs</h2>
+        <button type="button" class="tab active" data-panel="sales"><span class="tab-top"><span class="tab-label"><span class="tab-icon">1</span><strong>Sales Consolidation</strong></span><span class="tab-cta">Open</span></span></button>
+        <button class="tab" data-panel="finance"><span class="tab-top"><span class="tab-label"><span class="tab-icon">2</span><strong>Finance Mapping</strong></span><span class="tab-cta">Open</span></span></button>
+        <button class="tab" data-panel="hr"><span class="tab-top"><span class="tab-label"><span class="tab-icon">3</span><strong>HR Master Cleanup</strong></span><span class="tab-cta">Open</span></span></button>
+        <button class="tab" data-panel="crm"><span class="tab-top"><span class="tab-label"><span class="tab-icon">4</span><strong>CRM Follow-Up Lab</strong></span><span class="tab-cta">Open</span></span></button>
+        <button class="tab" data-panel="survey"><span class="tab-top"><span class="tab-label"><span class="tab-icon">5</span><strong>Survey Unpivot</strong></span><span class="tab-cta">Open</span></span></button>
+        <button class="tab" data-panel="operations"><span class="tab-top"><span class="tab-label"><span class="tab-icon">6</span><strong>Operations KPI Reshape</strong></span><span class="tab-cta">Open</span></span></button>
+      </aside>
+      <main class="main">
+<section class="panel active" id="sales">
+  <div class="head">
+    <div class="glass">
+      <h2>Sales Consolidation and Master Data Merge</h2>
+      <p>Monthly sales files arrive with inconsistent dates, messy product codes, missing customer IDs, and occasional products that do not exist in the master. Build one clean reporting table plus exception queries.</p>
+      <div class="mini-grid">
+        <div class="mini"><b>Core Skills</b><span>Append, trim, type conversion, merge, anti-join, validation.</span></div>
+        <div class="mini"><b>Outcome</b><span>One enriched sales fact table ready for Power BI.</span></div>
+      </div>
+    </div>
+    <div class="glass">
+      <h2 style="font-size:1.18rem">Scenario Flow</h2>
+      <div class="pipeline"><div class="stage"><em>1</em><strong>Import</strong><span>Load each monthly file separately.</span></div><div class="stage"><em>2</em><strong>Clean</strong><span>Fix keys, dates, names, and types.</span></div><div class="stage"><em>3</em><strong>Merge</strong><span>Add customer and product context.</span></div><div class="stage"><em>4</em><strong>Audit</strong><span>Find unmatched customers and products.</span></div></div>
+    </div>
+  </div>
+  <div class="inner-tabs">
+    <button type="button" class="inner-tab active" data-inner="sales-what">What to do</button>
+    <button class="inner-tab" data-inner="sales-how">How to do</button>
+    <button class="inner-tab" data-inner="sales-data">Data files</button>
+  </div>
+  <div class="inner-panel active" id="sales-what">
+    <div class="content-grid">
+      <div class="card"><h3>Business Objective</h3><ul><li>Create one clean sales table across all months.</li><li>Bring in customer region, segment, product category, and price fields.</li><li>Flag missing customers, missing products, and suspicious amount rows.</li></ul></div>
+      <div class="card"><h3>Deliverables</h3><ul><li>Sales_Combined query.</li><li>Sales_Final query.</li><li>Missing_Customers and Missing_Products exception queries.</li><li>LineCheck column for amount validation.</li></ul></div>
+    </div>
+  </div>
+  <div class="inner-panel" id="sales-how">
+    <div class="card"><h3>Power Query Steps</h3><ol><li>Import each monthly sales file as a separate query.</li><li>Trim and clean text fields, uppercase ProductCode, and proper case SalesRep.</li><li>Set OrderDate, Quantity, and NetAmount to correct types.</li><li>Append the monthly queries into Sales_Combined.</li><li>Import and clean customer and product masters.</li><li>Merge customer data on CustomerID, then merge product data on ProductCode.</li><li>Add custom column LineCheck to compare amount versus quantity times unit price.</li><li>Create left anti joins for missing customers and missing products.</li></ol></div>
+  </div>
+  <div class="inner-panel" id="sales-data">
+    <div class="card">
+      <h3>Download Scenario Data</h3>
+      <div class="pills"><a class="pill download-pill" href="#" data-pack="sales">Download Zip File</a></div>
+      <div class="pills" style="margin-top:10px;"><span class="pill">sales_jan_2026_detailed.csv</span><span class="pill">sales_feb_2026_detailed.csv</span><span class="pill">sales_mar_2026_detailed.csv</span><span class="pill">customer_master_detailed.csv</span><span class="pill">product_master_detailed.csv</span></div>
+    </div>
+  </div>
+</section>
+<section class="panel" id="finance">
+  <div class="head">
+    <div class="glass">
+      <h2>Finance Trial Balance Cleanup and Mapping</h2>
+      <p>Account codes and cost centers are inconsistent across source files. Build a mapped trial balance with account groups, department mapping, and separate exception tables for anything missing from the lookup data.</p>
+      <div class="mini-grid">
+        <div class="mini"><b>Core Skills</b><span>Normalize text, merge lookups, classify signs, build exceptions.</span></div>
+        <div class="mini"><b>Outcome</b><span>Finance-ready table with clean account and department mapping.</span></div>
+      </div>
+    </div>
+    <div class="glass">
+      <h2 style="font-size:1.18rem">Scenario Flow</h2>
+      <div class="pipeline"><div class="stage"><em>A</em><strong>Normalize</strong><span>Unify cost-center formats.</span></div><div class="stage"><em>B</em><strong>Map</strong><span>Join account and cost-center lookups.</span></div><div class="stage"><em>C</em><strong>Classify</strong><span>Add debit-credit logic.</span></div><div class="stage"><em>D</em><strong>Audit</strong><span>Show mapping gaps.</span></div></div>
+    </div>
+  </div>
+  <div class="inner-tabs">
+    <button type="button" class="inner-tab active" data-inner="finance-what">What to do</button>
+    <button class="inner-tab" data-inner="finance-how">How to do</button>
+    <button class="inner-tab" data-inner="finance-data">Data files</button>
+  </div>
+  <div class="inner-panel active" id="finance-what">
+    <div class="content-grid">
+      <div class="card"><h3>Business Objective</h3><ul><li>Prepare a clean trial balance with account and department context.</li><li>Standardize all cost-center variants into one comparable format.</li><li>Highlight missing account and missing cost-center mappings.</li></ul></div>
+      <div class="card"><h3>Deliverables</h3><ul><li>TB_Staging query.</li><li>TB_Final query.</li><li>Missing_Accounts query.</li><li>Missing_CostCenters query.</li><li>SignType column.</li></ul></div>
+    </div>
+  </div>
+  <div class="inner-panel" id="finance-how">
+    <div class="card"><h3>Power Query Steps</h3><ol><li>Import trial balance, chart of accounts, and cost-center map files.</li><li>Trim AccountCode and standardize CostCenter by uppercasing and removing spaces or hyphens.</li><li>Set Amount to Decimal Number.</li><li>Merge to the chart of accounts and expand descriptive fields.</li><li>Merge to the cost-center map and expand department and location.</li><li>Add conditional SignType based on the sign of amount.</li><li>Create anti-join exception queries for missing account and cost-center matches.</li></ol></div>
+  </div>
+  <div class="inner-panel" id="finance-data">
+    <div class="card">
+      <h3>Download Scenario Data</h3>
+      <div class="pills"><a class="pill download-pill" href="#" data-pack="finance">Download Zip File</a></div>
+      <div class="pills" style="margin-top:10px;"><span class="pill">finance_trial_balance_detailed.csv</span><span class="pill">chart_of_accounts_detailed.csv</span><span class="pill">cost_center_map_detailed.csv</span></div>
+    </div>
+  </div>
+</section>
+<section class="panel" id="hr">
+  <div class="head">
+    <div class="glass">
+      <h2>HR Employee Master Consolidation</h2>
+      <p>Employee data comes from the HRMS and a manual admin file. Names, department labels, and dates are inconsistent, and some employees appear more than once. The task is to build a trusted employee master.</p>
+      <div class="mini-grid">
+        <div class="mini"><b>Core Skills</b><span>Append, dedupe, latest-record logic, standardization, null flags.</span></div>
+        <div class="mini"><b>Outcome</b><span>One employee master plus duplicate and missing-field review outputs.</span></div>
+      </div>
+    </div>
+    <div class="glass">
+      <h2 style="font-size:1.18rem">Scenario Flow</h2>
+      <div class="pipeline"><div class="stage"><em>1</em><strong>Append</strong><span>Bring both sources together.</span></div><div class="stage"><em>2</em><strong>Clean</strong><span>Fix names, departments, locations, and dates.</span></div><div class="stage"><em>3</em><strong>Prioritize</strong><span>Keep the latest record.</span></div><div class="stage"><em>4</em><strong>Review</strong><span>Flag missing location and duplicates.</span></div></div>
+    </div>
+  </div>
+  <div class="inner-tabs">
+    <button type="button" class="inner-tab active" data-inner="hr-what">What to do</button>
+    <button class="inner-tab" data-inner="hr-how">How to do</button>
+    <button class="inner-tab" data-inner="hr-data">Data files</button>
+  </div>
+  <div class="inner-panel active" id="hr-what">
+    <div class="content-grid">
+      <div class="card"><h3>Business Objective</h3><ul><li>Combine employee data from both sources into one master.</li><li>Preserve the most recent row per employee.</li><li>Create employment status and missing-location flags.</li><li>Prepare a duplicate-review query.</li></ul></div>
+      <div class="card"><h3>Deliverables</h3><ul><li>Employees_Combined query.</li><li>Employees_Final query.</li><li>Duplicate_Review query.</li><li>EmploymentStatus and MissingLocationFlag columns.</li></ul></div>
+    </div>
+  </div>
+  <div class="inner-panel" id="hr-how">
+    <div class="card"><h3>Power Query Steps</h3><ol><li>Import both employee files.</li><li>Trim text fields, proper case names, and standardize department and location labels.</li><li>Convert JoinDate, ExitDate, and LastUpdated to date types.</li><li>Append both sources into one query.</li><li>Sort by employee and latest update date, then remove duplicates by employee key.</li><li>Add employment status from exit date and a missing-location flag.</li><li>Create a grouped duplicate review query for suspicious repeated employees.</li></ol></div>
+  </div>
+  <div class="inner-panel" id="hr-data">
+    <div class="card">
+      <h3>Download Scenario Data</h3>
+      <div class="pills"><a class="pill download-pill" href="#" data-pack="hr">Download Zip File</a></div>
+      <div class="pills" style="margin-top:10px;"><span class="pill">hrms_employees_detailed.csv</span><span class="pill">manual_employees_detailed.csv</span></div>
+    </div>
+  </div>
+</section>
+<section class="panel" id="crm">
+  <div class="head">
+    <div class="glass">
+      <h2>CRM Leads and Follow-Up Analysis</h2>
+      <p>Raw CRM statuses vary, follow-up history sits in a different file, and not every lead has an owner or a next action. Build a pipeline-ready dataset with status mapping, follow-up visibility, and aging logic.</p>
+      <div class="mini-grid">
+        <div class="mini"><b>Core Skills</b><span>Status mapping, merge, conditional logic, aging buckets, action views.</span></div>
+        <div class="mini"><b>Outcome</b><span>One lead table plus no-follow-up and blank-owner exception queries.</span></div>
+      </div>
+    </div>
+    <div class="glass">
+      <h2 style="font-size:1.18rem">Scenario Flow</h2>
+      <div class="pipeline"><div class="stage"><em>I</em><strong>Standardize</strong><span>Normalize raw statuses.</span></div><div class="stage"><em>II</em><strong>Enrich</strong><span>Add follow-up context.</span></div><div class="stage"><em>III</em><strong>Age</strong><span>Create lead aging logic.</span></div><div class="stage"><em>IV</em><strong>Act</strong><span>Separate operational gaps.</span></div></div>
+    </div>
+  </div>
+  <div class="inner-tabs">
+    <button type="button" class="inner-tab active" data-inner="crm-what">What to do</button>
+    <button class="inner-tab" data-inner="crm-how">How to do</button>
+    <button class="inner-tab" data-inner="crm-data">Data files</button>
+  </div>
+  <div class="inner-panel active" id="crm-what">
+    <div class="content-grid">
+      <div class="card"><h3>Business Objective</h3><ul><li>Standardize raw status labels into one sales funnel vocabulary.</li><li>Merge follow-up details into each lead.</li><li>Create follow-up flags, aging days, and aging buckets.</li><li>Highlight leads with no follow-up or no owner.</li></ul></div>
+      <div class="card"><h3>Deliverables</h3><ul><li>Leads_Final query.</li><li>FollowUpFlag, AgingDays, AgingBucket.</li><li>No_FollowUp query.</li><li>Blank_Owner query.</li></ul></div>
+    </div>
+  </div>
+  <div class="inner-panel" id="crm-how">
+    <div class="card"><h3>Power Query Steps</h3><ol><li>Import leads, follow-ups, and status map files.</li><li>Trim text fields and standardize lead IDs and statuses.</li><li>Set date columns correctly.</li><li>Merge leads to the status map and expand the standard status.</li><li>Merge to follow-ups and expand date, type, and remarks.</li><li>Add follow-up flag and aging calculations with conditional columns.</li><li>Create reference queries for leads with no follow-up and leads with blank owners.</li></ol></div>
+  </div>
+  <div class="inner-panel" id="crm-data">
+    <div class="card">
+      <h3>Download Scenario Data</h3>
+      <div class="pills"><a class="pill download-pill" href="#" data-pack="crm">Download Zip File</a></div>
+      <div class="pills" style="margin-top:10px;"><span class="pill">crm_leads_detailed.csv</span><span class="pill">crm_followups_detailed.csv</span><span class="pill">crm_status_map_detailed.csv</span></div>
+    </div>
+  </div>
+</section>
+<section class="panel" id="survey">
+  <div class="head">
+    <div class="glass">
+      <h2>Survey Feedback Unpivot</h2>
+      <p>Survey exports use one column per question, which is hard to analyze in Power BI. Convert the file into a long format where one row equals one response-question pair.</p>
+      <div class="mini-grid">
+        <div class="mini"><b>Core Skills</b><span>Unpivot, rename, clean response text, classify question groups.</span></div>
+        <div class="mini"><b>Outcome</b><span>Long-format survey table ready for slicing by region, question, and customer type.</span></div>
+      </div>
+    </div>
+    <div class="glass">
+      <h2 style="font-size:1.18rem">Scenario Flow</h2>
+      <div class="pipeline"><div class="stage"><em>1</em><strong>Keep</strong><span>Preserve response metadata.</span></div><div class="stage"><em>2</em><strong>Unpivot</strong><span>Turn question columns into rows.</span></div><div class="stage"><em>3</em><strong>Clean</strong><span>Fix response text.</span></div><div class="stage"><em>4</em><strong>Classify</strong><span>Create question groups.</span></div></div>
+    </div>
+  </div>
+  <div class="inner-tabs">
+    <button type="button" class="inner-tab active" data-inner="survey-what">What to do</button>
+    <button class="inner-tab" data-inner="survey-how">How to do</button>
+    <button class="inner-tab" data-inner="survey-data">Data files</button>
+  </div>
+  <div class="inner-panel active" id="survey-what">
+    <div class="content-grid">
+      <div class="card"><h3>Business Objective</h3><ul><li>Convert a wide survey export into a normalized long table.</li><li>Retain core respondent metadata.</li><li>Add a question-group field for easier reporting.</li></ul></div>
+      <div class="card"><h3>Deliverables</h3><ul><li>Survey_Long query.</li><li>Question and Response columns.</li><li>QuestionGroup derived field.</li></ul></div>
+    </div>
+  </div>
+  <div class="inner-panel" id="survey-how">
+    <div class="card"><h3>Power Query Steps</h3><ol><li>Import the survey CSV file.</li><li>Identify the metadata columns that must stay fixed.</li><li>Select those columns and use Unpivot Other Columns.</li><li>Rename Attribute to Question and Value to Response.</li><li>Trim and clean the response column.</li><li>Create a conditional question group based on the question name.</li></ol></div>
+  </div>
+  <div class="inner-panel" id="survey-data">
+    <div class="card">
+      <h3>Download Scenario Data</h3>
+      <div class="pills"><a class="pill download-pill" href="#" data-pack="survey">Download Zip File</a></div>
+      <div class="pills" style="margin-top:10px;"><span class="pill">survey_feedback_wide_detailed.csv</span></div>
+    </div>
+  </div>
+</section>
+<section class="panel" id="operations">
+  <div class="head">
+    <div class="glass">
+      <h2>Operations KPI Reshaping</h2>
+      <p>Branch teams submit weekly KPI sheets with KPI names as rows and weeks as columns. Leadership needs a branch-week-KPI table that works directly in dashboard visuals and trend analysis.</p>
+      <div class="mini-grid">
+        <div class="mini"><b>Core Skills</b><span>Unpivot, standardize labels, numeric typing, custom keys.</span></div>
+        <div class="mini"><b>Outcome</b><span>Normalized KPI model for branch and weekly performance tracking.</span></div>
+      </div>
+    </div>
+    <div class="glass">
+      <h2 style="font-size:1.18rem">Scenario Flow</h2>
+      <div class="pipeline"><div class="stage"><em>A</em><strong>Clean</strong><span>Fix branch and KPI labels.</span></div><div class="stage"><em>B</em><strong>Unpivot</strong><span>Move weekly columns into rows.</span></div><div class="stage"><em>C</em><strong>Type</strong><span>Convert KPI values to numbers.</span></div><div class="stage"><em>D</em><strong>Key</strong><span>Create branch-week-KPI ID.</span></div></div>
+    </div>
+  </div>
+  <div class="inner-tabs">
+    <button type="button" class="inner-tab active" data-inner="operations-what">What to do</button>
+    <button class="inner-tab" data-inner="operations-how">How to do</button>
+    <button class="inner-tab" data-inner="operations-data">Data files</button>
+  </div>
+  <div class="inner-panel active" id="operations-what">
+    <div class="content-grid">
+      <div class="card"><h3>Business Objective</h3><ul><li>Turn matrix-style KPI sheets into normalized rows.</li><li>Prepare the data for weekly trend reporting and branch comparisons.</li><li>Create a reusable business key for uniqueness.</li></ul></div>
+      <div class="card"><h3>Deliverables</h3><ul><li>Operations_KPI_Long query.</li><li>Week, KPIValue, and BranchWeekKPIKey.</li></ul></div>
+    </div>
+  </div>
+  <div class="inner-panel" id="operations-how">
+    <div class="card"><h3>Power Query Steps</h3><ol><li>Import the operations KPI file.</li><li>Trim branch and KPI columns and standardize their labels.</li><li>Select identifier columns and use Unpivot Other Columns.</li><li>Rename Attribute to Week and Value to KPIValue.</li><li>Convert KPI value to Decimal Number.</li><li>Create a custom key combining branch, week, and KPI name.</li></ol></div>
+  </div>
+  <div class="inner-panel" id="operations-data">
+    <div class="card">
+      <h3>Download Scenario Data</h3>
+      <div class="pills"><a class="pill download-pill" href="#" data-pack="operations">Download Zip File</a></div>
+      <div class="pills" style="margin-top:10px;"><span class="pill">operations_kpi_branch_week_detailed.csv</span></div>
+    </div>
+  </div>
+</section>
+</main>
+<script>
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+  const panels = Array.from(document.querySelectorAll('.panel'));
+  document.addEventListener('click', (event) => {
+    const scenarioTab = event.target.closest('.tab');
+    if (scenarioTab) {
+      event.preventDefault();
+      const target = scenarioTab.dataset.panel;
+      const targetPanel = document.getElementById(target);
+      if (!targetPanel) return;
+      tabs.forEach((item) => item.classList.remove('active'));
+      panels.forEach((item) => item.classList.remove('active'));
+      scenarioTab.classList.add('active');
+      targetPanel.classList.add('active');
+      return;
+    }
+    const innerTab = event.target.closest('.inner-tab');
+    if (innerTab) {
+      event.preventDefault();
+      const panel = innerTab.closest('.panel');
+      if (!panel) return;
+      const target = innerTab.dataset.inner;
+      const targetInner = panel.querySelector('#' + CSS.escape(target));
+      if (!targetInner) return;
+      panel.querySelectorAll('.inner-tab').forEach((item) => item.classList.remove('active'));
+      panel.querySelectorAll('.inner-panel').forEach((item) => item.classList.remove('active'));
+      innerTab.classList.add('active');
+      targetInner.classList.add('active');
+    }
+  });
+  const detailedZips = { "sales":"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","finance":"UEsDBBQAAAAIAO48kVy0/VpRzgAAAJICAAAiAAAAZmluYW5jZV90cmlhbF9iYWxhbmNlX2RldGFpbGVkLmNzdmXRSwqDMBCA4b2n6AESmEwe6rIEuih4CGuFbqpg7f07Rk2dcZNFPjLJT5pxmF/q2nXjd5jj+OxVHD9z7Ie5n9T1vewW93bQCBiUAzCq6zStBj0AMEIVI4k2J7EkF3JXMfHLuFW0Q0lpnKVxp0N2k5pBMAAEGpzSgQsmAU/X0PHi1j/OPRYl5Z4ShOw9HpmwHi/p3+OF5B4GrMcwOfTQ24qmnQ496dHGGRCSc4IXku6nmsCOsJpSEu5PQ5SUc6ojbDl1vf1OhrKmvbUmfcEPUEsDBBQAAAAIAO48kVzPyOvnvwAAAJkBAAAeAAAAY2hhcnRfb2ZfYWNjb3VudHNfZGV0YWlsZWQuY3N2jY9LCoNADIb3PYUHyELtYy+2FKEPqe0BhjHIwJiRmSjt7Tu2tRWk4CoJ+b4/JJHStMSpKRGSd38S9bffW9M2kCdUHlLBWBn7WKzCMILcmrKVHFywQ2oRMpLGa5+xZ2Io0HZKYrBV7hXmBio1xFYEI3gJWd1orJFYsDL0L3fd3y6EFlahC3b3BskhDPXcoPU6VcOm52MvE89jl3BjpRXPC99EYQhH/9yETcpakXLcCx3+hNgLVys61BOlQK3H4U9QSwMEFAAAAAgA7jyRXA7vHZhxAAAAjgAAABwAAABjb3N0X2NlbnRlcl9tYXBfZGV0YWlsZWQuY3N2JYxLDsIwDAX3PctbUD4HKEasqEDiBKZYrUXiVIlzf/pZzmg0lIqTmEvGTWbOHhfAIw3smqwhOrR4c5CCvsYP62qOeM6St6DgVU1WecJdjW2Q5ROmrTuj+0Y1Lb7HoEnM9scFPeefuNqIq9jIoeba/AFQSwECFAAUAAAACADuPJFctP1aUc4AAACSAgAAIgAAAAAAAAAAAAAAAAAAAAAAZmluYW5jZV90cmlhbF9iYWxhbmNlX2RldGFpbGVkLmNzdlBLAQIUABQAAAAIAO48kVzPyOvnvwAAAJkBAAAeAAAAAAAAAAAAAAAAAA4BAABjaGFydF9vZl9hY2NvdW50c19kZXRhaWxlZC5jc3ZQSwECFAAUAAAACADuPJFcDu8dmHEAAACOAAAAHAAAAAAAAAAAAAAAAAAJAgAAY29zdF9jZW50ZXJfbWFwX2RldGFpbGVkLmNzdlBLBQYAAAAAAwADAOYAAAC0AgAAAAA=","hr":"UEsDBBQAAAAIAO48kVzqAHH23wEAAB4EAAAbAAAAaHJtc19lbXBsb3llZXNfZGV0YWlsZWQuY3N2fVPbjtowEH3vV/gDJoodAguP2cKqXItIu+/T3RH2ktiR41Tl7ztO6S6FgpQHK55z7HPxrG4qdySaT2F2Wm6wJphSgz7UZAOs3AsG4ywsnLFTDASzXyb0izVa3JPvEStsw/fmlX+/fppJqQCtCShajRpKrKiFdVf/QAOZzAaJVIkaAuzwpxFr0gHj71Ei406EZ7ylu0o8k68RymI1K/lOle7hWaIUz92BD2BNZFEsXEuNhq8N+V5DC9vOEqhhKh9ShjBH6axBsUHjLzhyWKJHe+J/MhbtC52JkKnMUiUBitoEscTGuUuKIWy9OZ7Yv+zgkeweq853cS5PZJ6oDGBDGsUO3QV4xLbVxoulRnuuII6x/Al/d27/8Ie28M4j5+QPFIzdf3g4jBHwGbB17g1FSfaCYAyFf+us2HKiFcy/wWdN1rJ0yUNZEgUArJ1m7Y9oW6wu8BPYmdCJKbZXyrNEDhM1PgGYa3zDA3b3CT3rF0Vlzu8QO5TKcRoDvH0HpaDUnjiA+ZH8VQvzaOK9FnI4z+bgsWZ7Atv2twPvJqo4GiO8WQE1gIKfALNbZ696GFvE+L7Lt5JUOZ/Hr/HQ2/OR5D+O8uwoUZObabLKpauxEgs0NubxLiGPb4mN+m8CvwFQSwMEFAAAAAgA7jyRXO9vnJGxAQAAbQMAAB0AAABtYW51YWxfZW1wbG95ZWVzX2RldGFpbGVkLmNzdn1Sy27bMBC89yv4ASuAkmXZOSq1gjiOHEF2Dz1uHdZkIi0FSgrqv++SdR2lcArwQBCc2Xls0XaNPSm1XkFxvm6xVbBSHbqhVTTAoz3gYCzBgzW0wkFB8csM4VIi4VG5gHjEfvjWPfPz85dCyhmURbHNxcPTrqju4alTLrD0AqqRFCQyiSO5iOI5wM6SQbFF4/xzFslZJOeeJIUNOiRRKj0g3BlCOvDUsf2Bxn+VkUyiWALkrRnEBjtrJxQzT5HBDlvjxEYjTVRMRdzwuS4i8wwL2CqNInfWIZM1ii2sVKODgnkkmSEDqPHNnHVe4ImHLyF3LyOJipNpYE0/rWuDBrFXB022sccTfNWK6I+n1HvyjKXVbOoWqcfmIyc7vkPHhkTeGFjvp3D+soyS+L/wDGrr0SU22g5/XU1ynQcN8eeu4gVjCMVOK/Oqr+WahnLT67kGiiWn+CY2Y4vuUu0lV18rL8EnzQb8Dax77qXCseFFdK9qMHSEW0VHbEY3nn2kEWuFytoXVqvoI0ciYY/EFmt7gvv6fXwaUuQSQvU12n9wMXzHXnO67+md52Vhma7n9htQSwECFAAUAAAACADuPJFc6gBx9t8BAAAeBAAAGwAAAAAAAAAAAAAAAAAAAAAAaHJtc19lbXBsb3llZXNfZGV0YWlsZWQuY3N2UEsBAhQAFAAAAAgA7jyRXO9vnJGxAQAAbQMAAB0AAAAAAAAAAAAAAAAAGAIAAG1hbnVhbF9lbXBsb3llZXNfZGV0YWlsZWQuY3N2UEsFBgAAAAACAAIAlAAAAAQEAAAAAA==","crm":"UEsDBBQAAAAIAO48kVycYLJ1PQIAALIFAAAWAAAAY3JtX2xlYWRzX2RldGFpbGVkLmNzdnVUXXPaMBB876/QD7jMYPH9mABJSBygOCmdvh1wxJ4YicpySPvre4IEWeC+2DMLq9vbXTkmXI+HEPNrgluCgSG0tB7yA6Z7ReaAJro0K4I57hOLtiy+xVEjguvVlsRAmx3IhuxcNZpXDlSZRZGkmMKClkXG5yjaO4KEm7wkMSeLWe4pko9Ny1z8ILNFmNOGjMEcJrQXTpVjNp2swopbrdeFZzbhiUiheNAF7fy48UTM5tO7+ShJHLkFQ8pZ0gANeW4LYPROysLvEvNsk9FhUNuB5tXwsSK2a//3NjyiQSWeKLV4mrTQyrE6cFva0qAYq5WndKpWjLZu51gX1hG6cHcYcYN/EY2ndOutGCuxM5pVFQfje3CPuRaJ1Yx4cq/eje/V/fowXmklkj+FpW2F2w/WOxrDqQnmRA14ICtmKTpNXwxGa4JmlTtdYC4KPsBxI3gknqUViRiXfiD/UN306E6YWyQhLhUa1uRzYLB2yWqIkauFNVpcvxrtmc1gxZO3n5FELS7cR1mIZ4NrXxOGqyEefKkUM2rD1CyzS3fawXr/tacDM5PxHQp7zXCw5EnrsW5RlzPNVm/injC3qad1wxCPngbViXowz7jgXNSNqcjt1YUZeNqHpFR5ps7uO+NBjl/FYYpswLPJCssJBtEzXhvhuTkyghez5HWCe8tobYwv6k3pvbNHSmAxlj7OXGW8Zsnq7ZBNWOD7xQeK4cuuftZGtuAnKR10lLH6+CrFkW34RawmPW+OrP/QVK/GP1BLAwQUAAAACADuPJFcwgCkdWkBAAAEAwAAGgAAAGNybV9mb2xsb3d1cHNfZGV0YWlsZWQuY3N2XZLJbsMgEIbvfQo/gCPZOOs5bqVIadRVPVOYJKjAUMBK+/YF40Dbi2XLH/MvzB4o3/X1HUqJl1fTUw/54+XbQP0EitoPd7Nvm7YmDVnOmm7WkHpLpax32lusuHBscE6grhgqI8EDjzwp/Ly+VVTI+vlMLfDq3SI7DxYi1RVqUd8DeKFPQfVzEBYUaP9rfMQXBV8lE1tUCiwTVP5DVwXdTPpvVMT51RFtZcEZ1G40sc5o22QTPSj8kyj8y9jUwINFgy5Iw5eRVOjElaba7pqcoYGKIxvGUDYEBDeNLUW186z+OFApjoJRPxYbxMJpHd0GKPPLZOMAsdWBn8AHx/oorBrPRbo01q4mM9l16CC4idSyUOvsYSvRhcGX8Wb/Ti2NkSZ56IGJcQkMaB5OR2pTqHbSTjsTXys3bkPgSCmWdFn9ACf0IuV3ntrUFiltkflVOVyUY2fgg0xMWSqymHSnLOEZ26cuDk36P1BLAwQUAAAACADuPJFc4Y5w3HAAAAChAAAAGwAAAGNybV9zdGF0dXNfbWFwX2RldGFpbGVkLmNzdm2MSwrDMAxE9zqFD6BrlBIw+diLrAVWSyDIrmXj68dJ2l0X83mzGEfNFypVsYcEyuFGEG44coMuY5nCBcNoZjc93cN7nBILDGJSju/MqvfwqbRvr40DLr8Gy59tjYJdYKMWPA36T4pKu1GWgvOX4ABQSwECFAAUAAAACADuPJFcnGCydT0CAACyBQAAFgAAAAAAAAAAAAAAAAAAAAAAY3JtX2xlYWRzX2RldGFpbGVkLmNzdlBLAQIUABQAAAAIAO48kVzCAKR1aQEAAAQDAAAaAAAAAAAAAAAAAAAAAHECAABjcm1fZm9sbG93dXBzX2RldGFpbGVkLmNzdlBLAQIUABQAAAAIAO48kVzhjnDccAAAAKEAAAAbAAAAAAAAAAAAAAAAABIEAABjcm1fc3RhdHVzX21hcF9kZXRhaWxlZC5jc3ZQSwUGAAAAAAMAAwDVAAAAuwQAAAAA","survey":"UEsDBBQAAAAIAO48kVzxRST+XwIAAOIFAAAhAAAAc3VydmV5X2ZlZWRiYWNrX3dpZGVfZGV0YWlsZWQuY3N2dVTLbtswELz3K/gBNGBJluMcizgtCrSJH2mCngSaWttEKVIgKSf++64oyyLl9CaJ2tnZmeFuwNZaWfixpJvL45I5wJeD0Io+NNbpCszLuQa6TornExgm5ZY5YfeMu/afdVpswZwEh20NUNJ1VmyA66oCVf62dD0rHvyLw+e8WBldNtxtmDog4rzYNnWtjXv8qMEIUBy+bJJpQtNpOp9Mswk+PuHxEQk5JiTN6Yz+AUtfwZzJEWS9byRxwCr8/l3rsq1Ow+qtbrD67aglWCYBf+sA1o3gf4ntiCPs4wcHKZFli5ANCCl9ZNb17fEA+dAnnJPs8TsYUoIUqMoZz7626hz8BLMQ4Q0QYSmsM2LXOG2wXe5JXJsS28lA2jEMMM8iHzCyWIWUth/oyggu1IG8M0saxSUwE7OYhwi3SnQkfD/CtTalUMxbOmh5NyDMRkpk9Bc776DvR+BqIfJbIVxbvwjrP9GhM6Pt1ntBdJexsSf3A1Ieq9Fbuq20dkdSG83B2mGIZBqWjmW49UKrnWatGIcRhyTI5TxSI+1y0V8h4kQF3hYr9fsgR5KGADdy9IO8YJ59NZqCmqInJwjGCdJ5FysxmOITugPXJhSvMEb9JKzYCSlcnNRkFqL977YsLyH3rLTy8wWMgqQuIl16cZ8bZx1TraZ91MfazkOMG2myC5HL+iCm3R9EWLyFIg59EkT2fhyUzIN80xJtmTQ14UwRUWFiIoEXIcJYkjRYASWUguO6LEnFFLY3gdVDXjF/sSbdKD+xaUncMbo5sSjpNAT5JC/5sAxNlz206boP/SL5B1BLAQIUABQAAAAIAO48kVzxRST+XwIAAOIFAAAhAAAAAAAAAAAAAAAAAAAAAABzdXJ2ZXlfZmVlZGJhY2tfd2lkZV9kZXRhaWxlZC5jc3ZQSwUGAAAAAAEAAQBPAAAAngIAAAAA","operations":"UEsDBBQAAAAIAO48kVwLEGd2wQEAAE8EAAAnAAAAb3BlcmF0aW9uc19rcGlfYnJhbmNoX3dlZWtfZGV0YWlsZWQuY3N2bZPBbtswDIbvfgo/AA8iRcnScW1RYBhWBM2Anb1AbYymNuDGO/TpS8qGrTSBnR8M/EvUR5F3Y9sfjvBr9/OpfU/wN6U3zEpZbVbO6rL66vf0/q/tangchvNLezoBkjEiXsSiRkEj60S8We33Q/8/jR/d0NfP7TkBBsAIZDQglGB1/hBf+5rqP93hLZ3rffeZgNgZICfbEweN8t8o4ouVz+k8jf3HnMACyZN1NTzt9vX+MIwJOIBs4RA4giNwtnpIp2O3UUWlMHo+g4JiWCOvUTCL9wrJAzb5DTPe4rsJRMqCSkDKokUjig5Iarisu8BhQbELzvy5gCFgBnbAHrgRtmo39WljCXI3QVJFyRmNg0jyYzO7rigYFNhlHCWabbcgUItERkmMZCfTqCgTopuXXTDIAfMjHPPXDcEGsBGkyIwZx1b3x9T3bXEjjWwc5PRBLiVIewVJKWSr8QrE5pdXotV5k0ULhFEvPDp3ibbl+IazAq2GgsiB9WCbFa26S/1re5rGqZgd1IlBIUHUAcIgEeUpsq5YcMW2Ndk8RoX3ZrtZAZMtVSQFcZ4kVvFlnm8TtDSctNxmKdpu6bY8QzpM1RdQSwECFAAUAAAACADuPJFcCxBndsEBAABPBAAAJwAAAAAAAAAAAAAAAAAAAAAAb3BlcmF0aW9uc19rcGlfYnJhbmNoX3dlZWtfZGV0YWlsZWQuY3N2UEsFBgAAAAABAAEAVQAAAAYCAAAAAA==" };
+  document.querySelectorAll('.download-pill').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const key = link.dataset.pack;
+      const base64 = detailedZips[key];
+      if (!base64) return;
+      const binary = atob(base64);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+      const blob = new Blob([bytes], { type: 'application/zip' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = key + '-detailed-data.zip';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+  });
+</script>
+</body>
+</html>
+
+
+
+
