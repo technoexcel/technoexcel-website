@@ -14,7 +14,7 @@ export const INSIGHTS = [
   slug: "unarmed-nations-always-perish-defence-spending-geopolitics-2025.html",
   title: "Unarmed Nations Always Perish: The Geopolitical Case for Defence Investment",
   cat: "Geopolitical & Defence Intelligence",
-  date: "Apr 2025",
+  date: "Apr 2026",
   read: "12 min",
   featured: true,
   excerpt: "A data-backed geopolitical report on why defence spending is sovereign insurance — not a budget line. From Iran's sanction-proof deterrence to Venezuela's catastrophic collapse, with a complete DSI scorecard for the world's top 20 economies and the economic multiplier every taxpayer deserves to know.",
@@ -63,7 +63,7 @@ export const BLOG_POSTS=[
   {slug:"power-query-beginner-guide",title:"Power Query: Replace 80% of Your Copy-Paste Work",cat:"Excel",date:"Dec 2025",read:"9 min",excerpt:"Set it up once. Then never copy-paste between sheets again. A complete step-by-step guide for analysts who want reports that refresh automatically every week.",tags:["Power Query","Automation","Beginners"]},
   {slug:"power-bi-dashboard-design-principles",title:"5 Dashboard Design Principles That Make Reports Useful",cat:"Power BI",date:"Dec 2025",read:"7 min",excerpt:"The exact principles used in every TechnoExcel client dashboard. The difference between a report people open once and ignore versus one that drives decisions every Monday morning.",tags:["Dashboard Design","Power BI","UX"]},
   {slug:"data-analytics-career-india-2026",title:"Data Analytics as a Career in India — 2026 Guide",cat:"Career",date:"Mar 2026",read:"10 min",excerpt:"What roles are hiring, what skills companies actually need right now, realistic salary ranges by experience level, and which learning path makes sense depending on where you are starting from.",tags:["Career","India","Salary","2026"]},
-  {slug: "enterprise-ai-copilot-architecture-skills-first",title: "Enterprise AI Architecture: A Skills-First Approach to Copilot & Copilot Studio",excerpt:"Most teams over-engineer enterprise AI by defaulting to agents for everything. A skills-first approach cuts total cost of ownership by 40–70% and delivers systems that are faster to build, easier to maintain, and simpler to govern.", cat: "AI & Automation", date: "Jun 2026", read: "8 min", tags: ["Copilot", "Power Platform"]},
+  {slug: "enterprise-ai-copilot-architecture-skills-first",title: "Enterprise AI Architecture: A Skills-First Approach to Copilot & Copilot Studio",excerpt:"Most teams over-engineer enterprise AI by defaulting to agents for everything. A skills-first approach cuts total cost of ownership by 40–70% and delivers systems that are faster to build, easier to maintain, and simpler to govern.", cat: "AI & Automation", date: "Apr 2026", read: "8 min", tags: ["Copilot", "Power Platform"]},
 ];
 
 const CAT_COLORS: Record<string,[string,string]>={
