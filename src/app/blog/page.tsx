@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 // ── INSIGHTS: Rich HTML data reports ─────────────────────────────────────────
 export const INSIGHTS = [
   {
-  slug: "unarmed-nations-always-perish-defence-spending-geopolitics-2025.html",
+  slug: "unarmed-nations-always-perish-defence-spending-geopolitics-2026.html",
   title: "Unarmed Nations Always Perish: The Geopolitical Case for Defence Investment",
   cat: "Geopolitical & Defence Intelligence",
   date: "Apr 2026",
