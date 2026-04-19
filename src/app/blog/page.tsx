@@ -11,12 +11,22 @@ export const metadata: Metadata = {
 // ── INSIGHTS: Rich HTML data reports ─────────────────────────────────────────
 export const INSIGHTS = [
   {
+  slug: "unarmed-nations-always-perish-defence-spending-geopolitics-2025.html",
+  title: "Unarmed Nations Always Perish: The Geopolitical Case for Defence Investment",
+  cat: "Geopolitical & Defence Intelligence",
+  date: "Apr 2025",
+  read: "12 min",
+  featured: true,
+  excerpt: "A data-backed geopolitical report on why defence spending is sovereign insurance — not a budget line. From Iran's sanction-proof deterrence to Venezuela's catastrophic collapse, with a complete DSI scorecard for the world's top 20 economies and the economic multiplier every taxpayer deserves to know.",
+  tags: ["Defence", "Geopolitics", "National Security", "Iran Strategy", "Venezuela Collapse", "Defence Economics", "DSI Index", "Taxpayer ROI", "Military Spending", "Sovereign Risk"]
+},
+  {
   slug: "taco-policy-reversal-market-pattern-2025-2026.html",
   title: "The TACO Pattern: How Policy Reversals Drove Market Volatility (2025–2026)",
   cat: "Geopolitical Market Intelligence",
   date: "Apr 2026",
   read: "10 min",
-  featured: true,
+  featured: false,
   excerpt: "A data-backed analysis of policy shocks and reversal cycles shaping global markets in 2025–2026. Explore the TACO pattern, volatility compression, and how traders capitalized on predictable policy pivots.",
   tags: ["Markets", "Geopolitics", "Volatility", "Trading Strategy", "Behavioral Finance", "Tariffs", "S&P 500", "Macro Analysis"]
 },
