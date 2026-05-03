@@ -19,7 +19,7 @@ export const INSIGHTS = [
   featured: true,
   excerpt: "A boardroom-ready HR intelligence dashboard showing why traditional HR metrics can mislead leadership. From headline attrition hiding critical talent loss to engagement scores masking capability gaps, this composite case reframes HR reporting into decision intelligence with public citations, illustrative benchmarks, and a clear 4R action system for retain, ready, reskill, and redeploy decisions.",
   tags: ["HR Intelligence", "Workforce Analytics", "CHRO Dashboard", "People Analytics", "Attrition Analysis", "Capability Readiness", "Cost Per Hire", "Talent Strategy", "Board Reporting", "TechnoExcel"]
-  }
+  },
   {
   slug: "unarmed-nations-always-perish-defence-spending-geopolitics-2026.html",
   title: "Unarmed Nations Always Perish: The Geopolitical Case for Defence Investment",
