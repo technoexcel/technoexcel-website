@@ -11,12 +11,22 @@ export const metadata: Metadata = {
 // ── INSIGHTS: Rich HTML data reports ─────────────────────────────────────────
 export const INSIGHTS = [
   {
+  slug: "HR-Intelligence Dashboard.html",
+  title: "Why Your HR Data Is Lying To Your CEO: The Case for Workforce Intelligence",
+  cat: "HR Intelligence & Workforce Analytics",
+  date: "May 2026",
+  read: "10 min",
+  featured: true,
+  excerpt: "A boardroom-ready HR intelligence dashboard showing why traditional HR metrics can mislead leadership. From headline attrition hiding critical talent loss to engagement scores masking capability gaps, this composite case reframes HR reporting into decision intelligence with public citations, illustrative benchmarks, and a clear 4R action system for retain, ready, reskill, and redeploy decisions.",
+  tags: ["HR Intelligence", "Workforce Analytics", "CHRO Dashboard", "People Analytics", "Attrition Analysis", "Capability Readiness", "Cost Per Hire", "Talent Strategy", "Board Reporting", "TechnoExcel"]
+  }
+  {
   slug: "unarmed-nations-always-perish-defence-spending-geopolitics-2026.html",
   title: "Unarmed Nations Always Perish: The Geopolitical Case for Defence Investment",
   cat: "Geopolitical & Defence Intelligence",
   date: "Apr 2026",
   read: "12 min",
-  featured: true,
+  featured: false,
   excerpt: "A data-backed geopolitical report on why defence spending is sovereign insurance — not a budget line. From Iran's sanction-proof deterrence to Venezuela's catastrophic collapse, with a complete DSI scorecard for the world's top 20 economies and the economic multiplier every taxpayer deserves to know.",
   tags: ["Defence", "Geopolitics", "National Security", "Iran Strategy", "Venezuela Collapse", "Defence Economics", "DSI Index", "Taxpayer ROI", "Military Spending", "Sovereign Risk"]
 },
