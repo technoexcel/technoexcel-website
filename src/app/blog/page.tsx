@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 // ── INSIGHTS: Rich HTML data reports ─────────────────────────────────────────
 export const INSIGHTS = [
   {
-  slug: "HR-Intelligence Dashboard.html",
+  slug: "HR-Intelligence-Dashboard.html",
   title: "Why Your HR Data Is Lying To Your CEO: The Case for Workforce Intelligence",
   cat: "HR Intelligence & Workforce Analytics",
   date: "May 2026",
