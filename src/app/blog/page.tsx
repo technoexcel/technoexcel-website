@@ -11,12 +11,22 @@ export const metadata: Metadata = {
 // ── INSIGHTS: Rich HTML data reports ─────────────────────────────────────────
 export const INSIGHTS = [
   {
+  slug: "Copilot_AI_Readiness.html",
+  title: "Microsoft Copilot Access Changed: How SMEs Can Keep Using AI Without Licensing Everyone",
+  cat: "Enterprise AI Strategy & Microsoft 365 Copilot",
+  date: "May 2026",
+  read: "10 min",
+  featured: true,
+  excerpt: "A boardroom-ready AI readiness dashboard explaining what changed after Microsoft’s Copilot access shift and why SMEs do not need blanket $30/user/month licensing. The story reframes Copilot from a software license decision into an enterprise AI architecture decision, using a practical 4-layer model covering protected Copilot chat, shared Copilot Studio agents, selective premium licensing, and secure Azure OpenAI workflows.",
+  tags: ["Microsoft Copilot", "Enterprise AI", "AI Readiness", "Microsoft 365", "Copilot Studio", "Azure OpenAI", "SME AI Strategy", "AI Governance", "Cost Optimization", "TechnoExcel"]
+  },
+  {
   slug: "HR-Intelligence-Dashboard.html",
   title: "Why Your HR Data Is Lying To Your CEO: The Case for Workforce Intelligence",
   cat: "HR Intelligence & Workforce Analytics",
   date: "May 2026",
   read: "10 min",
-  featured: true,
+  featured: false,
   excerpt: "A boardroom-ready HR intelligence dashboard showing why traditional HR metrics can mislead leadership. From headline attrition hiding critical talent loss to engagement scores masking capability gaps, this composite case reframes HR reporting into decision intelligence with public citations, illustrative benchmarks, and a clear 4R action system for retain, ready, reskill, and redeploy decisions.",
   tags: ["HR Intelligence", "Workforce Analytics", "CHRO Dashboard", "People Analytics", "Attrition Analysis", "Capability Readiness", "Cost Per Hire", "Talent Strategy", "Board Reporting", "TechnoExcel"]
   },
