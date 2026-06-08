@@ -11,12 +11,22 @@ export const metadata: Metadata = {
 // ── INSIGHTS: Rich HTML data reports ─────────────────────────────────────────
 export const INSIGHTS = [
   {
+  slug: "Post-2030_Career_Advisor.html",
+  title: Will Your Job Survive the AI Decade?",
+  cat: "AI & Future of Work",
+  date: "June 2026",
+  read: "5 min",
+  featured: true,
+  excerpt: "An interactive self-assessment tool that scores your 2030 career readiness across five dimensions — AI Exposure, AI Fluency, Judgment, Domain Know-How, and Adaptability. Built for 18 roles across Data, Tech, Finance, HR, Operations, and Sales, the tool generates a personalised readiness score and verdict, helping professionals understand where they stand before the automation wave peaks.",
+  tags: ["Future of Work", "AI Automation", "Career Readiness", "2030 Skills", "AI Fluency", "Job Displacement", "Upskilling", "AI Readiness Assessment", "Workforce Intelligence", "TechnoExcel"]
+  },
+  {
   slug: "Copilot_AI_Readiness.html",
   title: "Microsoft Copilot Access Changed: How SMEs Can Keep Using AI Without Licensing Everyone",
   cat: "Enterprise AI Strategy & Microsoft 365 Copilot",
   date: "May 2026",
   read: "10 min",
-  featured: true,
+  featured: false,
   excerpt: "A boardroom-ready AI readiness dashboard explaining what changed after Microsoft’s Copilot access shift and why SMEs do not need blanket $30/user/month licensing. The story reframes Copilot from a software license decision into an enterprise AI architecture decision, using a practical 4-layer model covering protected Copilot chat, shared Copilot Studio agents, selective premium licensing, and secure Azure OpenAI workflows.",
   tags: ["Microsoft Copilot", "Enterprise AI", "AI Readiness", "Microsoft 365", "Copilot Studio", "Azure OpenAI", "SME AI Strategy", "AI Governance", "Cost Optimization", "TechnoExcel"]
   },
