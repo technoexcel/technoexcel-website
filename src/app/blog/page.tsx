@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export const INSIGHTS = [
   {
   slug: "Post-2030_Career_Advisor.html",
-  title: Will Your Job Survive the AI Decade?",
+  title: "Will Your Job Survive the AI Decade?",
   cat: "AI & Future of Work",
   date: "June 2026",
   read: "5 min",
