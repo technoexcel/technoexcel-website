@@ -4,6 +4,7 @@ import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import ChatBot from "@/components/ui/ChatBot";
 import Script from "next/script";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: { default:"TechnoExcel — Data Solutions & Corporate Training | Hyderabad", template:"%s | TechnoExcel" },
@@ -61,18 +62,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
         <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: GLOBAL_CSS }} />
+
+        {/* ── SCHEMA MARKUP — Organization + Website (global, all pages) ── */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+
         <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-SVSLB5KZDY"
-        strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-SVSLB5KZDY"
+          strategy="afterInteractive"
         />
         <Script id="ga4-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-SVSLB5KZDY');
-        `}
-      </Script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-SVSLB5KZDY');
+          `}
+        </Script>
       </head>
       <body suppressHydrationWarning>
         <Nav />
