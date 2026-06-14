@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import PageHero from "@/components/ui/PageHero";
+import ClientLogosVertical from "@/components/ui/ClientLogosVertical";
 import { WA } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -9,10 +9,19 @@ export const metadata: Metadata = {
   alternates:{canonical:"https://technoexcel.in/corporate"},
 };
 
+const TESTIMONIALS=[
+  {quote:"Excellent and Excellence in Excel — Ravi is an outstanding trainer who makes complex topics simple.",name:"Rama Murthy (RAM)",role:"Head of Human Resources · Amararaja Batteries"},
+  {quote:"Fantabulous Trainer! The sessions were engaging, practical and directly relevant to our work.",name:"Training Coordinator",role:"Times Group"},
+  {quote:"Quality of reports has improved significantly across the team after the training.",name:"Shishir Saxena",role:"Business Head · UPL"},
+  {quote:"The training mapped directly to our actual workflows. Every session had something we could implement the same week.",name:"Analytics Manager",role:"Manufacturing Company"},
+];
+const TTRACK=[...TESTIMONIALS,...TESTIMONIALS];
+
 const TRACKS=[
   {num:"TRACK 01",title:"Excel Mastery",desc:"L1 Essentials · L2 Analyst · L3 Automation",body:"1–2 days per level. Our most-requested program. Covers formulas, Power Query, pivot tables, VBA basics and AI-powered Excel tools. Every session uses the client organisation's actual data files."},
   {num:"TRACK 02",title:"Analytics & BI",desc:"Data Thinking · Power BI · Storytelling",body:"Designed for MIS teams and business managers. Covers how to think with data, how to build and read Power BI dashboards, and how to present findings to leadership clearly and persuasively."},
   {num:"TRACK 03",title:"Power Platform",desc:"Power Automate · Power Apps · SharePoint",body:"Enables teams to build their own automation and no-code applications on Microsoft's Power Platform. Covers workflow automation, form-based apps and integration with Teams and SharePoint."},
+  {num:"TRACK 04",title:"Copilot & AI Tools",desc:"Microsoft Copilot · ChatGPT · Gen AI Workflows",body:"Equips teams to work smarter with AI — using Microsoft 365 Copilot, ChatGPT and Gen AI tools in their daily workflows. Covers prompt engineering, AI-assisted reporting, document generation and responsible AI use in business contexts."},
 ];
 const REGIONS=[
   {name:"India",flag:"🇮🇳",markets:"Hyderabad · Mumbai · Bangalore · Delhi · Pune · Chennai",note:"On-site and virtual delivery"},
@@ -24,10 +33,35 @@ const INK="#13293C",RED="#EE2354",BG="#0d1f2d",CREAM="#F4F2EE";
 const SANS="var(--font-jakarta,'Plus Jakarta Sans',sans-serif)";
 const MONO="var(--font-mono,'Space Mono',monospace)";
 
+const SANS2="'Plus Jakarta Sans',system-ui,sans-serif";
+
 export default function CorporatePage() {
   return (
     <>
-      <PageHero crumbs={[{label:"TechnoExcel",href:"/"},{label:"Corporate"}]} h1="Train your team once." h1red="Change how they work forever." sub="Custom programs delivered on-site, virtually or hybrid. Always built around your actual data and KPIs — never generic slides." />
+      {/* Custom two-column hero: text left, vertical client logo scroller right */}
+      <section style={{ background:"#0d1f2d", padding:"100px 52px 56px", position:"relative", overflow:"hidden" }}>
+        <div style={{ position:"absolute",inset:0,backgroundImage:"linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px)",backgroundSize:"80px 80px",pointerEvents:"none" }} />
+        <div style={{ position:"absolute",width:500,height:500,borderRadius:"50%",background:"radial-gradient(circle,rgba(238,35,84,.12),transparent 60%)",top:-100,right:-80,pointerEvents:"none" }} />
+        <div style={{ maxWidth:1280, margin:"0 auto", position:"relative", zIndex:1, display:"grid", gridTemplateColumns:"1fr 420px", gap:64, alignItems:"center" }}>
+          <div>
+            <nav style={{ display:"flex",alignItems:"center",gap:8,fontFamily:"'Space Mono',monospace",fontSize:11,color:"rgba(255,255,255,0.55)",marginBottom:24,flexWrap:"wrap" }}>
+              <a href="/" style={{ color:"rgba(255,255,255,0.55)",textDecoration:"none" }}>TechnoExcel</a>
+              <span style={{ color:"rgba(255,255,255,0.30)" }}>/</span>
+              <span style={{ color:"#fff",fontWeight:600 }}>Corporate</span>
+            </nav>
+            <h1 style={{ fontFamily:SANS2,fontWeight:800,fontSize:"clamp(28px,4.5vw,60px)",lineHeight:.96,letterSpacing:"-0.04em",color:"#fff",marginBottom:16 }}>
+              Train your team once.<br/><span style={{ color:"#EE2354" }}>Change how they work forever.</span>
+            </h1>
+            <p style={{ fontFamily:SANS2,fontWeight:300,fontSize:17,color:"rgba(255,255,255,0.72)",maxWidth:540,lineHeight:1.75 }}>
+              Custom programs delivered on-site, virtually or hybrid. Always built around your actual data and KPIs — never generic slides.
+            </p>
+          </div>
+          <div>
+            <div style={{ fontFamily:"'Space Mono',monospace",fontSize:10,letterSpacing:"1.5px",textTransform:"uppercase",color:"rgba(255,255,255,0.85)",marginBottom:16,textAlign:"center" }}>Trusted by</div>
+            <ClientLogosVertical height={320} speed={35} />
+          </div>
+        </div>
+      </section>
 
       <section id="te-corppage" style={{background:CREAM,padding:"64px 52px"}}>
         <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
@@ -58,7 +92,6 @@ export default function CorporatePage() {
                 </div>
               ))}
             </div>
-            <a href={WA.corporate} target="_blank" rel="noopener noreferrer" style={{display:"inline-flex",alignItems:"center",gap:8,background:RED,color:"#fff",fontFamily:SANS,fontWeight:700,fontSize:15,padding:"15px 28px",borderRadius:12,textDecoration:"none"}}>Request a Proposal →</a>
           </div>
 
           <div>
@@ -77,12 +110,30 @@ export default function CorporatePage() {
                 </div>
               ))}
             </div>
-            <div style={{background:BG,borderRadius:14,padding:"24px 26px"}}>
+            <div style={{background:BG,borderRadius:14,padding:"24px 26px",marginBottom:24,overflow:"hidden",position:"relative",height:260}}>
               <div style={{fontFamily:MONO,fontSize:10,letterSpacing:"1.5px",textTransform:"uppercase",color:"rgba(255,255,255,.50)",marginBottom:16}}>What our clients say</div>
-              <p style={{fontFamily:SANS,fontSize:15,color:"rgba(255,255,255,.78)",lineHeight:1.85,fontStyle:"italic",marginBottom:16}}>&ldquo;The training mapped directly to our actual workflows. Every session had something we could implement the same week.&rdquo;</p>
-              <div style={{fontFamily:SANS,fontSize:13,fontWeight:700,color:"rgba(255,255,255,.65)"}}>Analytics Manager · Manufacturing Company</div>
-              <div style={{display:"flex",gap:2,marginTop:8}}>{[...Array(5)].map((_,i)=><span key={i} style={{color:"#fbbf24",fontSize:14}}>★</span>)}</div>
+              {/* top/bottom fade */}
+              <div style={{position:"absolute",left:0,right:0,top:48,height:32,background:"linear-gradient(to bottom,#0d1f2d,transparent)",zIndex:2,pointerEvents:"none"}}/>
+              <div style={{position:"absolute",left:0,right:0,bottom:0,height:40,background:"linear-gradient(to top,#0d1f2d,transparent)",zIndex:2,pointerEvents:"none"}}/>
+              <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
+                @keyframes te-tscroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+                .te-ttrack{display:flex;flex-direction:column;gap:20px;animation:te-tscroll 22s linear infinite}
+                .te-ttrack:hover{animation-play-state:paused}
+                .te-tcard{border-left:2px solid #EE2354;padding:0 0 0 12px;flex-shrink:0}
+              `}}/>
+              <div style={{overflow:"hidden",height:196}}>
+                <div className="te-ttrack">
+                  {TTRACK.map((t,i)=>(
+                    <div key={i} className="te-tcard">
+                      <p style={{fontFamily:SANS,fontSize:13,color:"rgba(255,255,255,.82)",lineHeight:1.7,fontStyle:"italic",marginBottom:6}}>&ldquo;{t.quote}&rdquo;</p>
+                      <div style={{fontFamily:SANS,fontSize:11,fontWeight:700,color:"rgba(255,255,255,.55)"}}>{t.name} · {t.role}</div>
+                      <div style={{display:"flex",gap:2,marginTop:4}}>{[...Array(5)].map((_,j)=><span key={j} style={{color:"#fbbf24",fontSize:11}}>★</span>)}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
+            <a href={WA.corporate} target="_blank" rel="noopener noreferrer" style={{display:"inline-flex",alignItems:"center",gap:8,background:RED,color:"#fff",fontFamily:SANS,fontWeight:700,fontSize:15,padding:"15px 28px",borderRadius:12,textDecoration:"none"}}>Request a Proposal →</a>
           </div>
         </div>
       </section>
