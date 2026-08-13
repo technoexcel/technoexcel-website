@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { CourseDetailPage } from "@/components/ui/CourseDetailPage";
 
 export const metadata: Metadata = {
-  title: "Advanced Excel Training with Gen AI | TechnoExcel",
+  title: "Advanced Excel Training with Gen AI",
   description: "Advanced Excel training covering formulas, lookup, Pivot Tables, Power Query, dashboards, VBA basics and Gen AI tools for Excel productivity.",
   alternates: { canonical: "https://technoexcel.in/courses/advanced-excel-training-hyderabad" },
 };
