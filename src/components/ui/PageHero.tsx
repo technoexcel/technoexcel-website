@@ -20,8 +20,9 @@ export default function PageHero({ crumbs, h1, h1red, sub }: Props) {
           ))}
         </nav>
         <h1 style={{ fontFamily:"'Plus Jakarta Sans',system-ui,sans-serif",fontWeight:800,fontSize:"clamp(28px,4.5vw,60px)",lineHeight:.96,letterSpacing:"-0.04em",color:"#fff",marginBottom:16 }}>
-          {h1}{h1red && <><br/><span style={{ color:"#EE2354" }}>{h1red}</span></>}
+          {h1}
         </h1>
+        {h1red && <div style={{ fontFamily:"'Plus Jakarta Sans',system-ui,sans-serif",fontWeight:800,fontSize:"clamp(26px,4.2vw,56px)",lineHeight:1,letterSpacing:"-0.04em",color:"#EE2354",marginBottom:18 }}>{h1red}</div>}
         {sub && <p style={{ fontFamily:"'Plus Jakarta Sans',system-ui,sans-serif",fontWeight:300,fontSize:17,color:"rgba(255,255,255,0.72)",maxWidth:540,lineHeight:1.75 }}>{sub}</p>}
       </div>
     </section>
