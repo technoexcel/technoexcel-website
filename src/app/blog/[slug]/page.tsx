@@ -111,7 +111,7 @@ export function generateMetadata({params}:{params:{slug:string}}):Metadata{
   const post=BLOG_POSTS.find(p=>p.slug===params.slug);
   if(!post)return{};
   const isSkills2030=params.slug==="skills-for-jobs-in-2030";
-  const description=isSkills2030?"Explore the top skills for jobs in 2030, including AI, data analytics, cybersecurity, creativity, adaptability and lifelong learning.":post.excerpt;
+  const description=isSkills2030?"Explore the top skills for jobs in 2030, including AI, data analytics, cybersecurity, creativity and lifelong learning.":post.excerpt;
   return{
     title:isSkills2030?{absolute:"Top Skills for Jobs in 2030 | Future Career Guide"}:post.title+" | TechnoExcel Blog",
     description,
@@ -168,6 +168,11 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
           #te-bb .art ul,#te-bb .art ol{margin:16px 0 0 22px;color:rgba(19,41,60,.72);font-size:16px;line-height:1.85}
           #te-bb .art li+li{margin-top:7px}
           #te-bb .art a{color:#EE2354;font-weight:650;text-decoration:underline;text-underline-offset:3px}
+          #te-bb .article-table-wrap{margin:24px 0 34px;overflow-x:auto;border:1px solid rgba(19,41,60,.10);border-radius:14px}
+          #te-bb .article-table{width:100%;border-collapse:collapse;min-width:660px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;line-height:1.55}
+          #te-bb .article-table th{background:#13293C;color:#fff;text-align:left;padding:14px 16px;font-weight:700}
+          #te-bb .article-table td{padding:13px 16px;color:rgba(19,41,60,.74);border-top:1px solid rgba(19,41,60,.08);vertical-align:top}
+          #te-bb .article-table tr:nth-child(even) td{background:#F8F7F4}
           #te-bb .faq-list{margin-top:20px;border-top:1px solid rgba(19,41,60,.10)}
           #te-bb .faq-list details{border-bottom:1px solid rgba(19,41,60,.10)}
           #te-bb .faq-list summary{cursor:pointer;padding:18px 0;font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;color:#13293C;line-height:1.45}
@@ -208,13 +213,29 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
           <div className="art">
             {post!.slug==="skills-for-jobs-in-2030"?(
               <>
-                <h2>What Skills Will Be Most Important for Jobs in 2030?</h2>
-                <p>The most important skills for jobs in 2030 will combine AI and data skills with human abilities such as analytical thinking, creativity, adaptability, communication and leadership. The safest career strategy is not to compete with AI, but to learn how to work effectively with it.</p>
                 <p>The job market is changing faster than traditional career paths. According to the World Economic Forum’s <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">Future of Jobs Report 2025</a>, 170 million new jobs could be created by 2030 while 92 million jobs could be displaced, creating a net increase of 78 million roles. The report also says nearly 40% of the skills required at work are expected to change.</p>
                 <p>That means a degree alone may not be enough. Professionals will need a mix of technology skills, business knowledge and human skills to stay relevant.</p>
 
-                <h2>What skills will be most important for jobs in 2030?</h2>
+                <h2>Top 10 Skills for Jobs in 2030</h2>
                 <p>The most important <a href="https://www.technoexcel.in/insights/future-career-skills-assessment.html">skills for jobs in 2030</a> will include AI and big data, technological literacy, cybersecurity, analytical thinking, creative thinking, adaptability, lifelong learning and leadership. Employers will increasingly value people who can use technology while also making good decisions, solving problems and working effectively with others.</p>
+
+                <div className="article-table-wrap">
+                  <table className="article-table">
+                    <thead><tr><th>Skill</th><th>Why it will matter in 2030</th><th>Example</th></tr></thead>
+                    <tbody>
+                      <tr><td>AI &amp; Big Data</td><td>AI will become part of everyday work</td><td>Using AI for analysis</td></tr>
+                      <tr><td>Data Analytics</td><td>Businesses need better decisions from data</td><td>Finding sales trends</td></tr>
+                      <tr><td>Technological Literacy</td><td>Digital tools will be standard</td><td>Learning new platforms</td></tr>
+                      <tr><td>Analytical Thinking</td><td>AI still needs human judgment</td><td>Checking business results</td></tr>
+                      <tr><td>Creative Thinking</td><td>New problems need new solutions</td><td>Developing campaigns</td></tr>
+                      <tr><td>Cybersecurity</td><td>More digital work means more risk</td><td>Protecting business data</td></tr>
+                      <tr><td>Adaptability</td><td>Roles and tools will keep changing</td><td>Learning new software</td></tr>
+                      <tr><td>Communication</td><td>Ideas still need human explanation</td><td>Presenting insights</td></tr>
+                      <tr><td>Leadership</td><td>Teams need direction and trust</td><td>Managing AI-enabled teams</td></tr>
+                      <tr><td>Lifelong Learning</td><td>Skills will have shorter shelf lives</td><td>Regular upskilling</td></tr>
+                    </tbody>
+                  </table>
+                </div>
 
                 <h2>1. AI and big data skills</h2>
                 <p>AI and big data are among the fastest-growing skill areas for the 2030 job market. This does not mean everyone needs to become an AI engineer. It means professionals should understand how AI works, how to use <a href="https://www.technoexcel.in/insights/Copilot_AI_Readiness.html">AI tools</a> responsibly and how to evaluate their outputs.</p>
@@ -269,9 +290,29 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
                 <ol><li>Identify the skills your industry is adopting.</li><li>Choose one high-value skill at a time.</li><li>Learn through practical projects.</li><li>Build proof of your ability.</li><li>Review your skills every six months.</li></ol>
                 <p>Certificates can help, but projects and demonstrable skills make your learning more credible.</p>
 
+                <h2>10. Environmental Stewardship &amp; Sustainability</h2>
+                <p><a href="https://en.wikipedia.org/wiki/Environmental_stewardship" target="_blank" rel="noopener noreferrer">Environmental stewardship</a> and sustainability will become increasingly important as businesses adapt to climate change, resource constraints and the transition to greener operations. The World Economic Forum lists environmental stewardship among the fastest-growing skills through 2030.</p>
+                <p>This skill is not limited to environmental jobs. Professionals across manufacturing, finance, technology, supply chains and business management may need to understand how sustainability affects business decisions.</p>
+                <p>For example, companies may need employees who can work with sustainability data, reduce resource waste, understand <a href="https://www.scribd.com/presentation/625663630/Environmental-Stewardship-an-Everyones-Concern" target="_blank" rel="noopener noreferrer">ESG</a> goals or support greener business processes.</p>
+
                 <h2>Which skills should students and professionals learn first?</h2>
                 <p>The right skills depend on your career path. A student entering analytics should prioritise data and technology, while a manager may gain more from AI literacy, strategic thinking and leadership.</p>
                 <p>For professionals working with business data, tools such as Excel, Power BI, SQL and Python can provide a practical foundation. TechnoExcel’s <a href="https://www.technoexcel.in/courses">Data Analytics programme</a> combines these areas into one structured learning path.</p>
+
+                <div className="article-table-wrap">
+                  <table className="article-table">
+                    <thead><tr><th>Career goal</th><th>Skills to prioritise</th></tr></thead>
+                    <tbody>
+                      <tr><td><a href="https://www.technoexcel.in/blog/data-analytics-career-india-2026">Data Analyst</a></td><td>Excel, SQL, Power BI, Python, statistics</td></tr>
+                      <tr><td>Business Professional</td><td>Excel, AI, data literacy, communication</td></tr>
+                      <tr><td>Marketing Professional</td><td>AI, analytics, creativity, communication</td></tr>
+                      <tr><td>Finance Professional</td><td>Excel, analytics, automation, AI</td></tr>
+                      <tr><td>Manager</td><td>AI literacy, leadership, decision-making</td></tr>
+                      <tr><td>Technology Professional</td><td>AI, programming, cybersecurity, systems thinking</td></tr>
+                      <tr><td>Student/Fresher</td><td>Digital literacy, communication, problem-solving, AI</td></tr>
+                    </tbody>
+                  </table>
+                </div>
 
                 <h2>How can you prepare for jobs in 2030?</h2>
                 <p>You do not need to learn everything at once. Start with a T-shaped skill strategy: develop deep expertise in one area while building broad digital and human skills around it.</p>
