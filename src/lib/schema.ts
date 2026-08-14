@@ -88,9 +88,9 @@ export const websiteSchema = {
 export const advancedExcelCourseSchema = {
   "@context": "https://schema.org",
   "@type": "Course",
-  "name": "Advanced Excel Training — Corporate & Individual",
-  "description": "Master Advanced Excel including XLOOKUP, Power Query, Pivot Tables, dynamic dashboards, VBA basics and AI-powered Excel tools. Training built around your organisation's actual data. Available online and on-site across India.",
-  "url": "https://www.technoexcel.in/courses/advanced-excel-training-hyderabad",
+  "name": "Advanced Excel Training with Gen AI",
+  "description": "Master Advanced Excel including XLOOKUP, Power Query, Pivot Tables, dynamic dashboards, VBA basics and AI-powered Excel tools. Training is built around practical business scenarios and is available online or on-site.",
+  "url": "https://www.technoexcel.in/courses/advanced-excel-training",
   "provider": { "@id": "https://www.technoexcel.in/#organization" },
   "instructor": {
     "@type": "Person",

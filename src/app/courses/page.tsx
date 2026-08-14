@@ -34,7 +34,7 @@ const PAGE_CSS = `
 `;
 
 const DESCS: Record<string,string>={
-  "advanced-excel-training-hyderabad":"From formulas and Power Query to VBA automation and AI-powered Excel tools. The most-requested course for working professionals across every industry.",
+  "advanced-excel-training":"From formulas and Power Query to VBA automation and AI-powered Excel tools. The most-requested course for working professionals across every industry.",
   "power-bi-training-hyderabad":"DAX, data modeling, row-level security, Power BI Service publishing. Taught by a trainer who has built and deployed 50+ live production dashboards.",
   "data-analytics-training-hyderabad":"Advanced Excel + SQL + Python + Power BI + statistics in one structured 4-month program. The complete toolkit for an analyst role — nothing left out.",
   "data-science-course":"Python, machine learning, deep learning, NLP and model deployment. Our flagship career-switching program with project-based assessment.",

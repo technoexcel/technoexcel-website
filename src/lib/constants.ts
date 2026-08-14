@@ -27,7 +27,7 @@ export const NAV_LINKS = [
 ];
 
 export const COURSES = [
-  { title:"Advanced Excel with AI",      slug:"advanced-excel-training-hyderabad",  badge:"Star",  duration:"~1 month",  desc:"Formulas, Power Query, VBA, Dynamic Arrays and AI tools." },
+  { title:"Advanced Excel with AI",      slug:"advanced-excel-training",            badge:"Star",  duration:"4 weeks",  desc:"Formulas, Power Query, VBA, Dynamic Arrays and AI tools." },
   { title:"Power BI Mastery",            slug:"power-bi-training-hyderabad",         badge:"Popular",         duration:"~1 month",  desc:"DAX, data modeling, RLS. Trainer who built 50+ live dashboards." },
   { title:"Data Analytics",             slug:"data-analytics-training-hyderabad",   badge:"Flagship",         duration:"4 months",  desc:"Python + SQL + Power BI + statistics. Full analyst toolkit." },
   { title:"Data Science",               slug:"data-science-course",                  badge:"", duration:"6 months",  desc:"Python, ML, deep learning, NLP. Career-switching program." },

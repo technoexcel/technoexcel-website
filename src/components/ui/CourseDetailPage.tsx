@@ -55,7 +55,7 @@ export function CourseDetailPage({ slug, title, badge, duration, tagline, descri
           <div>
             {/* Stats row */}
             <div style={{display:"flex",gap:0,marginBottom:40,paddingBottom:32,borderBottom:"1px solid rgba(19,41,60,.08)",flexWrap:"wrap"}}>
-              {[["Duration",duration],["Format","Live, Instructor-led"],["Level","All levels"],["Language","English / Hindi"]].map(([k,v])=>(
+              {[["Duration",duration],["Format","Live, Instructor-led"],["Level","All levels"],["Language","English"]].map(([k,v])=>(
                 <div key={k} style={{paddingRight:28,marginRight:28,borderRight:"1px solid rgba(19,41,60,.08)",marginBottom:12}}>
                   <div style={{fontFamily:MONO,fontSize:10,letterSpacing:"1.5px",textTransform:"uppercase",color:"rgba(19,41,60,.48)",marginBottom:5}}>{k}</div>
                   <div style={{fontFamily:SANS,fontWeight:700,fontSize:15,color:INK}}>{v}</div>
