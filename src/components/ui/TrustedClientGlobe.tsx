@@ -65,21 +65,37 @@ export default function TrustedClientGlobe() {
 
     (async () => {
       const Globe = (await import("globe.gl")).default;
+      const THREE = await import("three");
+      if (destroyed || !mount) return;
+      const countries = await fetch("/data/world-countries.geojson").then((response) => response.json());
       if (destroyed || !mount) return;
 
       globe = new Globe(mount, { rendererConfig: { antialias: true, alpha: true }, animateIn: false, waitForGlobeReady: false })
         .backgroundColor("rgba(0,0,0,0)")
-        .globeImageUrl("/images/globe/earth-blue-marble.jpg")
+        .globeMaterial(new THREE.MeshPhongMaterial({
+          color: "#d9d5c9",
+          emissive: "#171a1b",
+          emissiveIntensity: 0.12,
+          shininess: 24,
+          specular: "#ffffff",
+        }))
+        .showGraticules(true)
         .showAtmosphere(true)
-        .atmosphereColor("#48d9ff")
-        .atmosphereAltitude(0.22)
+        .atmosphereColor("#e7dfd1")
+        .atmosphereAltitude(0.16)
+        .polygonsData(countries.features)
+        .polygonAltitude(0.008)
+        .polygonCapColor(() => "rgba(178,18,32,.88)")
+        .polygonSideColor(() => "rgba(92,10,18,.34)")
+        .polygonStrokeColor(() => "rgba(255,255,255,.62)")
+        .polygonLabel(() => "")
         .labelsData(CITIES)
         .labelLat("lat")
         .labelLng("lng")
         .labelText("name")
         .labelSize(0.72)
         .labelDotRadius("size")
-        .labelColor(() => "rgba(220,252,255,.95)")
+        .labelColor(() => "rgba(255,255,255,.94)")
         .labelResolution(2)
         .labelAltitude(0.018)
         .arcsData(ARCS)
@@ -87,7 +103,7 @@ export default function TrustedClientGlobe() {
         .arcStartLng("startLng")
         .arcEndLat("endLat")
         .arcEndLng("endLng")
-        .arcColor(() => ["rgba(126,232,255,.26)", "rgba(46,211,255,.96)"])
+        .arcColor(() => ["rgba(255,255,255,.22)", "rgba(238,35,84,.88)"])
         .arcAltitude(0.24)
         .arcStroke(0.45)
         .arcDashLength(0.32)
@@ -97,7 +113,7 @@ export default function TrustedClientGlobe() {
         .ringsData(CITIES.slice(0, 5))
         .ringLat("lat")
         .ringLng("lng")
-        .ringColor(() => "rgba(126,232,255,.42)")
+        .ringColor(() => "rgba(238,35,84,.38)")
         .ringMaxRadius(3.2)
         .ringPropagationSpeed(1.4)
         .ringRepeatPeriod(1800);
@@ -128,7 +144,7 @@ export default function TrustedClientGlobe() {
     <div className="te-client-globe" aria-label="Trusted client network">
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .te-client-globe{position:relative;min-height:460px;width:100%;display:flex;align-items:center;justify-content:center;overflow:visible}
-        .te-client-globe:before{content:"";position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(46,211,255,.22),rgba(26,67,94,.08) 42%,transparent 68%);filter:blur(4px)}
+        .te-client-globe:before{content:"";position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(238,35,84,.18),rgba(246,242,232,.08) 42%,transparent 68%);filter:blur(4px)}
         .te-globe-canvas{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:min(420px,100%)}
         .te-globe-canvas canvas{display:block!important}
         .te-client-card{position:absolute;z-index:4;width:134px;height:72px;display:flex;align-items:center;justify-content:center;padding:14px 18px;border-radius:16px;background:rgba(255,255,255,.95);box-shadow:0 18px 45px rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.42);opacity:0;transform:translate3d(0,8px,0) scale(.96);animation:te-client-sequence 33s ease-in-out infinite;animation-delay:var(--delay)}
