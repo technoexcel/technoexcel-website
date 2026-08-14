@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 // ── INSIGHTS: Rich HTML data reports ─────────────────────────────────────────
-export const INSIGHTS = [
+const INSIGHTS = [
   {
   slug: "future-career-skills-assessment.html",
   title: "Will Your Job Survive the AI Decade?",
@@ -84,6 +84,7 @@ export const INSIGHTS = [
 ];
 
 export const BLOG_POSTS=[
+  {slug:"skills-for-jobs-in-2030",title:"Top Skills for Jobs in 2030 | Future Career Guide",cat:"Career",date:"Aug 2026",read:"10 min",excerpt:"The skills that will matter most by 2030 combine AI and data capability with analytical thinking, creativity, adaptability, communication, leadership and continuous learning.",tags:["2030 Skills","AI","Career","Future of Work"]},
   {slug:"how-to-automate-weekly-reports-excel",title:"How to Automate Your Weekly Reports in Excel",cat:"Excel",date:"Mar 2026",read:"8 min",excerpt:"Stop spending 2+ hours every Friday rebuilding the same report. Power Query, pivot tables and a single macro can cut that to under 10 minutes — and keep it that way permanently without any manual effort.",tags:["Power Query","VBA","Pivot Tables"]},
   {slug:"power-bi-vs-excel-which-is-right",title:"Power BI vs Excel — Which Is Right for Your Team?",cat:"Power BI",date:"Mar 2026",read:"6 min",excerpt:"Most teams don't need to replace Excel — they need to know where it ends and where Power BI begins. A practical decision guide based on reporting frequency, audience size and refresh needs.",tags:["Power BI","Excel","Decision Guide"]},
   {slug:"top-5-excel-skills-every-analyst",title:"Top 5 Excel Skills Every Analyst Needs in 2026",cat:"Excel",date:"Feb 2026",read:"5 min",excerpt:"XLOOKUP, Power Query, dynamic arrays, pivot calculated fields and named ranges. These five skills separate analysts who spend 80% of their time on data prep from those who spend 20%.",tags:["XLOOKUP","Dynamic Arrays","Power Query"]},

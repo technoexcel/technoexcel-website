@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import ClientLogosVertical from "@/components/ui/ClientLogosVertical";
+import TrustedClientGlobe from "@/components/ui/TrustedClientGlobe";
 import { WA } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -38,11 +38,15 @@ const SANS2="'Plus Jakarta Sans',system-ui,sans-serif";
 export default function CorporatePage() {
   return (
     <>
-      {/* Custom two-column hero: text left, vertical client logo scroller right */}
+      {/* Custom two-column hero: text left, animated trusted-client globe right */}
       <section style={{ background:"#0d1f2d", padding:"100px 52px 56px", position:"relative", overflow:"hidden" }}>
         <div style={{ position:"absolute",inset:0,backgroundImage:"linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px)",backgroundSize:"80px 80px",pointerEvents:"none" }} />
         <div style={{ position:"absolute",width:500,height:500,borderRadius:"50%",background:"radial-gradient(circle,rgba(238,35,84,.12),transparent 60%)",top:-100,right:-80,pointerEvents:"none" }} />
-        <div style={{ maxWidth:1280, margin:"0 auto", position:"relative", zIndex:1, display:"grid", gridTemplateColumns:"1fr 420px", gap:64, alignItems:"center" }}>
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
+          .te-corp-hero-grid{max-width:1280px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:64px;align-items:center}
+          @media(max-width:1024px){.te-corp-hero-grid{grid-template-columns:1fr!important;gap:36px}.te-corp-hero-visual{max-width:520px;margin:0 auto;width:100%}}
+        `}} />
+        <div className="te-corp-hero-grid">
           <div>
             <nav style={{ display:"flex",alignItems:"center",gap:8,fontFamily:"'Space Mono',monospace",fontSize:11,color:"rgba(255,255,255,0.55)",marginBottom:24,flexWrap:"wrap" }}>
               <a href="/" style={{ color:"rgba(255,255,255,0.55)",textDecoration:"none" }}>TechnoExcel</a>
@@ -56,9 +60,8 @@ export default function CorporatePage() {
               Custom programs delivered on-site, virtually or hybrid. Always built around your actual data and KPIs — never generic slides.
             </p>
           </div>
-          <div>
-            <div style={{ fontFamily:"'Space Mono',monospace",fontSize:10,letterSpacing:"1.5px",textTransform:"uppercase",color:"rgba(255,255,255,0.85)",marginBottom:16,textAlign:"center" }}>Trusted by</div>
-            <ClientLogosVertical height={320} speed={35} />
+          <div className="te-corp-hero-visual">
+            <TrustedClientGlobe />
           </div>
         </div>
       </section>

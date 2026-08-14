@@ -9,6 +9,23 @@ const SANS="var(--font-jakarta,'Plus Jakarta Sans',sans-serif)";
 const MONO="var(--font-mono,'Space Mono',monospace)";
 
 const ARTICLE_DATA: Record<string,{relatedSlug:string;relatedCourse:string;sections:{h:string;body:string}[]}> = {
+  "skills-for-jobs-in-2030":{relatedSlug:"data-analytics-training-hyderabad",relatedCourse:"Data Analytics",sections:[
+    {h:"What skills will be most important for jobs in 2030?",body:"The most important skills for jobs in 2030 will include AI and big data, analytical thinking, technological literacy, creativity, adaptability, communication, leadership, cybersecurity, sustainability and lifelong learning. Employers will increasingly value people who can use technology while making good decisions, solving real problems and working effectively with others."},
+    {h:"1. AI and big data skills",body:"AI and big data are among the fastest-growing skill areas for the 2030 job market. This does not mean everyone needs to become an AI engineer. It means professionals should understand how AI works, how to use AI tools responsibly and how to evaluate their outputs. The advantage will go to people who understand both the tool and the business problem."},
+    {h:"2. Analytical and critical thinking",body:"Technology can process information, but people still need to decide what that information means. Professionals who can identify patterns, evaluate evidence and make sound decisions will remain valuable. Knowing how to create a dashboard is useful. Knowing which metric matters, why it changed and what the business should do next is much more valuable."},
+    {h:"3. Technological literacy",body:"Technological literacy means being comfortable learning and using digital tools. You do not need to master every new platform. Build the confidence to understand unfamiliar software, automate repetitive work and learn quickly. A practical toolkit may include advanced Excel, Power BI, SQL, Python, AI assistants, automation tools and cloud collaboration platforms."},
+    {h:"4. Creativity and problem-solving",body:"Creative thinking becomes more valuable as AI handles routine tasks. When machines can generate standard outputs quickly, human creativity matters for developing new ideas, solving unusual problems and finding better ways to work. Creativity is not limited to designers: a salesperson can devise a new customer strategy, a manager can redesign a workflow, and an analyst can explain complex results more clearly."},
+    {h:"5. Adaptability and resilience",body:"Job roles, technologies and business models will continue to change. Professionals who can learn, unlearn and relearn will have an advantage. Instead of asking, 'Will my current job still exist in 2030?', ask, 'Can I adapt if my job changes?'"},
+    {h:"6. Communication and collaboration",body:"Technology cannot replace the need to explain ideas clearly, work with teams and build trust. Communication matters when presenting data, explaining AI-generated recommendations, negotiating with clients or working across departments. The combination of technical ability and communication is especially powerful."},
+    {h:"7. Leadership and social influence",body:"Leadership will not be limited to managers. As AI changes workflows, companies will need people who can guide teams through change, make decisions and create trust. Future leaders will need to understand technology while managing the human side of transformation through coaching, conflict resolution, strategic thinking and stakeholder management."},
+    {h:"8. Cybersecurity and digital safety",body:"Cybersecurity skills will grow as organisations become more dependent on digital systems, data and AI. Even non-technical employees should know how to identify phishing attempts, protect sensitive information and use company systems responsibly. Basic digital safety is becoming a workplace expectation."},
+    {h:"9. Sustainability literacy",body:"Businesses are under growing pressure to use energy and resources responsibly, measure environmental impact and meet expectations from customers, employees and regulators. Professionals who can connect sustainability goals with operations, data and commercial decisions will be better prepared for emerging roles."},
+    {h:"10. Lifelong learning",body:"Lifelong learning is becoming a career skill rather than an optional personal-development activity. Identify the skills your industry is adopting, choose one high-value skill at a time, learn through practical projects, build proof of your ability and review your skills every six months. Certificates can help, but demonstrable skills make learning more credible."},
+    {h:"Which skills should students and professionals learn first?",body:"The right starting point depends on your career path. A student entering analytics should prioritise data and technology, while a manager may gain more from AI literacy, strategic thinking and leadership. For professionals working with business data, Excel, Power BI, SQL and Python provide a practical foundation."},
+    {h:"A practical 12-month approach",body:"Months 1–3: strengthen your core skill such as Excel, communication, sales, finance or marketing. Months 4–6: add data literacy and AI tools relevant to your role. Months 7–9: build practical projects that demonstrate your ability. Months 10–12: add an advanced skill such as Power BI, SQL, Python, automation or leadership. The goal is not to collect certificates; it is to solve real problems using modern tools."},
+    {h:"Common mistakes when preparing for future jobs",body:"Avoid learning every new AI tool without mastering one useful workflow, collecting certificates without building projects, ignoring communication and teamwork, assuming a degree will remain enough, learning technology without understanding business needs, or treating AI as either a complete replacement for people or something to ignore. The strongest professionals will use technology while applying human judgment."},
+    {h:"The future belongs to adaptable professionals",body:"You do not need to predict the exact job that will exist in 2030. You need to build skills that remain useful when jobs change. AI, data and digital technology will continue to reshape work, while analytical thinking, creativity, communication, leadership and adaptability remain powerful human advantages."},
+  ]},
   "how-to-automate-weekly-reports-excel":{relatedSlug:"advanced-excel-training-hyderabad",relatedCourse:"Advanced Excel with AI",sections:[
     {h:"Why most weekly reports are still manual in 2026",body:"Most weekly reports were built as one-off exercises — someone created a template, it got forwarded, and now the same 10 manual steps happen every Friday. The fix doesn't require new software or a large project. It requires understanding where the time actually goes: usually pulling data from multiple files, reformatting it, and recalculating summaries that could be automated in under an hour of setup."},
     {h:"Step 1 — Connect your sources with Power Query",body:"Instead of opening three files and copying data, Power Query lets you define the transformation once. Your source files stay exactly where they are. Each refresh re-runs the same logic automatically. Setup takes 20–30 minutes the first time and saves hours every week after. For most weekly reports, the key transformations are: combine sheets, clean column names, filter irrelevant rows, and aggregate totals."},
@@ -93,10 +110,22 @@ export function generateStaticParams(){
 export function generateMetadata({params}:{params:{slug:string}}):Metadata{
   const post=BLOG_POSTS.find(p=>p.slug===params.slug);
   if(!post)return{};
+  const isSkills2030=params.slug==="skills-for-jobs-in-2030";
+  const description=isSkills2030?"Explore the top skills for jobs in 2030, including AI, data analytics, cybersecurity, creativity, adaptability and lifelong learning.":post.excerpt;
   return{
-    title:post.title+" | TechnoExcel Blog",
-    description:post.excerpt,
+    title:isSkills2030?{absolute:"Top Skills for Jobs in 2030 | Future Career Guide"}:post.title+" | TechnoExcel Blog",
+    description,
     alternates:{canonical:`https://technoexcel.in/blog/${params.slug}`},
+    ...(isSkills2030?{
+      openGraph:{
+        type:"article",
+        title:"Top Skills for Jobs in 2030 | Future Career Guide",
+        description,
+        url:"https://technoexcel.in/blog/skills-for-jobs-in-2030",
+        images:[{url:"/images/blog/skills-for-jobs-in-2030.jpg",width:1536,height:1024,alt:"Top 10 skills for jobs in 2030"}],
+      },
+      twitter:{card:"summary_large_image",title:"Top Skills for Jobs in 2030 | Future Career Guide",description,images:["/images/blog/skills-for-jobs-in-2030.jpg"]},
+    }:{}),
   };
 }
 
@@ -135,6 +164,15 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
           #te-bb .body-inner{max-width:860px;margin:0 auto}
           #te-bb .art h2{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(18px,2.5vw,24px);color:#13293C;letter-spacing:-0.3px;margin-bottom:14px;margin-top:44px;line-height:1.2}
           #te-bb .art p{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;color:rgba(19,41,60,0.72);line-height:1.92;margin-bottom:0}
+          #te-bb .art p+p{margin-top:16px}
+          #te-bb .art ul,#te-bb .art ol{margin:16px 0 0 22px;color:rgba(19,41,60,.72);font-size:16px;line-height:1.85}
+          #te-bb .art li+li{margin-top:7px}
+          #te-bb .art a{color:#EE2354;font-weight:650;text-decoration:underline;text-underline-offset:3px}
+          #te-bb .faq-list{margin-top:20px;border-top:1px solid rgba(19,41,60,.10)}
+          #te-bb .faq-list details{border-bottom:1px solid rgba(19,41,60,.10)}
+          #te-bb .faq-list summary{cursor:pointer;padding:18px 0;font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;color:#13293C;line-height:1.45}
+          #te-bb .faq-list details p{padding:0 0 18px}
+          #te-bb .source-note{margin-top:44px;padding:20px 22px;background:#F4F2EE;border-radius:12px;font-size:13px!important;line-height:1.75!important}
           #te-bb .cta-box{background:#F4F2EE;border-radius:18px;padding:32px;margin:44px 0}
           #te-bb .cta-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
           #te-bb .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
@@ -151,9 +189,123 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
             {post!.excerpt}
           </p>
 
+          {post!.slug==="skills-for-jobs-in-2030"&&(
+            <figure style={{margin:"0 0 44px"}}>
+              <img
+                src="/images/blog/skills-for-jobs-in-2030.jpg"
+                alt="Infographic showing the top 10 skills for jobs in 2030"
+                width={1536}
+                height={1024}
+                style={{display:"block",width:"100%",height:"auto",borderRadius:18,border:"1px solid rgba(19,41,60,.08)"}}
+              />
+              <figcaption style={{fontFamily:MONO,fontSize:10,color:"rgba(19,41,60,.48)",marginTop:10,lineHeight:1.6}}>
+                Future-ready careers combine technical skills, human skills and continuous learning.
+              </figcaption>
+            </figure>
+          )}
+
           {/* Article body */}
           <div className="art">
-            {content ? content.sections.map((s,i)=>(
+            {post!.slug==="skills-for-jobs-in-2030"?(
+              <>
+                <h2>What Skills Will Be Most Important for Jobs in 2030?</h2>
+                <p>The most important skills for jobs in 2030 will combine AI and data skills with human abilities such as analytical thinking, creativity, adaptability, communication and leadership. The safest career strategy is not to compete with AI, but to learn how to work effectively with it.</p>
+                <p>The job market is changing faster than traditional career paths. According to the World Economic Forum’s <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">Future of Jobs Report 2025</a>, 170 million new jobs could be created by 2030 while 92 million jobs could be displaced, creating a net increase of 78 million roles. The report also says nearly 40% of the skills required at work are expected to change.</p>
+                <p>That means a degree alone may not be enough. Professionals will need a mix of technology skills, business knowledge and human skills to stay relevant.</p>
+
+                <h2>What skills will be most important for jobs in 2030?</h2>
+                <p>The most important <a href="https://www.technoexcel.in/insights/future-career-skills-assessment.html">skills for jobs in 2030</a> will include AI and big data, technological literacy, cybersecurity, analytical thinking, creative thinking, adaptability, lifelong learning and leadership. Employers will increasingly value people who can use technology while also making good decisions, solving problems and working effectively with others.</p>
+
+                <h2>1. AI and big data skills</h2>
+                <p>AI and big data are among the fastest-growing skill areas for the 2030 job market. This does not mean everyone needs to become an AI engineer. It means professionals should understand how AI works, how to use <a href="https://www.technoexcel.in/insights/Copilot_AI_Readiness.html">AI tools</a> responsibly and how to evaluate their outputs.</p>
+                <p>For example, a finance professional may use AI to analyse reports, while a marketer may use it for research and content ideas. A <a href="https://www.technoexcel.in/blog/data-analytics-career-india-2026">data analyst</a> may combine AI with Excel, SQL, Python or Power BI to work faster.</p>
+                <p>The advantage will go to people who understand both AI tools and the business problem they are solving.</p>
+
+                <h2>2. Analytical and critical thinking</h2>
+                <p>Analytical thinking will remain one of the most valuable skills because technology can process information, but people still need to decide what that information means. Professionals who can identify patterns, evaluate evidence and make sound decisions will remain valuable across industries.</p>
+                <p>This matters especially in finance, marketing, operations, healthcare, technology and management.</p>
+                <p>For example, knowing how to create a dashboard is useful. Knowing which metric matters, why it changed and what the business should do next is much more valuable.</p>
+
+                <h2>3. Technological literacy</h2>
+                <p>Technological literacy means being comfortable learning and using digital tools.</p>
+                <p>You do not need to master every new technology. Instead, build the confidence to understand new software, automate repetitive work and learn unfamiliar platforms quickly.</p>
+                <p>For many professionals, this could include:</p>
+                <ul><li>Microsoft Excel and advanced Excel</li><li>Power BI</li><li>SQL</li><li>Python</li><li>AI assistants</li><li>Automation tools</li><li>Cloud-based collaboration platforms</li></ul>
+                <p>The tools will change. The ability to learn them quickly will remain useful.</p>
+
+                <h2>4. Creativity and problem-solving</h2>
+                <p>Creative thinking will become more valuable as AI handles more routine tasks. When machines can generate standard outputs quickly, human creativity becomes important for developing new ideas, solving unusual problems and finding better ways to work.</p>
+                <p>Creativity is not limited to designers.</p>
+                <p>A salesperson can create a new customer strategy. A manager can redesign a workflow. A data analyst can find a different way to explain complex results.</p>
+                <p>The future will reward people who can ask better questions, not just people who can produce faster answers.</p>
+
+                <h2>5. Adaptability and resilience</h2>
+                <p>Adaptability may be one of the most important career skills of the next decade because job roles, technologies and business models will continue to change.</p>
+                <p>A skill that is valuable today may become less important tomorrow. Professionals who can learn, unlearn and relearn will have an advantage.</p>
+                <p>Instead of asking, “Will my current job still exist in 2030?” ask: “Can I adapt if my job changes?”</p>
+                <p>That is a much more useful career question.</p>
+
+                <h2>6. Communication and collaboration</h2>
+                <p>Technology cannot replace the need for people to explain ideas clearly, work with teams and build trust.</p>
+                <p>Strong communication will matter when professionals present data, explain AI-generated recommendations, negotiate with clients or work across departments.</p>
+                <p>The combination of technical ability and communication is especially powerful.</p>
+                <p>A person who understands data but cannot explain it may struggle to influence decisions. A person who understands both data and business communication can create much more value.</p>
+
+                <h2>7. Leadership and social influence</h2>
+                <p>Leadership will not only be important for managers.</p>
+                <p>As AI changes workflows, companies will need people who can guide teams through change, make decisions and create trust.</p>
+                <p>Future leaders will increasingly need to understand technology while managing the human side of transformation.</p>
+                <p>This includes:</p>
+                <ul><li>Decision-making</li><li>Team management</li><li>Coaching</li><li>Conflict resolution</li><li>Strategic thinking</li><li>Stakeholder management</li></ul>
+
+                <h2>8. Cybersecurity and digital safety</h2>
+                <p>Cybersecurity skills will grow as organisations become more dependent on digital systems, data and AI. The WEF identifies networks and cybersecurity among the fastest-growing skill areas through 2030.</p>
+                <p>Even non-technical employees should understand basic digital security.</p>
+                <p>Knowing how to identify phishing attempts, protect sensitive information and use company systems responsibly can become a basic workplace expectation.</p>
+
+                <h2>9. Lifelong learning</h2>
+                <p>Lifelong learning is becoming a career skill rather than an optional personal-development activity. As tools and job requirements change, professionals will need regular upskilling instead of relying only on what they learned at college.</p>
+                <p>A practical approach is:</p>
+                <ol><li>Identify the skills your industry is adopting.</li><li>Choose one high-value skill at a time.</li><li>Learn through practical projects.</li><li>Build proof of your ability.</li><li>Review your skills every six months.</li></ol>
+                <p>Certificates can help, but projects and demonstrable skills make your learning more credible.</p>
+
+                <h2>Which skills should students and professionals learn first?</h2>
+                <p>The right skills depend on your career path. A student entering analytics should prioritise data and technology, while a manager may gain more from AI literacy, strategic thinking and leadership.</p>
+                <p>For professionals working with business data, tools such as Excel, Power BI, SQL and Python can provide a practical foundation. TechnoExcel’s <a href="https://www.technoexcel.in/courses">Data Analytics programme</a> combines these areas into one structured learning path.</p>
+
+                <h2>How can you prepare for jobs in 2030?</h2>
+                <p>You do not need to learn everything at once. Start with a T-shaped skill strategy: develop deep expertise in one area while building broad digital and human skills around it.</p>
+                <h2>A practical 12-month approach</h2>
+                <ul><li><strong>Months 1–3:</strong> Strengthen your core skill such as Excel, communication, sales, finance or marketing.</li><li><strong>Months 4–6:</strong> Add data literacy and AI tools relevant to your role.</li><li><strong>Months 7–9:</strong> Build practical projects that demonstrate your skills.</li><li><strong>Months 10–12:</strong> Add an advanced skill such as Power BI, SQL, Python, automation or leadership.</li></ul>
+                <p>The goal is not to collect certificates. The goal is to become someone who can solve real problems using modern tools.</p>
+
+                <h2>Common mistakes when preparing for future jobs</h2>
+                <p>Avoid these mistakes:</p>
+                <ul><li>Learning every new AI tool without mastering one useful workflow.</li><li>Collecting certificates without building projects.</li><li>Ignoring communication and teamwork.</li><li>Assuming your degree will remain enough throughout your career.</li><li>Learning technology without understanding business needs.</li><li>Treating AI as either a complete replacement for people or something to ignore.</li></ul>
+                <p>The strongest professionals will sit between these extremes: they will use technology while applying human judgment.</p>
+
+                <h2>Frequently Asked Questions</h2>
+                <div className="faq-list">
+                  <details><summary>1. What are the most important skills for jobs in 2030?</summary><p>AI and data skills, analytical thinking, technological literacy, creativity, adaptability, cybersecurity, communication, leadership and lifelong learning are expected to be among the most valuable skills for the 2030 workforce.</p></details>
+                  <details><summary>2. Will AI replace jobs by 2030?</summary><p>AI will change many jobs and automate some tasks, but it will also create new roles. The WEF projects 170 million new roles and 92 million displaced roles by 2030.</p></details>
+                  <details><summary>3. Is AI literacy important for non-technical jobs?</summary><p>Yes. AI is increasingly becoming a workplace tool rather than a technology limited to developers. Professionals in marketing, finance, HR, operations and management can all benefit from understanding how to use and evaluate AI.</p></details>
+                  <details><summary>4. Should I learn AI or data analytics first?</summary><p>Start with the skill closest to your career goal. For business and analytics careers, learning Excel, data analysis and visualisation alongside practical AI skills can create a strong foundation.</p></details>
+                  <details><summary>5. Which technical skills will be in demand in 2030?</summary><p>AI, big data, cybersecurity and technological literacy are among the fastest-growing technical skill areas identified by the WEF.</p></details>
+                  <details><summary>6. Are soft skills still important in 2030?</summary><p>Yes. Creativity, resilience, communication, leadership and collaboration remain important because technology does not remove the need for human judgment and teamwork.</p></details>
+                  <details><summary>7. What should students learn for future jobs?</summary><p>Students should develop digital literacy, AI awareness, analytical thinking, communication, problem-solving and one career-specific technical skill. Practical projects can help turn these skills into evidence for employers.</p></details>
+                  <details><summary>8. How can working professionals future-proof their careers?</summary><p>Regularly update your technical skills, learn AI tools relevant to your job, improve communication and build practical experience. Reviewing your skill set every six months can help you respond to changing job requirements.</p></details>
+                  <details><summary>9. Will degrees become less important?</summary><p>Degrees will continue to matter for many professions, but employers are also placing greater emphasis on demonstrable skills and practical experience. The strongest combination is education plus relevant, updated skills.</p></details>
+                  <details><summary>10. What is the best way to learn future skills?</summary><p>Use a combination of structured training, practical projects, real business problems and continuous practice. Learning becomes more valuable when you can demonstrate how you used a skill to produce a result.</p></details>
+                </div>
+
+                <h2>The future belongs to adaptable professionals</h2>
+                <p>The biggest lesson from the 2030 job market is simple: you do not need to predict the exact job that will exist in 2030. You need to build skills that remain useful when jobs change.</p>
+                <p>AI, data and digital technology will continue to reshape work. At the same time, analytical thinking, creativity, communication, leadership and adaptability will remain powerful human advantages.</p>
+                <p>For professionals who want to strengthen their data and technology skills, practical learning in areas such as <a href="https://www.technoexcel.in/courses/advanced-excel-training-hyderabad">Advanced Excel with AI</a>, <a href="https://www.technoexcel.in/courses">Power BI</a>, SQL, Python and data analytics can be a strong starting point.</p>
+                <p>The future of work is not simply humans versus AI. It is increasingly humans who know how to work with AI versus those who do not.</p>
+                <p className="source-note"><strong>Source:</strong> World Economic Forum, <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">The Future of Jobs Report 2025</a>.</p>
+              </>
+            ):content ? content.sections.map((s,i)=>(
               <div key={i}><h2>{s.h}</h2><p>{s.body}</p></div>
             )):(
               <div>
