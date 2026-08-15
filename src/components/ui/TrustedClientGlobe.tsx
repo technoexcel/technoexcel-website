@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const CLIENTS = [
   { name: "Coromandel", logo: "/images/clients/coromandel.png", x: 6, y: 15, delay: "0s", mobile: true },
@@ -40,15 +40,118 @@ const CITIES = [
   { name: "New York", lat: 40.7128, lng: -74.006, size: 0.18 },
 ];
 
-const ARCS = CITIES.filter((city) => city.name !== "Hyderabad").map((city) => ({
+const MAJOR_ECONOMY_MARKETS = [
+  { name: "United States", lat: 40.7128, lng: -74.006 },
+  { name: "China", lat: 39.9042, lng: 116.4074 },
+  { name: "Japan", lat: 35.6762, lng: 139.6503 },
+  { name: "Germany", lat: 52.52, lng: 13.405 },
+  { name: "United Kingdom", lat: 51.5072, lng: -0.1276 },
+  { name: "France", lat: 48.8566, lng: 2.3522 },
+  { name: "Italy", lat: 41.9028, lng: 12.4964 },
+  { name: "Canada", lat: 43.6532, lng: -79.3832 },
+  { name: "Brazil", lat: -23.5558, lng: -46.6396 },
+  { name: "Russia", lat: 55.7558, lng: 37.6173 },
+  { name: "South Korea", lat: 37.5665, lng: 126.978 },
+  { name: "Australia", lat: -33.8688, lng: 151.2093 },
+  { name: "Spain", lat: 40.4168, lng: -3.7038 },
+  { name: "Mexico", lat: 19.4326, lng: -99.1332 },
+  { name: "Indonesia", lat: -6.2088, lng: 106.8456 },
+  { name: "Netherlands", lat: 52.3676, lng: 4.9041 },
+  { name: "Turkey", lat: 41.0082, lng: 28.9784 },
+  { name: "Saudi Arabia", lat: 24.7136, lng: 46.6753 },
+  { name: "Switzerland", lat: 47.3769, lng: 8.5417 },
+  { name: "Poland", lat: 52.2297, lng: 21.0122 },
+  { name: "Taiwan", lat: 25.033, lng: 121.5654 },
+  { name: "Belgium", lat: 50.8503, lng: 4.3517 },
+  { name: "Argentina", lat: -34.6037, lng: -58.3816 },
+  { name: "Sweden", lat: 59.3293, lng: 18.0686 },
+  { name: "Ireland", lat: 53.3498, lng: -6.2603 },
+  { name: "Thailand", lat: 13.7563, lng: 100.5018 },
+  { name: "Austria", lat: 48.2082, lng: 16.3738 },
+  { name: "Norway", lat: 59.9139, lng: 10.7522 },
+  { name: "UAE", lat: 25.2048, lng: 55.2708 },
+  { name: "Singapore", lat: 1.3521, lng: 103.8198 },
+  { name: "Malaysia", lat: 3.139, lng: 101.6869 },
+  { name: "Philippines", lat: 14.5995, lng: 120.9842 },
+  { name: "Vietnam", lat: 21.0278, lng: 105.8342 },
+  { name: "South Africa", lat: -26.2041, lng: 28.0473 },
+  { name: "Denmark", lat: 55.6761, lng: 12.5683 },
+  { name: "Hong Kong", lat: 22.3193, lng: 114.1694 },
+  { name: "Egypt", lat: 30.0444, lng: 31.2357 },
+  { name: "Bangladesh", lat: 23.8103, lng: 90.4125 },
+  { name: "Nigeria", lat: 6.5244, lng: 3.3792 },
+  { name: "Israel", lat: 32.0853, lng: 34.7818 },
+];
+
+const ARCS = MAJOR_ECONOMY_MARKETS.map((market, index) => ({
   startLat: 17.385,
   startLng: 78.4867,
-  endLat: city.lat,
-  endLng: city.lng,
+  endLat: market.lat,
+  endLng: market.lng,
+  altitude: 0.16 + (index % 5) * 0.025,
+  delay: index / MAJOR_ECONOMY_MARKETS.length,
 }));
+
+const DESKTOP_LOGO_POSITION_GROUPS = [
+  [{ x: 2, y: 16 }, { x: 68, y: 14 }, { x: 28, y: 78 }],
+  [{ x: 0, y: 48 }, { x: 62, y: 2 }, { x: 70, y: 62 }],
+  [{ x: 18, y: 4 }, { x: 74, y: 36 }, { x: 34, y: 70 }],
+  [{ x: 4, y: 68 }, { x: 56, y: 12 }, { x: 66, y: 52 }],
+];
+
+const MOBILE_LOGO_POSITION_GROUPS = [
+  [{ x: 2, y: 14 }, { x: 50, y: 2 }],
+  [{ x: 0, y: 54 }, { x: 52, y: 22 }],
+  [{ x: 18, y: 2 }, { x: 48, y: 60 }],
+  [{ x: 4, y: 34 }, { x: 42, y: 8 }],
+];
+
+type VisibleLogo = {
+  id: string;
+  name: string;
+  logo: string;
+  x: number;
+  y: number;
+};
+
+function shuffleItems<T>(items: T[]) {
+  return [...items].sort(() => Math.random() - 0.5);
+}
+
+function getBatchSize(remainingCount: number, isMobile: boolean) {
+  if (isMobile) return Math.min(2, remainingCount);
+  if (remainingCount === 4 || remainingCount === 2) return 2;
+  return Math.min(3, remainingCount);
+}
+
+function pickVisibleLogos(round: number, deck: typeof CLIENTS, isMobile: boolean): { visibleLogos: VisibleLogo[]; nextDeck: typeof CLIENTS } {
+  let nextDeck = deck.length ? [...deck] : shuffleItems(CLIENTS);
+  const count = getBatchSize(nextDeck.length, isMobile);
+  const selectedClients = nextDeck.slice(0, count);
+  nextDeck = nextDeck.slice(count);
+  const positionGroups = isMobile ? MOBILE_LOGO_POSITION_GROUPS : DESKTOP_LOGO_POSITION_GROUPS;
+  const positions = positionGroups[round % positionGroups.length];
+
+  return {
+    visibleLogos: selectedClients.map((client, index) => ({
+    id: `${round}-${client.name}`,
+    name: client.name,
+    logo: client.logo,
+    x: positions[index].x,
+    y: positions[index].y,
+    })),
+    nextDeck,
+  };
+}
 
 export default function TrustedClientGlobe() {
   const mountRef = useRef<HTMLDivElement | null>(null);
+  const logoDeckRef = useRef<typeof CLIENTS>([]);
+  const [visibleLogos, setVisibleLogos] = useState<VisibleLogo[]>([
+    { id: "initial-coromandel", name: "Coromandel", logo: "/images/clients/coromandel.png", x: 4, y: 13 },
+    { id: "initial-diversey", name: "Diversey", logo: "/images/clients/diversey.png", x: 76, y: 38 },
+    { id: "initial-times", name: "Times Group", logo: "/images/clients/times-group.png", x: 18, y: 76 },
+  ]);
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -103,13 +206,13 @@ export default function TrustedClientGlobe() {
         .arcStartLng("startLng")
         .arcEndLat("endLat")
         .arcEndLng("endLng")
-        .arcColor(() => ["rgba(255,255,255,.22)", "rgba(238,35,84,.88)"])
-        .arcAltitude(0.24)
-        .arcStroke(0.45)
-        .arcDashLength(0.32)
-        .arcDashGap(1.15)
-        .arcDashInitialGap(() => Math.random())
-        .arcDashAnimateTime(4200)
+        .arcColor(() => ["rgba(255,255,255,.5)", "rgba(255,255,255,.95)"])
+        .arcAltitude("altitude")
+        .arcStroke(0.34)
+        .arcDashLength(0.82)
+        .arcDashGap(0.18)
+        .arcDashInitialGap("delay")
+        .arcDashAnimateTime(3600)
         .ringsData(CITIES.slice(0, 5))
         .ringLat("lat")
         .ringLng("lng")
@@ -140,6 +243,22 @@ export default function TrustedClientGlobe() {
     };
   }, []);
 
+  useEffect(() => {
+    let round = 1;
+    const rotateLogos = () => {
+      const isMobile = window.innerWidth <= 768;
+      const { visibleLogos: nextVisibleLogos, nextDeck } = pickVisibleLogos(round, logoDeckRef.current, isMobile);
+      logoDeckRef.current = nextDeck;
+      setVisibleLogos(nextVisibleLogos);
+      round += 1;
+    };
+
+    logoDeckRef.current = shuffleItems(CLIENTS);
+    rotateLogos();
+    const timer = window.setInterval(rotateLogos, 2600);
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <div className="te-client-globe" aria-label="Trusted client network">
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
@@ -147,16 +266,16 @@ export default function TrustedClientGlobe() {
         .te-client-globe:before{content:"";position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(238,35,84,.18),rgba(246,242,232,.08) 42%,transparent 68%);filter:blur(4px)}
         .te-globe-canvas{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:min(420px,100%)}
         .te-globe-canvas canvas{display:block!important}
-        .te-client-card{position:absolute;z-index:4;width:134px;height:72px;display:flex;align-items:center;justify-content:center;padding:14px 18px;border-radius:16px;background:rgba(255,255,255,.95);box-shadow:0 18px 45px rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.42);opacity:0;transform:translate3d(0,8px,0) scale(.96);animation:te-client-sequence 33s ease-in-out infinite;animation-delay:var(--delay)}
+        .te-client-card{position:absolute;z-index:4;width:134px;height:72px;display:flex;align-items:center;justify-content:center;padding:14px 18px;border-radius:16px;background:rgba(255,255,255,.95);box-shadow:0 18px 45px rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.42);transform:translate3d(0,0,0) scale(1);animation:te-client-pop 2.6s ease-in-out both}
         .te-client-card img{max-width:100%;max-height:44px;object-fit:contain;filter:saturate(.95)}
-        @keyframes te-client-sequence{0%,3%,100%{opacity:0;transform:translate3d(0,8px,0) scale(.96)}4.5%,8%{opacity:1;transform:translate3d(0,0,0) scale(1)}9.5%,99%{opacity:0;transform:translate3d(0,-8px,0) scale(.98)}}
+        @keyframes te-client-pop{0%,100%{opacity:0;transform:translate3d(0,8px,0) scale(.96)}12%,78%{opacity:1;transform:translate3d(0,0,0) scale(1)}}
         @media(max-width:1024px){.te-client-globe{min-height:410px}.te-client-card{width:120px;height:64px}}
-        @media(max-width:768px){.te-client-globe{min-height:340px;margin-top:28px}.te-client-globe:before{width:330px;height:330px}.te-globe-canvas{width:310px}.te-client-card{width:104px;height:58px;padding:12px}.te-client-card[data-mobile="hide"]{display:none}}
-        @media(prefers-reduced-motion:reduce){.te-client-card{animation:none;opacity:1}.te-client-card[data-mobile="hide"]{display:none}}
+        @media(max-width:768px){.te-client-globe{min-height:340px;margin-top:28px}.te-client-globe:before{width:330px;height:330px}.te-globe-canvas{width:310px}.te-client-card{width:104px;height:58px;padding:12px}}
+        @media(prefers-reduced-motion:reduce){.te-client-card{animation:none;opacity:1}}
       ` }} />
       <div ref={mountRef} className="te-globe-canvas" />
-      {CLIENTS.map((client) => (
-        <div key={client.name} className="te-client-card" data-mobile={client.mobile ? "show" : "hide"} style={{ left: `${client.x}%`, top: `${client.y}%`, ["--delay" as string]: client.delay }}>
+      {visibleLogos.map((client) => (
+        <div key={client.id} className="te-client-card" style={{ left: `${client.x}%`, top: `${client.y}%` }}>
           <img src={client.logo} alt={client.name} />
         </div>
       ))}
