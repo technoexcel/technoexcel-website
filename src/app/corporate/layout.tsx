@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: { default:"TechnoExcel — Corporate Training | Hyderabad", template:"%s | TechnoExcel" },
   description:"Data solutions, automation and corporate training. Power BI dashboards, Excel automation, data analytics. 10,000+ trained. 4.8★ Google rated.",
   metadataBase: new URL("https://technoexcel.in"),
   robots: { index:true, follow:true },

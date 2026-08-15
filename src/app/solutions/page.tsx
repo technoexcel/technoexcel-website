@@ -4,7 +4,7 @@ import PageHero from "@/components/ui/PageHero";
 import { WA } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title:"Data Solutions — Power BI, Automation & Consulting | TechnoExcel",
+  title:"Data Solutions — Power BI, Automation & Consulting",
   description:"Custom Power BI dashboards, Excel and Python automation, Power Platform apps and data consulting. Built around your data, your KPIs, your team. Hyderabad, India.",
   alternates:{canonical:"https://technoexcel.in/solutions"},
 };

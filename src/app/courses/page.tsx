@@ -4,7 +4,7 @@ import PageHero from "@/components/ui/PageHero";
 import { COURSES, WA } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title:"Data Analytics & Excel Courses Hyderabad | 10 Programs | TechnoExcel",
+  title:"Data Analytics, Excel & Power BI Courses | 10 Programs",
   description:"10 professional courses: Advanced Excel, Power BI, Data Analytics, Data Science, AI Prompt Engineering, VBA, Python, SQL, Power Platform and Data Storytelling. Live instructor-led with real business data.",
   alternates:{canonical:"https://technoexcel.in/courses"},
 };
@@ -35,7 +35,7 @@ const PAGE_CSS = `
 
 const DESCS: Record<string,string>={
   "advanced-excel-training":"From formulas and Power Query to VBA automation and AI-powered Excel tools. The most-requested course for working professionals across every industry.",
-  "power-bi-training-hyderabad":"DAX, data modeling, row-level security, Power BI Service publishing. Taught by a trainer who has built and deployed 50+ live production dashboards.",
+  "power-bi-training":"DAX, data modeling, row-level security, Power BI Service publishing. Taught by a trainer who has built and deployed 50+ live production dashboards.",
   "data-analytics-training-hyderabad":"Advanced Excel + SQL + Python + Power BI + statistics in one structured 4-month program. The complete toolkit for an analyst role — nothing left out.",
   "data-science-course":"Python, machine learning, deep learning, NLP and model deployment. Our flagship career-switching program with project-based assessment.",
   "ai-prompt-engineering-business":"ChatGPT, Claude and Microsoft Copilot for Excel, Word, Teams and Outlook. No coding required. Practical productivity skills for 2026.",

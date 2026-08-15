@@ -123,7 +123,7 @@ export const powerBICourseSchema = {
   "@type": "Course",
   "name": "Power BI Training — Corporate & Individual",
   "description": "Learn Power BI from scratch to advanced DAX, data modelling, and enterprise dashboard delivery. Corporate programs built around client KPIs and actual data.",
-  "url": "https://www.technoexcel.in/courses/power-bi-training-hyderabad",
+  "url": "https://www.technoexcel.in/courses/power-bi-training",
   "provider": { "@id": "https://www.technoexcel.in/#organization" },
   "instructor": {
     "@type": "Person",

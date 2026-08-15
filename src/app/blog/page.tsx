@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
-  title:"Excel, Power BI & Data Analytics Blog | TechnoExcel",
+  title:"Excel, Power BI & Data Analytics Blog",
   description:"Practical 2026 guides on Excel automation, Power BI dashboards, analytics careers and data skills — from real consulting and training work at TechnoExcel.",
   alternates:{canonical:"https://technoexcel.in/blog"},
 };

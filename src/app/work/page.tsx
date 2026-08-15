@@ -4,7 +4,7 @@ import PageHero from "@/components/ui/PageHero";
 import { WA } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title:"Client Work & Case Studies | TechnoExcel",
+  title:"Client Work & Case Studies",
   description:"Real case studies: ₹31L in supply chain savings, 94% invoice processing time reduction, 11-day dashboard deployment. Every number is live in production today.",
   alternates:{canonical:"https://technoexcel.in/work"},
 };

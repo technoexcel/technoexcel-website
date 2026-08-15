@@ -4,7 +4,7 @@ import TrustedClientGlobe from "@/components/ui/TrustedClientGlobe";
 import { WA } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title:"Corporate Training Programs | TechnoExcel Hyderabad",
+  title:"Corporate Training Programs",
   description:"Custom Excel, Power BI and data analytics training for corporate teams. On-site or virtual. Across India, Southeast Asia, Middle East, UK and USA. Built around your actual data.",
   alternates:{canonical:"https://technoexcel.in/corporate"},
 };

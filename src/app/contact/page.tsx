@@ -5,7 +5,7 @@ import ContactForm from "@/components/sections/ContactForm";
 import { WA, SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title:"Contact TechnoExcel | Book a Free Strategy Call",
+  title:"Contact Us | Book a Free Strategy Call",
   description:"Book a free 30-minute data strategy call. +91 88019 12200 | connect@technoexcel.in | Trimulgherry, Hyderabad — 500015.",
   alternates:{canonical:"https://technoexcel.in/contact"},
 };

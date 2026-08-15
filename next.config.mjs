@@ -52,13 +52,23 @@ const nextConfig = {
 
       // 5. INDIVIDUAL COURSE PAGES (old flat slug → /courses/[slug])
       {
+        source: "/courses/advanced-excel-training-hyderabad",
+        destination: "/courses/advanced-excel-training",
+        permanent: true,
+      },
+      {
         source: "/advanced-excel-training",
-        destination: "/courses/advanced-excel-training-hyderabad",
+        destination: "/courses/advanced-excel-training",
         permanent: true,
       },
       {
         source: "/basic-excel-training",
-        destination: "/courses/advanced-excel-training-hyderabad",
+        destination: "/courses/advanced-excel-training",
+        permanent: true,
+      },
+      {
+        source: "/courses/power-bi-training-hyderabad",
+        destination: "/courses/power-bi-training",
         permanent: true,
       },
       {
@@ -73,7 +83,7 @@ const nextConfig = {
       },
       {
         source: "/power-bi-training",
-        destination: "/courses/power-bi-training-hyderabad",
+        destination: "/courses/power-bi-training",
         permanent: true,
       },
       {

@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { CourseDetailPage } from "@/components/ui/CourseDetailPage";
-export const metadata: Metadata = { title:"Data Analytics Training Hyderabad | TechnoExcel", description:"Complete data analytics course: SQL, Python, Power BI and statistics. 4 months, live instructor-led. Hyderabad, India.", alternates:{canonical:"https://technoexcel.in/courses/data-analytics-training-hyderabad"} };
+export const metadata: Metadata = { title:"Data Analytics Training Hyderabad", description:"Complete data analytics course: SQL, Python, Power BI and statistics. 4 months, live instructor-led. Hyderabad, India.", alternates:{canonical:"https://technoexcel.in/courses/data-analytics-training-hyderabad"} };
 export default function Page() {
   return <CourseDetailPage slug="data-analytics-training-hyderabad" title="Data Analytics" duration="4 months" tagline="Excel. SQL. Python. Power BI. All of it." description="The complete analyst toolkit in one structured program. Advanced Excel first, then SQL, Python, Power BI and statistics — all taught with real business datasets so you are job-ready from day one."
     outcomes={["Master Excel Power Query, XLOOKUP and automation basics","Write complex SQL queries to extract and join data","Analyse datasets with Python Pandas and NumPy","Build production Power BI dashboards","Apply descriptive and inferential statistics correctly","Build a portfolio of 3 real projects from your own data"]}

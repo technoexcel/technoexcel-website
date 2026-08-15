@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
-  title:"About Ravi Saini — TechnoExcel Founder | 14 Years in Data",
+  title:"About Ravi Saini — Founder & Data Trainer",
   description:"TechnoExcel was founded by Ravi Saini with 14+ years in data solutions and training. 10,000+ professionals trained across India, Southeast Asia, Middle East, UK and USA.",
   alternates:{canonical:"https://technoexcel.in/about"},
 };
