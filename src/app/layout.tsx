@@ -11,6 +11,14 @@ export const metadata: Metadata = {
   description:"Data solutions, automation and corporate training. Power BI, Excel, analytics. 10,000+ trained. 4.8 Google rated. Hyderabad, India.",
   metadataBase: new URL("https://technoexcel.in"),
   robots: { index:true, follow:true },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 const GLOBAL_CSS = `
