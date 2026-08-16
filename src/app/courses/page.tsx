@@ -36,7 +36,7 @@ const PAGE_CSS = `
 const DESCS: Record<string,string>={
   "advanced-excel-training":"From formulas and Power Query to VBA automation and AI-powered Excel tools. The most-requested course for working professionals across every industry.",
   "power-bi-training":"DAX, data modeling, row-level security, Power BI Service publishing. Taught by a trainer who has built and deployed 50+ live production dashboards.",
-  "data-analytics-training-hyderabad":"Advanced Excel + SQL + Python + Power BI + statistics in one structured 4-month program. The complete toolkit for an analyst role — nothing left out.",
+  "data-analytics-training":"Advanced Excel + SQL + Python + Power BI + statistics in one structured 4-month program. The complete toolkit for an analyst role — nothing left out.",
   "data-science-course":"Python, machine learning, deep learning, NLP and model deployment. Our flagship career-switching program with project-based assessment.",
   "ai-prompt-engineering-business":"ChatGPT, Claude and Microsoft Copilot for Excel, Word, Teams and Outlook. No coding required. Practical productivity skills for 2026.",
   "vba-macros-excel":"Automate reports, build interactive tools and eliminate all manual repetition from Excel. Covers macro recording, VBA logic and real workflow automation.",

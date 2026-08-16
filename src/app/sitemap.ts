@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/contact`,                                    changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/courses/advanced-excel-training`,            changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/courses/power-bi-training`,                  changeFrequency: "monthly", priority: 0.9 },
-    { url: `${BASE}/courses/data-analytics-training-hyderabad`,  changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/courses/data-analytics-training`,            changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/courses/data-science-course`,                changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/courses/ai-prompt-engineering-business`,     changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/courses/vba-macros-excel`,                   changeFrequency: "monthly", priority: 0.8 },

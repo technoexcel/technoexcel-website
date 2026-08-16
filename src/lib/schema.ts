@@ -177,7 +177,7 @@ export const dataAnalyticsCourseSchema = {
   "@type": "Course",
   "name": "Data Analytics Training — Excel, SQL, Power BI",
   "description": "Comprehensive Data Analytics training covering Excel, SQL, Power BI and Python fundamentals. Practical, project-based learning with real business datasets.",
-  "url": "https://www.technoexcel.in/courses/data-analytics-training-hyderabad",
+  "url": "https://www.technoexcel.in/courses/data-analytics-training",
   "provider": { "@id": "https://www.technoexcel.in/#organization" },
   "courseMode": ["onsite", "online", "blended"],
   "educationalLevel": "Beginner to Advanced",

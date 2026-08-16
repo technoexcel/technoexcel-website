@@ -73,7 +73,27 @@ const nextConfig = {
       },
       {
         source: "/data-analytics",
-        destination: "/courses/data-analytics-training-hyderabad",
+        destination: "/courses/data-analytics-training",
+        permanent: true,
+      },
+      {
+        source: "/courses/data-analytics-training-hyderabad",
+        destination: "/courses/data-analytics-training",
+        permanent: true,
+      },
+      {
+        source: "/dashboard-training",
+        destination: "/courses/power-bi-training",
+        permanent: true,
+      },
+      {
+        source: "/power-bi-dashboard-training",
+        destination: "/courses/power-bi-training",
+        permanent: true,
+      },
+      {
+        source: "/hr-dashboard-training",
+        destination: "/courses/power-bi-training",
         permanent: true,
       },
       {

@@ -12,7 +12,7 @@ const URLS = [
   ["/contact",                                  "monthly","0.8"],
   ["/courses/advanced-excel-training",          "monthly","0.9"],
   ["/courses/power-bi-training",                "monthly","0.9"],
-  ["/courses/data-analytics-training-hyderabad","monthly","0.9"],
+  ["/courses/data-analytics-training","monthly","0.9"],
   ["/courses/data-science-course",              "monthly","0.9"],
   ["/courses/ai-prompt-engineering-business",   "monthly","0.9"],
   ["/courses/vba-macros-excel",                 "monthly","0.8"],
