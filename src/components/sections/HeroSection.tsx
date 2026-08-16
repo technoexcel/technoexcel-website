@@ -67,7 +67,7 @@ export default function HeroSection() {
         <div className="hero-cols" style={{ display:"grid", gridTemplateColumns:"1.1fr 0.9fr", borderTop:`1px solid ${t(.08)}`, paddingTop:32 }}>
           <div className="hero-left" style={{ paddingRight:56, borderRight:`1px solid ${t(.07)}` }}>
             <h1 style={{ fontFamily:SANS, fontWeight:700, fontSize:"clamp(18px,2.15vw,28px)", color:t(.88), lineHeight:1.18, letterSpacing:"-0.03em", marginBottom:12 }}>
-              Data Analytics, Automation and Training for Professionals and Teams
+              Data Analytics, Automation and Training for Professionals & Teams
             </h1>
             <p style={{ fontFamily:SANS, fontWeight:300, fontSize:15, color:t(.80), lineHeight:1.8, maxWidth:480, marginBottom:28 }}>
               Custom dashboards, automation and training built around your actual data and workflows, not textbook examples.
@@ -118,4 +118,5 @@ export default function HeroSection() {
     </section>
   );
 }
+
 
