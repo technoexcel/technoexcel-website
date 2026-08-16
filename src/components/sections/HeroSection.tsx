@@ -66,13 +66,11 @@ export default function HeroSection() {
 
         <div className="hero-cols" style={{ display:"grid", gridTemplateColumns:"1.1fr 0.9fr", borderTop:`1px solid ${t(.08)}`, paddingTop:32 }}>
           <div className="hero-left" style={{ paddingRight:56, borderRight:`1px solid ${t(.07)}` }}>
-            <p style={{ fontFamily:SANS, fontWeight:700, fontSize:"clamp(15px,2vw,22px)", color:t(.85), lineHeight:1.25, letterSpacing:"-0.02em", marginBottom:12 }}>
-              For teams who can&apos;t afford to guess.
-            </p>
+            <h1 style={{ fontFamily:SANS, fontWeight:700, fontSize:"clamp(18px,2.15vw,28px)", color:t(.88), lineHeight:1.18, letterSpacing:"-0.03em", marginBottom:12 }}>
+              Data Analytics, Automation and Training for Professionals and Teams
+            </h1>
             <p style={{ fontFamily:SANS, fontWeight:300, fontSize:15, color:t(.80), lineHeight:1.8, maxWidth:480, marginBottom:28 }}>
-              Custom dashboards, automation &amp; training built around{" "}
-              <strong style={{ color:t(.8), fontWeight:500 }}>your actual data</strong>{" "}
-              and workflows — not textbook examples.
+              Custom dashboards, automation and training built around your actual data and workflows, not textbook examples.
             </p>
             <div className="hero-btns" style={{ display:"flex", gap:12, flexWrap:"wrap", marginBottom:28 }}>
               <a href="/contact" style={{ display:"inline-flex", alignItems:"center", background:RED, color:"#fff", fontFamily:SANS, fontWeight:700, fontSize:14, padding:"14px 28px", borderRadius:12, textDecoration:"none" }}>
@@ -120,3 +118,4 @@ export default function HeroSection() {
     </section>
   );
 }
+
