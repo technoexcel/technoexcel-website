@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "../page";
 import { WA, COURSES } from "@/lib/constants";
+import PL300Article from "./PL300Article";
 
 const INK="#13293C",RED="#EE2354",BG="#0d1f2d",CREAM="#F4F2EE";
 const SANS="var(--font-jakarta,'Plus Jakarta Sans',sans-serif)";
@@ -111,6 +112,17 @@ export function generateMetadata({params}:{params:{slug:string}}):Metadata{
   const post=BLOG_POSTS.find(p=>p.slug===params.slug);
   if(!post)return{};
   const isSkills2030=params.slug==="skills-for-jobs-in-2030";
+  const isPL300=params.slug==="pl-300-power-bi-training";
+  if(isPL300){
+    const title="PL-300 Power BI Training: Exam Guide & Preparation";
+    const description="Learn what PL-300 covers, its 2026 exam domains, DAX, Power Query, Copilot, exam format, and how to choose the right Power BI training.";
+    const url="https://technoexcel.in/blog/pl-300-power-bi-training";
+    return{
+      title:{absolute:title},description,alternates:{canonical:url},
+      openGraph:{type:"article",title,description,url},
+      twitter:{card:"summary",title,description},
+    };
+  }
   const description=isSkills2030?"Explore the top skills for jobs in 2030, including AI, data analytics, cybersecurity, creativity and lifelong learning.":post.excerpt;
   return{
     title:isSkills2030?"Top Skills for Jobs in 2030 | Future Career Guide":post.title+" | Blog",
@@ -163,6 +175,9 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
         <style suppressHydrationWarning dangerouslySetInnerHTML={{__html:`
           #te-bb .body-inner{max-width:860px;margin:0 auto}
           #te-bb .art h2{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(18px,2.5vw,24px);color:#13293C;letter-spacing:-0.3px;margin-bottom:14px;margin-top:44px;line-height:1.2}
+          #te-bb .art h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:18px;color:#13293C;margin:30px 0 12px;line-height:1.3}
+          #te-bb .art .checklist{list-style:none;margin-left:0}
+          #te-bb .art .checklist li::before{content:'☐';margin-right:10px;color:#EE2354;font-weight:700}
           #te-bb .art p{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;color:rgba(19,41,60,0.72);line-height:1.92;margin-bottom:0}
           #te-bb .art p+p{margin-top:16px}
           #te-bb .art ul,#te-bb .art ol{margin:16px 0 0 22px;color:rgba(19,41,60,.72);font-size:16px;line-height:1.85}
@@ -211,7 +226,7 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
 
           {/* Article body */}
           <div className="art">
-            {post!.slug==="skills-for-jobs-in-2030"?(
+            {post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="skills-for-jobs-in-2030"?(
               <>
                 <p>The job market is changing faster than traditional career paths. According to the World Economic Forum’s <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">Future of Jobs Report 2025</a>, 170 million new jobs could be created by 2030 while 92 million jobs could be displaced, creating a net increase of 78 million roles. The report also says nearly 40% of the skills required at work are expected to change.</p>
                 <p>That means a degree alone may not be enough. Professionals will need a mix of technology skills, business knowledge and human skills to stay relevant.</p>
