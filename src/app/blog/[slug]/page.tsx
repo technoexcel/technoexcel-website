@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "../page";
 import { WA, COURSES } from "@/lib/constants";
 import PL300Article from "./PL300Article";
+import PL900Article from "./PL900Article";
 
 const INK="#13293C",RED="#EE2354",BG="#0d1f2d",CREAM="#F4F2EE";
 const SANS="var(--font-jakarta,'Plus Jakarta Sans',sans-serif)";
@@ -113,6 +114,18 @@ export function generateMetadata({params}:{params:{slug:string}}):Metadata{
   if(!post)return{};
   const isSkills2030=params.slug==="skills-for-jobs-in-2030";
   const isPL300=params.slug==="pl-300-power-bi-training";
+  const isPL900=params.slug==="microsoft-power-platform-fundamentals-pl-900";
+  if(isPL900){
+    const title="Microsoft Power Platform Fundamentals: PL-900 Guide 2026";
+    const description="Learn Microsoft Power Platform Fundamentals and prepare for PL-900 in 2026 with Power Apps, Power Automate, Dataverse and Copilot Studio.";
+    const url="https://technoexcel.in/blog/microsoft-power-platform-fundamentals-pl-900";
+    const image="/images/blog/microsoft-power-platform-fundamentals-pl-900.jpg";
+    return{
+      title:{absolute:title},description,alternates:{canonical:url},
+      openGraph:{type:"article",title,description,url,images:[{url:image,width:1536,height:1024,alt:"Microsoft Power Platform Fundamentals PL-900 complete guide 2026"}]},
+      twitter:{card:"summary_large_image",title,description,images:[image]},
+    };
+  }
   if(isPL300){
     const title="PL-300 Power BI Training: Exam Guide & Preparation";
     const description="Learn what PL-300 covers, its 2026 exam domains, DAX, Power Query, Copilot, exam format, and how to choose the right Power BI training.";
@@ -209,6 +222,13 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
             {post!.excerpt}
           </p>
 
+          {post!.slug==="microsoft-power-platform-fundamentals-pl-900"&&(
+            <figure style={{margin:"0 0 44px"}}>
+              <img src="/images/blog/microsoft-power-platform-fundamentals-pl-900.jpg" alt="Microsoft Power Platform Fundamentals PL-900 complete guide 2026" width={1536} height={1024} style={{display:"block",width:"100%",height:"auto",borderRadius:18,border:"1px solid rgba(19,41,60,.08)"}} />
+              <figcaption style={{fontFamily:MONO,fontSize:10,color:"rgba(19,41,60,.48)",marginTop:10,lineHeight:1.6}}>A practical 2026 guide to the PL-900 exam and the Microsoft Power Platform ecosystem.</figcaption>
+            </figure>
+          )}
+
           {post!.slug==="skills-for-jobs-in-2030"&&(
             <figure style={{margin:"0 0 44px"}}>
               <img
@@ -226,7 +246,7 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
 
           {/* Article body */}
           <div className="art">
-            {post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="skills-for-jobs-in-2030"?(
+            {post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
               <>
                 <p>The job market is changing faster than traditional career paths. According to the World Economic Forum’s <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">Future of Jobs Report 2025</a>, 170 million new jobs could be created by 2030 while 92 million jobs could be displaced, creating a net increase of 78 million roles. The report also says nearly 40% of the skills required at work are expected to change.</p>
                 <p>That means a degree alone may not be enough. Professionals will need a mix of technology skills, business knowledge and human skills to stay relevant.</p>
