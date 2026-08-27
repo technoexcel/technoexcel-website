@@ -6,12 +6,15 @@ import { WA, COURSES } from "@/lib/constants";
 import PL300Article from "./PL300Article";
 import PL900Article from "./PL900Article";
 import DataAnalystSkillsArticle from "./DataAnalystSkillsArticle";
+import MicrosoftOfficeCertificationArticle from "./MicrosoftOfficeCertificationArticle";
+import ArticleImageCarousel from "./ArticleImageCarousel";
 
 const INK="#13293C",RED="#EE2354",BG="#0d1f2d",CREAM="#F4F2EE";
 const SANS="var(--font-jakarta,'Plus Jakarta Sans',sans-serif)";
 const MONO="var(--font-mono,'Space Mono',monospace)";
 
 const ARTICLE_DATA: Record<string,{relatedSlug:string;relatedCourse:string;sections:{h:string;body:string}[]}> = {
+  "microsoft-office-certification":{relatedSlug:"advanced-excel-training-hyderabad",relatedCourse:"Advanced Excel with AI",sections:[]},
   "skills-for-jobs-in-2030":{relatedSlug:"data-analytics-training",relatedCourse:"Data Analytics",sections:[
     {h:"What skills will be most important for jobs in 2030?",body:"The most important skills for jobs in 2030 will include AI and big data, analytical thinking, technological literacy, creativity, adaptability, communication, leadership, cybersecurity, sustainability and lifelong learning. Employers will increasingly value people who can use technology while making good decisions, solving real problems and working effectively with others."},
     {h:"1. AI and big data skills",body:"AI and big data are among the fastest-growing skill areas for the 2030 job market. This does not mean everyone needs to become an AI engineer. It means professionals should understand how AI works, how to use AI tools responsibly and how to evaluate their outputs. The advantage will go to people who understand both the tool and the business problem."},
@@ -117,6 +120,18 @@ export function generateMetadata({params}:{params:{slug:string}}):Metadata{
   const isPL300=params.slug==="pl-300-power-bi-training";
   const isPL900=params.slug==="microsoft-power-platform-fundamentals-pl-900";
   const isDataAnalystSkills=params.slug==="skills-to-become-a-data-analyst";
+  const isMicrosoftOfficeCertification=params.slug==="microsoft-office-certification";
+  if(isMicrosoftOfficeCertification){
+    const title="What Is Microsoft Office Certification & How to Get It?";
+    const description="Learn what Microsoft Office certification is, how MOS exams work, costs, benefits, preparation and which certification is right for your career.";
+    const url="https://technoexcel.in/blog/microsoft-office-certification";
+    const image="/images/blog/microsoft-office-certification/guide.jpg";
+    return{
+      title:{absolute:title},description,alternates:{canonical:url},
+      openGraph:{type:"article",title,description,url,images:[{url:image,width:1536,height:1024,alt:"Guide to Microsoft Office certification"}]},
+      twitter:{card:"summary_large_image",title,description,images:[image]},
+    };
+  }
   if(isDataAnalystSkills){
     const title="Data Analyst Skills: 12 Skills You Need in 2026";
     const description="Discover the top data analyst skills for beginners and freshers, from Excel and SQL to Power BI, Python, AI and data storytelling.";
@@ -219,6 +234,18 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
           #te-bb .faq-list summary{cursor:pointer;padding:18px 0;font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;color:#13293C;line-height:1.45}
           #te-bb .faq-list details p{padding:0 0 18px}
           #te-bb .source-note{margin-top:44px;padding:20px 22px;background:#F4F2EE;border-radius:12px;font-size:13px!important;line-height:1.75!important}
+          #te-bb .article-carousel{position:relative;margin:0 0 44px}
+          #te-bb .carousel-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:18px;background:#F4F2EE;box-shadow:0 14px 40px rgba(19,41,60,.10)}
+          #te-bb .carousel-track::-webkit-scrollbar{display:none}
+          #te-bb .carousel-slide{min-width:100%;scroll-snap-align:center}
+          #te-bb .carousel-slide img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:18px 18px 0 0}
+          #te-bb .carousel-slide figcaption{font-family:'Space Mono',monospace;font-size:10px;color:rgba(19,41,60,.58);padding:12px 54px 14px;line-height:1.6}
+          #te-bb .carousel-arrow{position:absolute;top:calc(50% - 28px);width:42px;height:42px;border:0;border-radius:50%;background:rgba(13,31,45,.88);color:#fff;font-size:20px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+          #te-bb .carousel-arrow.previous{left:14px}.carousel-arrow.next{right:14px}
+          #te-bb .carousel-controls{display:flex;justify-content:center;gap:8;margin-top:14px}
+          #te-bb .carousel-controls button{width:9px;height:9px;border:0;border-radius:999px;background:rgba(19,41,60,.22);padding:0;cursor:pointer;transition:width .2s,background .2s}
+          #te-bb .carousel-controls button.active{width:28px;background:#EE2354}
+          #te-bb .carousel-controls .carousel-toggle{width:auto;height:24px;margin-left:8px;padding:0 10px;border:1px solid rgba(19,41,60,.16);background:#fff;color:rgba(19,41,60,.70);font-family:'Space Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
           #te-bb .cta-box{background:#F4F2EE;border-radius:18px;padding:32px;margin:44px 0}
           #te-bb .cta-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
           #te-bb .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
@@ -264,9 +291,11 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
             </figure>
           )}
 
+          {post!.slug==="microsoft-office-certification"&&<ArticleImageCarousel />}
+
           {/* Article body */}
           <div className="art">
-            {post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
+            {post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
               <>
                 <p>The job market is changing faster than traditional career paths. According to the World Economic Forum’s <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">Future of Jobs Report 2025</a>, 170 million new jobs could be created by 2030 while 92 million jobs could be displaced, creating a net increase of 78 million roles. The report also says nearly 40% of the skills required at work are expected to change.</p>
                 <p>That means a degree alone may not be enough. Professionals will need a mix of technology skills, business knowledge and human skills to stay relevant.</p>

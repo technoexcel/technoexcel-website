@@ -84,6 +84,7 @@ const INSIGHTS = [
 ];
 
 export const BLOG_POSTS=[
+  {slug:"microsoft-office-certification",title:"What Is Microsoft Office Certification and How Do You Get It?",cat:"Certification",date:"Aug 2026",read:"14 min",excerpt:"Microsoft Office certification validates your ability to use Microsoft Office applications such as Excel, Word and PowerPoint. The Microsoft Office Specialist (MOS) program offers application-specific certifications, with Associate and Expert pathways depending on the Microsoft Office version and your skill level.",tags:["Microsoft Office","MOS","Excel","Certification"]},
   {slug:"skills-to-become-a-data-analyst",title:"Data Analyst Skills: 12 Skills You Need in 2026",cat:"Career",date:"Aug 2026",read:"13 min",excerpt:"The most important data analyst skills include Excel, SQL, data cleaning, statistics, Power BI, data visualization, Python, analytical thinking, communication, business understanding, AI literacy and problem-solving. You do not need to master everything at once; start with the core skills and build through projects.",tags:["Data Analyst","Excel","SQL","Power BI","Python"]},
   {slug:"microsoft-power-platform-fundamentals-pl-900",title:"Microsoft Power Platform Fundamentals: PL-900 Guide 2026",cat:"Power Platform",date:"Aug 2026",read:"14 min",excerpt:"Microsoft Power Platform Fundamentals (PL-900) is a beginner-level certification covering Power Apps, Power Automate, Dataverse, Power Platform administration, and Copilot Studio. The exam blueprint was updated on July 24, 2026, so older PL-900 guides may not reflect the current exam.",tags:["PL-900","Power Platform","Power Apps","Power Automate","Copilot Studio"]},
   {slug:"pl-300-power-bi-training",title:"PL-300 Power BI Training: Exam Guide, Skills, and Preparation",cat:"Power BI",date:"Aug 2026",read:"12 min",excerpt:"The PL-300 exam is Microsoft’s certification exam for Power BI Data Analysts. It tests four areas: preparing data, modeling data, visualizing and analyzing data, and managing and securing Power BI. The current exam requires a score of 700 or higher and has a 100-minute duration.",tags:["PL-300","Power BI","Certification","DAX"]},
@@ -107,6 +108,7 @@ const CAT_COLORS: Record<string,[string,string]>={
   "AI":["rgba(217,119,6,.08)","#d97706"],
   "Case Study":["rgba(124,58,237,.08)","#7c3aed"],
   "Career":["rgba(20,184,166,.08)","#0d9488"],
+  "Certification":["rgba(13,115,119,.08)","#0d7377"],
   "Energy & Strategy":["rgba(15,34,68,.08)","#0F2244"],
 };
 
