@@ -7,6 +7,7 @@ import PL300Article from "./PL300Article";
 import PL900Article from "./PL900Article";
 import DataAnalystSkillsArticle from "./DataAnalystSkillsArticle";
 import MicrosoftOfficeCertificationArticle from "./MicrosoftOfficeCertificationArticle";
+import MicrosoftExcelCertificationArticle from "./MicrosoftExcelCertificationArticle";
 import ArticleImageCarousel from "./ArticleImageCarousel";
 
 const INK="#13293C",RED="#EE2354",BG="#0d1f2d",CREAM="#F4F2EE";
@@ -14,6 +15,7 @@ const SANS="var(--font-jakarta,'Plus Jakarta Sans',sans-serif)";
 const MONO="var(--font-mono,'Space Mono',monospace)";
 
 const ARTICLE_DATA: Record<string,{relatedSlug:string;relatedCourse:string;sections:{h:string;body:string}[]}> = {
+  "microsoft-excel-certification":{relatedSlug:"advanced-excel-training-hyderabad",relatedCourse:"Advanced Excel with AI",sections:[]},
   "microsoft-office-certification":{relatedSlug:"advanced-excel-training-hyderabad",relatedCourse:"Advanced Excel with AI",sections:[]},
   "skills-for-jobs-in-2030":{relatedSlug:"data-analytics-training",relatedCourse:"Data Analytics",sections:[
     {h:"What skills will be most important for jobs in 2030?",body:"The most important skills for jobs in 2030 will include AI and big data, analytical thinking, technological literacy, creativity, adaptability, communication, leadership, cybersecurity, sustainability and lifelong learning. Employers will increasingly value people who can use technology while making good decisions, solving real problems and working effectively with others."},
@@ -121,6 +123,18 @@ export function generateMetadata({params}:{params:{slug:string}}):Metadata{
   const isPL900=params.slug==="microsoft-power-platform-fundamentals-pl-900";
   const isDataAnalystSkills=params.slug==="skills-to-become-a-data-analyst";
   const isMicrosoftOfficeCertification=params.slug==="microsoft-office-certification";
+  const isMicrosoftExcelCertification=params.slug==="microsoft-excel-certification";
+  if(isMicrosoftExcelCertification){
+    const title="Microsoft Excel Certification: How to Get Certified";
+    const description="Learn what Microsoft Excel certification is, MO-210 vs MO-211, exam cost, skills, preparation and career benefits.";
+    const url="https://technoexcel.in/blog/microsoft-excel-certification";
+    const image="/images/blog/microsoft-excel-certification.jpg";
+    return{
+      title:{absolute:title},description,alternates:{canonical:url},
+      openGraph:{type:"article",title,description,url,images:[{url:image,width:1536,height:1024,alt:"Microsoft Excel certification skills, exam paths and career benefits"}]},
+      twitter:{card:"summary_large_image",title,description,images:[image]},
+    };
+  }
   if(isMicrosoftOfficeCertification){
     const title="What Is Microsoft Office Certification & How to Get It?";
     const description="Learn what Microsoft Office certification is, how MOS exams work, costs, benefits, preparation and which certification is right for your career.";
@@ -292,10 +306,16 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
           )}
 
           {post!.slug==="microsoft-office-certification"&&<ArticleImageCarousel />}
+          {post!.slug==="microsoft-excel-certification"&&(
+            <figure style={{margin:"0 0 44px"}}>
+              <img src="/images/blog/microsoft-excel-certification.jpg" alt="Microsoft Excel certification skills, exam paths and career benefits" width={1536} height={1024} style={{display:"block",width:"100%",height:"auto",borderRadius:18,border:"1px solid rgba(19,41,60,.08)"}} />
+              <figcaption style={{fontFamily:MONO,fontSize:10,color:"rgba(19,41,60,.48)",marginTop:10,lineHeight:1.6}}>Excel Associate and Expert certification paths, practical skills and career benefits.</figcaption>
+            </figure>
+          )}
 
           {/* Article body */}
           <div className="art">
-            {post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
+            {post!.slug==="microsoft-excel-certification"?(<MicrosoftExcelCertificationArticle />):post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
               <>
                 <p>The job market is changing faster than traditional career paths. According to the World Economic Forum’s <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">Future of Jobs Report 2025</a>, 170 million new jobs could be created by 2030 while 92 million jobs could be displaced, creating a net increase of 78 million roles. The report also says nearly 40% of the skills required at work are expected to change.</p>
                 <p>That means a degree alone may not be enough. Professionals will need a mix of technology skills, business knowledge and human skills to stay relevant.</p>
