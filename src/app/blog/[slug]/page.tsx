@@ -13,12 +13,14 @@ import PowerBIInterviewQuestionsArticle from "./PowerBIInterviewQuestionsArticle
 import PowerBIDeveloperRoadmapArticle from "./PowerBIDeveloperRoadmapArticle";
 import OmanVision2040Article from "./OmanVision2040Article";
 import DataAnalyticsSkillsOmanArticle from "./DataAnalyticsSkillsOmanArticle";
+import PowerBISkillsOmanArticle from "./PowerBISkillsOmanArticle";
 
 const INK="#13293C",RED="#EE2354",BG="#0d1f2d",CREAM="#F4F2EE";
 const SANS="var(--font-jakarta,'Plus Jakarta Sans',sans-serif)";
 const MONO="var(--font-mono,'Space Mono',monospace)";
 
 const ARTICLE_DATA: Record<string,{relatedSlug:string;relatedCourse:string;sections:{h:string;body:string}[]}> = {
+  "power-bi-skills-oman-businesses":{relatedSlug:"power-bi-training",relatedCourse:"Power BI Mastery",sections:[]},
   "data-analytics-skills-oman":{relatedSlug:"data-analytics-training",relatedCourse:"Data Analytics",sections:[]},
   "oman-vision-2040-digital-skills":{relatedSlug:"data-analytics-training",relatedCourse:"Data Analytics",sections:[]},
   "power-bi-developer-roadmap-2026":{relatedSlug:"power-bi-training",relatedCourse:"Power BI Mastery",sections:[]},
@@ -133,6 +135,18 @@ export function generateMetadata({params}:{params:{slug:string}}):Metadata{
   const isPowerBIDeveloperRoadmap=params.slug==="power-bi-developer-roadmap-2026";
   const isOmanVision2040=params.slug==="oman-vision-2040-digital-skills";
   const isDataAnalyticsOman=params.slug==="data-analytics-skills-oman";
+  const isPowerBISkillsOman=params.slug==="power-bi-skills-oman-businesses";
+  if(isPowerBISkillsOman){
+    const title="Power BI Skills in Oman: Why Businesses Need Them";
+    const description="Learn how Power BI helps businesses in Oman improve reporting, track KPIs and make better data-driven decisions.";
+    const url="https://technoexcel.in/blog/power-bi-skills-oman-businesses";
+    const image="/images/blog/power-bi-skills-oman-businesses.jpg";
+    return{
+      title:{absolute:title},description,alternates:{canonical:url},
+      openGraph:{type:"article",title,description,url,images:[{url:image,width:1536,height:1024,alt:"Why Power BI skills matter for modern businesses in Oman"}]},
+      twitter:{card:"summary_large_image",title,description,images:[image]},
+    };
+  }
   if(isDataAnalyticsOman){
     const title="Data Analytics Skills in Oman: Future Workforce Guide";
     const description="Explore the key data analytics skills professionals in Oman need, from Excel and Power BI to SQL, Python, AI and data storytelling.";
@@ -349,6 +363,12 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
               <img src="/images/blog/data-analytics-skills-oman.jpg" alt="Data analytics career roadmap for professionals in Oman" width={1254} height={1254} style={{display:"block",width:"100%",height:"auto",borderRadius:18,border:"1px solid rgba(19,41,60,.08)"}} />
             </div>
           )}
+          {post!.slug==="power-bi-skills-oman-businesses"&&(
+            <figure style={{margin:"0 0 44px"}}>
+              <img src="/images/blog/power-bi-skills-oman-businesses.jpg" alt="Why Power BI skills matter for modern businesses in Oman" width={1536} height={1024} style={{display:"block",width:"100%",height:"auto",borderRadius:18,border:"1px solid rgba(19,41,60,.08)"}} />
+              <figcaption style={{fontFamily:MONO,fontSize:10,color:"rgba(19,41,60,.48)",marginTop:10,lineHeight:1.6}}>Better insights, smarter decisions and a stronger data-driven future for businesses in Oman.</figcaption>
+            </figure>
+          )}
 
           {post!.slug==="power-bi-interview-questions"&&(
             <figure style={{margin:"0 0 44px"}}>
@@ -396,7 +416,7 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
 
           {/* Article body */}
           <div className="art">
-            {post!.slug==="data-analytics-skills-oman"?(<DataAnalyticsSkillsOmanArticle />):post!.slug==="oman-vision-2040-digital-skills"?(<OmanVision2040Article />):post!.slug==="power-bi-developer-roadmap-2026"?(<PowerBIDeveloperRoadmapArticle />):post!.slug==="power-bi-interview-questions"?(<PowerBIInterviewQuestionsArticle />):post!.slug==="microsoft-excel-certification"?(<MicrosoftExcelCertificationArticle />):post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
+            {post!.slug==="power-bi-skills-oman-businesses"?(<PowerBISkillsOmanArticle />):post!.slug==="data-analytics-skills-oman"?(<DataAnalyticsSkillsOmanArticle />):post!.slug==="oman-vision-2040-digital-skills"?(<OmanVision2040Article />):post!.slug==="power-bi-developer-roadmap-2026"?(<PowerBIDeveloperRoadmapArticle />):post!.slug==="power-bi-interview-questions"?(<PowerBIInterviewQuestionsArticle />):post!.slug==="microsoft-excel-certification"?(<MicrosoftExcelCertificationArticle />):post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
               <>
                 <p>The job market is changing faster than traditional career paths. According to the World Economic Forum’s <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">Future of Jobs Report 2025</a>, 170 million new jobs could be created by 2030 while 92 million jobs could be displaced, creating a net increase of 78 million roles. The report also says nearly 40% of the skills required at work are expected to change.</p>
                 <p>That means a degree alone may not be enough. Professionals will need a mix of technology skills, business knowledge and human skills to stay relevant.</p>
