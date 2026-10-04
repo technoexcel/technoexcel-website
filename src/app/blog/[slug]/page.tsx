@@ -253,8 +253,8 @@ export function generateMetadata({params}:{params:{slug:string}}):Metadata{
     };
   }
   if(isPL900){
-    const title="Microsoft Power Platform Fundamentals: PL-900 Guide 2026";
-    const description="Learn Microsoft Power Platform Fundamentals and prepare for PL-900 in 2026 with Power Apps, Power Automate, Dataverse and Copilot Studio.";
+    const title="PL-900 Study Guide 2026: What Changed & How to Prep";
+    const description="PL-900 changed on July 24, 2026 - Copilot Studio is now a major exam domain. See the 5 current domains, weights, and a step-by-step study plan.";
     const url="https://technoexcel.in/blog/microsoft-power-platform-fundamentals-pl-900";
     const image="/images/blog/microsoft-power-platform-fundamentals-pl-900.jpg";
     return{
@@ -315,7 +315,7 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
           <span style={{fontSize:11,fontWeight:700,padding:"4px 12px",borderRadius:20,background:"rgba(238,35,84,.18)",color:RED,display:"inline-block",marginBottom:18}}>{post!.cat}</span>
           <h1 style={{fontFamily:SANS,fontWeight:800,fontSize:"clamp(24px,4vw,50px)",lineHeight:1.02,letterSpacing:"-0.04em",color:"#fff",marginBottom:18}}>{post!.title}</h1>
           <div style={{display:"flex",gap:16,fontFamily:MONO,fontSize:11,color:"rgba(255,255,255,.52)",flexWrap:"wrap"}}>
-            <span>{post!.date}</span><span>·</span><span>{post!.read} read</span><span>·</span><span>Updated for 2026</span>
+            <span>{post!.date}</span><span>·</span><span>{post!.read} read</span><span>·</span><span>{post!.slug==="microsoft-power-platform-fundamentals-pl-900"?<time dateTime="2026-10-04">Last updated: 4 October 2026</time>:"Updated for 2026"}</span>
           </div>
         </div>
       </section>
