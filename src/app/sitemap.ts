@@ -8,6 +8,7 @@ const BASE = "https://www.technoexcel.in";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
+    { url: `${BASE}/blog/python-skills-for-data-analysts-2026`, lastModified: "2026-10-04", changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}`,                                            changeFrequency: "weekly",  priority: 1.0 },
     { url: `${BASE}/solutions`,                                  changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/work`,                                       changeFrequency: "monthly", priority: 0.8 },

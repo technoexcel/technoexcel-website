@@ -1,4 +1,5 @@
 import React from "react";
+import PythonSkillsArticle from "./PythonSkillsArticle";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "../page";
@@ -21,6 +22,7 @@ const SANS="var(--font-jakarta,'Plus Jakarta Sans',sans-serif)";
 const MONO="var(--font-mono,'Space Mono',monospace)";
 
 const ARTICLE_DATA: Record<string,{relatedSlug:string;relatedCourse:string;sections:{h:string;body:string}[]}> = {
+  "python-skills-for-data-analysts-2026":{relatedSlug:"python-data-analytics",relatedCourse:"Python for Data Analytics",sections:[]},
   "power-bi-skills-oman-businesses":{relatedSlug:"power-bi-training",relatedCourse:"Power BI Mastery",sections:[]},
   "advanced-excel-skills-oman":{relatedSlug:"advanced-excel-training",relatedCourse:"Advanced Excel",sections:[]},
   "data-analytics-skills-oman":{relatedSlug:"data-analytics-training",relatedCourse:"Data Analytics",sections:[]},
@@ -129,6 +131,16 @@ export function generateStaticParams(){
 export function generateMetadata({params}:{params:{slug:string}}):Metadata{
   const post=BLOG_POSTS.find(p=>p.slug===params.slug);
   if(!post)return{};
+
+  if(params.slug==="python-skills-for-data-analysts-2026"){
+    const title="Python Skills for Data Analysts in 2026: Complete Guide";
+    const description="Learn the Python skills data analysts need in 2026, from Pandas and NumPy to data cleaning, visualization and automation. Start your roadmap.";
+    const url="https://technoexcel.in/blog/python-skills-for-data-analysts-2026";
+    const image="/images/blog/python-skills-for-data-analysts-2026.jpg";
+    return{title:{absolute:title},description,alternates:{canonical:url},
+      openGraph:{type:"article",title,description,url,images:[{url:image,width:1600,height:900,alt:title}]},
+      twitter:{card:"summary_large_image",title,description,images:[image]}};
+  }
   const isSkills2030=params.slug==="skills-for-jobs-in-2030";
   const isPL300=params.slug==="pl-300-power-bi-training";
   const isPL900=params.slug==="microsoft-power-platform-fundamentals-pl-900";
@@ -434,9 +446,10 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
             </figure>
           )}
 
+{post!.slug==="python-skills-for-data-analysts-2026"&&(<figure style={{margin:"0 0 44px"}}><img src="/images/blog/python-skills-for-data-analysts-2026.jpg" alt="Python skills for data analysts: Pandas, NumPy, visualization and automation" width={1600} height={900} style={{display:"block",width:"100%",height:"auto",borderRadius:18,border:"1px solid rgba(19,41,60,.08)"}} /></figure>)}
           {/* Article body */}
           <div className="art">
-            {post!.slug==="power-bi-skills-oman-businesses"?(<PowerBISkillsOmanArticle />):post!.slug==="advanced-excel-skills-oman"?(<AdvancedExcelSkillsOmanArticle />):post!.slug==="data-analytics-skills-oman"?(<DataAnalyticsSkillsOmanArticle />):post!.slug==="oman-vision-2040-digital-skills"?(<OmanVision2040Article />):post!.slug==="power-bi-developer-roadmap-2026"?(<PowerBIDeveloperRoadmapArticle />):post!.slug==="power-bi-interview-questions"?(<PowerBIInterviewQuestionsArticle />):post!.slug==="microsoft-excel-certification"?(<MicrosoftExcelCertificationArticle />):post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
+            {post!.slug==="python-skills-for-data-analysts-2026"?(<PythonSkillsArticle />):post!.slug==="power-bi-skills-oman-businesses"?(<PowerBISkillsOmanArticle />):post!.slug==="advanced-excel-skills-oman"?(<AdvancedExcelSkillsOmanArticle />):post!.slug==="data-analytics-skills-oman"?(<DataAnalyticsSkillsOmanArticle />):post!.slug==="oman-vision-2040-digital-skills"?(<OmanVision2040Article />):post!.slug==="power-bi-developer-roadmap-2026"?(<PowerBIDeveloperRoadmapArticle />):post!.slug==="power-bi-interview-questions"?(<PowerBIInterviewQuestionsArticle />):post!.slug==="microsoft-excel-certification"?(<MicrosoftExcelCertificationArticle />):post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
               <>
                 <p>The job market is changing faster than traditional career paths. According to the World Economic Forum’s <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">Future of Jobs Report 2025</a>, 170 million new jobs could be created by 2030 while 92 million jobs could be displaced, creating a net increase of 78 million roles. The report also says nearly 40% of the skills required at work are expected to change.</p>
                 <p>That means a degree alone may not be enough. Professionals will need a mix of technology skills, business knowledge and human skills to stay relevant.</p>
