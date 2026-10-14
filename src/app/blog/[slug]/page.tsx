@@ -1,3 +1,5 @@
+import PythonAutomationArticle from "./PythonAutomationArticle";
+import PythonAutomationGallery from "./PythonAutomationGallery";
 import PythonVsExcelArticle from "./PythonVsExcelArticle";
 import PythonWorthArticle from "./PythonWorthArticle";
 import React from "react";
@@ -24,6 +26,7 @@ const SANS="var(--font-jakarta,'Plus Jakarta Sans',sans-serif)";
 const MONO="var(--font-mono,'Space Mono',monospace)";
 
 const ARTICLE_DATA: Record<string,{relatedSlug:string;relatedCourse:string;sections:{h:string;body:string}[]}> = {
+  "python-automation-for-business":{relatedSlug:"python-data-analytics",relatedCourse:"Python for Data Analytics",sections:[]},
   "python-vs-excel-data-analysis":{relatedSlug:"python-data-analytics",relatedCourse:"Python for Data Analytics",sections:[]},
   "is-python-worth-learning-2026":{relatedSlug:"python-data-analytics",relatedCourse:"Python for Data Analytics",sections:[]},
   "python-skills-for-data-analysts-2026":{relatedSlug:"python-data-analytics",relatedCourse:"Python for Data Analytics",sections:[]},
@@ -135,6 +138,11 @@ export function generateStaticParams(){
 export function generateMetadata({params}:{params:{slug:string}}):Metadata{
   const post=BLOG_POSTS.find(p=>p.slug===params.slug);
   if(!post)return{};
+  if(params.slug==="python-automation-for-business"){
+    const title="Python Automation for Business Tasks and Reports",description="Learn how Python automation for business can streamline Excel reports, data cleaning, file handling and repetitive tasks. Explore practical examples.",url="https://technoexcel.in/blog/python-automation-for-business",image="/images/blog/python-automation-for-business.jpg";
+    return{title:{absolute:title},description,alternates:{canonical:url},openGraph:{type:"article",title,description,url,images:[{url:image,width:1536,height:1024,alt:"Python Automation for Business: 10 Practical Use Cases"}]},twitter:{card:"summary_large_image",title,description,images:[image]}};
+  }
+
   if(params.slug==="python-vs-excel-data-analysis"){
     const title="Python vs Excel for Data Analysis: 2026 Guide"; const description="Python vs Excel for data analysis: compare features, automation, data size, AI and career value. Learn when to use each tool in 2026.";
     const url="https://technoexcel.in/blog/python-vs-excel-data-analysis"; const image="/images/blog/python-vs-excel-data-analysis.jpg";
@@ -465,10 +473,11 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
 
 {post!.slug==="is-python-worth-learning-2026"&&(<figure style={{margin:"0 0 44px"}}><img src="/images/blog/is-python-worth-learning-2026.jpg" alt="Is Python still worth learning in 2026: Python, AI, data analytics, automation and career growth" width={1600} height={900} style={{display:"block",width:"100%",height:"auto",borderRadius:18}} /></figure>)}
 {post!.slug==="python-skills-for-data-analysts-2026"&&(<figure style={{margin:"0 0 44px"}}><img src="/images/blog/python-skills-for-data-analysts-2026.jpg" alt="Python skills for data analysts: Pandas, NumPy, visualization and automation" width={1600} height={900} style={{display:"block",width:"100%",height:"auto",borderRadius:18,border:"1px solid rgba(19,41,60,.08)"}} /></figure>)}
+          {post!.slug==="python-automation-for-business"&&<PythonAutomationGallery />}
           {/* Article body */}
           {post!.slug==="python-vs-excel-data-analysis"&&(<figure style={{margin:"0 0 44px"}}><img src="/images/blog/python-vs-excel-data-analysis.jpg" alt="Python vs Excel for data analysis comparison and Excel SQL Python Power BI workflow" width={1536} height={1024} style={{display:"block",width:"100%",height:"auto",borderRadius:18}} /></figure>)}
           <div className="art">
-            {post!.slug==="python-vs-excel-data-analysis"?(<PythonVsExcelArticle />):post!.slug==="is-python-worth-learning-2026"?(<PythonWorthArticle />):post!.slug==="python-skills-for-data-analysts-2026"?(<PythonSkillsArticle />):post!.slug==="power-bi-skills-oman-businesses"?(<PowerBISkillsOmanArticle />):post!.slug==="advanced-excel-skills-oman"?(<AdvancedExcelSkillsOmanArticle />):post!.slug==="data-analytics-skills-oman"?(<DataAnalyticsSkillsOmanArticle />):post!.slug==="oman-vision-2040-digital-skills"?(<OmanVision2040Article />):post!.slug==="power-bi-developer-roadmap-2026"?(<PowerBIDeveloperRoadmapArticle />):post!.slug==="power-bi-interview-questions"?(<PowerBIInterviewQuestionsArticle />):post!.slug==="microsoft-excel-certification"?(<MicrosoftExcelCertificationArticle />):post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
+            {post!.slug==="python-automation-for-business"?(<PythonAutomationArticle />):post!.slug==="python-vs-excel-data-analysis"?(<PythonVsExcelArticle />):post!.slug==="is-python-worth-learning-2026"?(<PythonWorthArticle />):post!.slug==="python-skills-for-data-analysts-2026"?(<PythonSkillsArticle />):post!.slug==="power-bi-skills-oman-businesses"?(<PowerBISkillsOmanArticle />):post!.slug==="advanced-excel-skills-oman"?(<AdvancedExcelSkillsOmanArticle />):post!.slug==="data-analytics-skills-oman"?(<DataAnalyticsSkillsOmanArticle />):post!.slug==="oman-vision-2040-digital-skills"?(<OmanVision2040Article />):post!.slug==="power-bi-developer-roadmap-2026"?(<PowerBIDeveloperRoadmapArticle />):post!.slug==="power-bi-interview-questions"?(<PowerBIInterviewQuestionsArticle />):post!.slug==="microsoft-excel-certification"?(<MicrosoftExcelCertificationArticle />):post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
               <>
                 <p>The job market is changing faster than traditional career paths. According to the World Economic Forum’s <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">Future of Jobs Report 2025</a>, 170 million new jobs could be created by 2030 while 92 million jobs could be displaced, creating a net increase of 78 million roles. The report also says nearly 40% of the skills required at work are expected to change.</p>
                 <p>That means a degree alone may not be enough. Professionals will need a mix of technology skills, business knowledge and human skills to stay relevant.</p>
