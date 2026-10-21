@@ -3,6 +3,7 @@ import PythonAutomationGallery from "./PythonAutomationGallery";
 import PythonVsExcelArticle from "./PythonVsExcelArticle";
 import PythonWorthArticle from "./PythonWorthArticle";
 import React from "react";
+import PowerQueryInPowerBIArticle from "./PowerQueryInPowerBIArticle";
 import PythonSkillsArticle from "./PythonSkillsArticle";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -29,6 +30,7 @@ const ARTICLE_DATA: Record<string,{relatedSlug:string;relatedCourse:string;secti
   "python-automation-for-business":{relatedSlug:"python-data-analytics",relatedCourse:"Python for Data Analytics",sections:[]},
   "python-vs-excel-data-analysis":{relatedSlug:"python-data-analytics",relatedCourse:"Python for Data Analytics",sections:[]},
   "is-python-worth-learning-2026":{relatedSlug:"python-data-analytics",relatedCourse:"Python for Data Analytics",sections:[]},
+  "power-query-in-power-bi-beginners-guide":{relatedSlug:"power-bi-training",relatedCourse:"Power BI Mastery",sections:[]},
   "python-skills-for-data-analysts-2026":{relatedSlug:"python-data-analytics",relatedCourse:"Python for Data Analytics",sections:[]},
   "power-bi-skills-oman-businesses":{relatedSlug:"power-bi-training",relatedCourse:"Power BI Mastery",sections:[]},
   "advanced-excel-skills-oman":{relatedSlug:"advanced-excel-training",relatedCourse:"Advanced Excel",sections:[]},
@@ -156,6 +158,10 @@ export function generateMetadata({params}:{params:{slug:string}}):Metadata{
     const url="https://technoexcel.in/blog/is-python-worth-learning-2026";
     const image="/images/blog/is-python-worth-learning-2026.jpg";
     return{title:{absolute:title},description,alternates:{canonical:url},openGraph:{type:"article",title,description,url,images:[{url:image,width:1600,height:900,alt:"Is Python Still Worth Learning in 2026? AI, Jobs & Career Scope"}]},twitter:{card:"summary_large_image",title,description,images:[image]}};
+  }
+  if(params.slug==="power-query-in-power-bi-beginners-guide"){
+    const title="Power Query in Power BI: Beginner’s Guide",description="Discover how to use Power Query in Power BI, with real examples, key features, beginner tips and the difference between Power Query and DAX.",url="https://technoexcel.in/blog/power-query-in-power-bi-beginners-guide",image="/images/blog/power-query-in-power-bi-beginners-guide.jpg";
+    return {title:{absolute:title},description,alternates:{canonical:url},openGraph:{type:"article",title,description,url,images:[{url:image,width:1600,height:900,alt:"Power Query in Power BI: Beginner’s Guide"}]},twitter:{card:"summary_large_image",title,description,images:[image]}};
   }
   if(params.slug==="python-skills-for-data-analysts-2026"){
     const title="Python Skills for Data Analysts in 2026: Complete Guide";
@@ -476,8 +482,9 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
           {post!.slug==="python-automation-for-business"&&<PythonAutomationGallery />}
           {/* Article body */}
           {post!.slug==="python-vs-excel-data-analysis"&&(<figure style={{margin:"0 0 44px"}}><img src="/images/blog/python-vs-excel-data-analysis.jpg" alt="Python vs Excel for data analysis comparison and Excel SQL Python Power BI workflow" width={1536} height={1024} style={{display:"block",width:"100%",height:"auto",borderRadius:18}} /></figure>)}
+          {post!.slug==="power-query-in-power-bi-beginners-guide"&&<figure style={{margin:"0 0 44px"}}><img src="/images/blog/power-query-in-power-bi-beginners-guide.jpg" alt="Power Query in Power BI beginner guide showing data connections, transformations and the Power Query Editor" width={1600} height={900} style={{display:"block",width:"100%",height:"auto",borderRadius:18}} /></figure>}
           <div className="art">
-            {post!.slug==="python-automation-for-business"?(<PythonAutomationArticle />):post!.slug==="python-vs-excel-data-analysis"?(<PythonVsExcelArticle />):post!.slug==="is-python-worth-learning-2026"?(<PythonWorthArticle />):post!.slug==="python-skills-for-data-analysts-2026"?(<PythonSkillsArticle />):post!.slug==="power-bi-skills-oman-businesses"?(<PowerBISkillsOmanArticle />):post!.slug==="advanced-excel-skills-oman"?(<AdvancedExcelSkillsOmanArticle />):post!.slug==="data-analytics-skills-oman"?(<DataAnalyticsSkillsOmanArticle />):post!.slug==="oman-vision-2040-digital-skills"?(<OmanVision2040Article />):post!.slug==="power-bi-developer-roadmap-2026"?(<PowerBIDeveloperRoadmapArticle />):post!.slug==="power-bi-interview-questions"?(<PowerBIInterviewQuestionsArticle />):post!.slug==="microsoft-excel-certification"?(<MicrosoftExcelCertificationArticle />):post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
+            {post!.slug==="power-query-in-power-bi-beginners-guide"?(<PowerQueryInPowerBIArticle />):post!.slug==="python-automation-for-business"?(<PythonAutomationArticle />):post!.slug==="python-vs-excel-data-analysis"?(<PythonVsExcelArticle />):post!.slug==="is-python-worth-learning-2026"?(<PythonWorthArticle />):post!.slug==="python-skills-for-data-analysts-2026"?(<PythonSkillsArticle />):post!.slug==="power-bi-skills-oman-businesses"?(<PowerBISkillsOmanArticle />):post!.slug==="advanced-excel-skills-oman"?(<AdvancedExcelSkillsOmanArticle />):post!.slug==="data-analytics-skills-oman"?(<DataAnalyticsSkillsOmanArticle />):post!.slug==="oman-vision-2040-digital-skills"?(<OmanVision2040Article />):post!.slug==="power-bi-developer-roadmap-2026"?(<PowerBIDeveloperRoadmapArticle />):post!.slug==="power-bi-interview-questions"?(<PowerBIInterviewQuestionsArticle />):post!.slug==="microsoft-excel-certification"?(<MicrosoftExcelCertificationArticle />):post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
               <>
                 <p>The job market is changing faster than traditional career paths. According to the World Economic Forum’s <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">Future of Jobs Report 2025</a>, 170 million new jobs could be created by 2030 while 92 million jobs could be displaced, creating a net increase of 78 million roles. The report also says nearly 40% of the skills required at work are expected to change.</p>
                 <p>That means a degree alone may not be enough. Professionals will need a mix of technology skills, business knowledge and human skills to stay relevant.</p>
