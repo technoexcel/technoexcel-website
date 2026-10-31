@@ -8,6 +8,7 @@ const BASE = "https://www.technoexcel.in";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
+    { url: `${BASE}/blog/power-bi-kpi-dashboard`, lastModified: "2026-10-31", changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/blog/finance-dashboard-power-bi`, lastModified: "2026-10-28", changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/blog/hr-dashboard-power-bi`, lastModified: "2026-10-23", changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/blog/power-query-in-power-bi-beginners-guide`, lastModified: "2026-10-21", changeFrequency: "monthly", priority: 0.7 },
