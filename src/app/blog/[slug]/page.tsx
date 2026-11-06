@@ -1,3 +1,4 @@
+import ManufacturingDashboardArticle from "./ManufacturingDashboardArticle";
 import PowerBIKPIArticle from "./PowerBIKPIArticle";
 import FinanceDashboardArticle from "./FinanceDashboardArticle";
 import PythonAutomationArticle from "./PythonAutomationArticle";
@@ -31,6 +32,7 @@ const MONO="var(--font-mono,'Space Mono',monospace)";
 
 const ARTICLE_DATA: Record<string,{relatedSlug:string;relatedCourse:string;sections:{h:string;body:string}[]}> = {
   "power-bi-kpi-dashboard":{relatedSlug:"power-bi-training",relatedCourse:"Power BI Mastery",sections:[]},
+  "manufacturing-dashboard-power-bi":{relatedSlug:"power-bi-training",relatedCourse:"Power BI Mastery",sections:[]},
   "finance-dashboard-power-bi":{relatedSlug:"power-bi-training",relatedCourse:"Power BI Mastery",sections:[]},
   "python-automation-for-business":{relatedSlug:"python-data-analytics",relatedCourse:"Python for Data Analytics",sections:[]},
   "python-vs-excel-data-analysis":{relatedSlug:"python-data-analytics",relatedCourse:"Python for Data Analytics",sections:[]},
@@ -146,6 +148,11 @@ export function generateStaticParams(){
 export function generateMetadata({params}:{params:{slug:string}}):Metadata{
   const post=BLOG_POSTS.find(p=>p.slug===params.slug);
   if(!post)return{};
+  if(params.slug==="manufacturing-dashboard-power-bi"){
+    const title="How to Create a Manufacturing Dashboard in Power BI",description="Create a Power BI production dashboard with target tracking, shift analysis, downtime monitoring and practical DAX examples.",url="https://technoexcel.in/blog/manufacturing-dashboard-power-bi",image="/images/blog/manufacturing-dashboard-power-bi.png";
+    return {title:{absolute:title},description,alternates:{canonical:url},openGraph:{type:"article",title,description,url,images:[{url:image,width:1672,height:941,alt:title}]},twitter:{card:"summary_large_image",title,description,images:[image]}};
+  }
+
   if(params.slug==="power-bi-kpi-dashboard"){
     const title="Power BI KPIs: Build an Interactive KPI Dashboard",description="learn how to create a Power BI KPI dashboard with DAX, targets, performance metrics, and interactive visuals. Follow this practical guide.",url="https://technoexcel.in/blog/power-bi-kpi-dashboard",image="/images/blog/power-bi-kpi-dashboard.png";
     return {title:{absolute:title},description,alternates:{canonical:url},openGraph:{type:"article",title,description,url,images:[{url:image,width:3344,height:1882,alt:title}]},twitter:{card:"summary_large_image",title,description,images:[image]}};
@@ -367,6 +374,7 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
           <div style={{display:"flex",gap:16,fontFamily:MONO,fontSize:11,color:"rgba(255,255,255,.52)",flexWrap:"wrap"}}>
             <span>{post!.date}</span><span>·</span><span>{post!.read} read</span><span>·</span><span>{post!.slug==="microsoft-power-platform-fundamentals-pl-900"?<time dateTime="2026-10-04">Last updated: 4 October 2026</time>:"Updated for 2026"}</span>
           </div>
+          {post!.slug==="manufacturing-dashboard-power-bi"&&<figure style={{margin:"32px 0 0"}}><img src="/images/blog/manufacturing-dashboard-power-bi.png" alt="Manufacturing dashboard in Power BI showing production output, OEE, defect rate and downtime" width={1672} height={941} style={{display:"block",width:"100%",height:"auto",borderRadius:18}} /></figure>}
         </div>
       </section>
 
@@ -418,7 +426,7 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
         <div className="body-inner">
           {/* Lead */}
           <p style={{fontFamily:SANS,fontSize:19,color:"rgba(19,41,60,.75)",lineHeight:1.9,marginBottom:40,fontWeight:300,borderLeft:`4px solid ${RED}`,paddingLeft:22}}>
-            {post!.excerpt}
+            {post!.slug==="manufacturing-dashboard-power-bi"?<>A manufacturing <a href="https://www.technoexcel.in/blog/hr-dashboard-power-bi">dashboard in Power BI</a> helps manufacturers monitor production output, machine performance, downtime, quality, inventory, and operational costs in one place. You can build one by connecting factory data, cleaning it with Power Query, creating DAX measures, and designing interactive reports around the KPIs that matter to your plant.</>:post!.excerpt}
           </p>
 
           {post!.slug==="power-bi-developer-roadmap-2026"&&(
@@ -506,7 +514,7 @@ export default function BlogPostPage({params}:{params:{slug:string}}){
           {post!.slug==="finance-dashboard-power-bi"&&<figure style={{margin:"0 0 44px"}}><img src="/images/blog/finance-dashboard-power-bi.png" alt="Finance dashboard in Power BI showing revenue, expenses, profit, cash flow and budget variance" width={1536} height={1024} style={{display:"block",width:"100%",height:"auto",borderRadius:18}} /></figure>}
           {post!.slug==="power-bi-kpi-dashboard"&&<figure style={{margin:"0 0 44px"}}><img src="/images/blog/power-bi-kpi-dashboard.png" alt="Power BI KPI dashboard showing sales performance, targets, revenue trends and regional results" width={3344} height={1882} style={{display:"block",width:"100%",height:"auto",borderRadius:18}} /></figure>}
           <div className="art">
-            {post!.slug==="power-bi-kpi-dashboard"?(<PowerBIKPIArticle />):post!.slug==="finance-dashboard-power-bi"?(<FinanceDashboardArticle />):post!.slug==="hr-dashboard-power-bi"?(<HRDashboardArticle />):post!.slug==="power-query-in-power-bi-beginners-guide"?(<PowerQueryInPowerBIArticle />):post!.slug==="python-automation-for-business"?(<PythonAutomationArticle />):post!.slug==="python-vs-excel-data-analysis"?(<PythonVsExcelArticle />):post!.slug==="is-python-worth-learning-2026"?(<PythonWorthArticle />):post!.slug==="python-skills-for-data-analysts-2026"?(<PythonSkillsArticle />):post!.slug==="power-bi-skills-oman-businesses"?(<PowerBISkillsOmanArticle />):post!.slug==="advanced-excel-skills-oman"?(<AdvancedExcelSkillsOmanArticle />):post!.slug==="data-analytics-skills-oman"?(<DataAnalyticsSkillsOmanArticle />):post!.slug==="oman-vision-2040-digital-skills"?(<OmanVision2040Article />):post!.slug==="power-bi-developer-roadmap-2026"?(<PowerBIDeveloperRoadmapArticle />):post!.slug==="power-bi-interview-questions"?(<PowerBIInterviewQuestionsArticle />):post!.slug==="microsoft-excel-certification"?(<MicrosoftExcelCertificationArticle />):post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
+            {post!.slug==="manufacturing-dashboard-power-bi"?(<ManufacturingDashboardArticle />):post!.slug==="power-bi-kpi-dashboard"?(<PowerBIKPIArticle />):post!.slug==="finance-dashboard-power-bi"?(<FinanceDashboardArticle />):post!.slug==="hr-dashboard-power-bi"?(<HRDashboardArticle />):post!.slug==="power-query-in-power-bi-beginners-guide"?(<PowerQueryInPowerBIArticle />):post!.slug==="python-automation-for-business"?(<PythonAutomationArticle />):post!.slug==="python-vs-excel-data-analysis"?(<PythonVsExcelArticle />):post!.slug==="is-python-worth-learning-2026"?(<PythonWorthArticle />):post!.slug==="python-skills-for-data-analysts-2026"?(<PythonSkillsArticle />):post!.slug==="power-bi-skills-oman-businesses"?(<PowerBISkillsOmanArticle />):post!.slug==="advanced-excel-skills-oman"?(<AdvancedExcelSkillsOmanArticle />):post!.slug==="data-analytics-skills-oman"?(<DataAnalyticsSkillsOmanArticle />):post!.slug==="oman-vision-2040-digital-skills"?(<OmanVision2040Article />):post!.slug==="power-bi-developer-roadmap-2026"?(<PowerBIDeveloperRoadmapArticle />):post!.slug==="power-bi-interview-questions"?(<PowerBIInterviewQuestionsArticle />):post!.slug==="microsoft-excel-certification"?(<MicrosoftExcelCertificationArticle />):post!.slug==="microsoft-office-certification"?(<MicrosoftOfficeCertificationArticle />):post!.slug==="skills-to-become-a-data-analyst"?(<DataAnalystSkillsArticle />):post!.slug==="pl-300-power-bi-training"?(<PL300Article />):post!.slug==="microsoft-power-platform-fundamentals-pl-900"?(<PL900Article />):post!.slug==="skills-for-jobs-in-2030"?(
               <>
                 <p>The job market is changing faster than traditional career paths. According to the World Economic Forum’s <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">Future of Jobs Report 2025</a>, 170 million new jobs could be created by 2030 while 92 million jobs could be displaced, creating a net increase of 78 million roles. The report also says nearly 40% of the skills required at work are expected to change.</p>
                 <p>That means a degree alone may not be enough. Professionals will need a mix of technology skills, business knowledge and human skills to stay relevant.</p>
