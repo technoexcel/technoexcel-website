@@ -8,6 +8,7 @@ const BASE = "https://www.technoexcel.in";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
+    { url: `${BASE}/blog/microsoft-fabric-vs-power-bi`, lastModified: "2026-11-17", changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/blog/power-bi-copilot-ai-data-analysis`, lastModified: "2026-11-11", changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/blog/manufacturing-dashboard-power-bi`, lastModified: "2026-11-06", changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/blog/power-bi-kpi-dashboard`, lastModified: "2026-10-31", changeFrequency: "monthly", priority: 0.7 },
